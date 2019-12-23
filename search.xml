@@ -4,7 +4,8 @@
     <title>SQL注入</title>
     <url>/2019/12/20/SQL%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<img src="/2019/12/20/SQL%E6%B3%A8%E5%85%A5/1.jpg" class="" title="This is an 1 image">
-<h2 id="了解SQL注入"><a href="#了解SQL注入" class="headerlink" title="了解SQL注入"></a>了解SQL注入</h2><h3 id="什么是SQL注入"><a href="#什么是SQL注入" class="headerlink" title="什么是SQL注入"></a>什么是SQL注入</h3><p>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
+<h2 id="了解SQL注入"><a href="#了解SQL注入" class="headerlink" title="了解SQL注入"></a>了解SQL注入</h2><a id="more"></a>
+<h3 id="什么是SQL注入"><a href="#什么是SQL注入" class="headerlink" title="什么是SQL注入"></a>什么是SQL注入</h3><p>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作，以此来实现欺骗数据库服务器执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
 <h3 id="SQL注入的危害"><a href="#SQL注入的危害" class="headerlink" title="SQL注入的危害"></a>SQL注入的危害</h3><p>攻击者通过SQL注入获取到服务器的库名、表名、字段名，从而获取到整个服务器中的数据，对网站用户的数据安全有极大的威胁。攻击者也可以通过获取到的数据，得到后台管理员的密码，然后对网页页面进行恶意篡改。这样不仅对数据库信息安全造成严重威胁，对整个数据库系统安全也影响重大。</p>
 <h3 id="SQL的类型"><a href="#SQL的类型" class="headerlink" title="SQL的类型"></a>SQL的类型</h3><h4 id="按照注入点分类"><a href="#按照注入点分类" class="headerlink" title="按照注入点分类"></a>按照注入点分类</h4><ol>
 <li>数字型注入:无需闭合 多为id?=1 and 1=1 –+</li>
