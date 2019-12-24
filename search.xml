@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>信息收集</title>
+    <url>/2019/12/24/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</url>
+    <content><![CDATA[<p>在渗透测试中我们常常是上来就开始搞事情不愿意去对目标的网站或服务做过多的信息收集，这有时会导致我们在特定的时间找不到相应的突破点，而这里就体现到了我们信息收集的意义与重要性，在我自己看来我们久攻不下的网站并不是我们能丽不够而是我们信息收集的不够，所以信息收集在我看来是整个渗透测试中最重要的一步也是非常有必要去做的一步</p>
+<p>Whois信息<br>    域名信息<br>    备案信息<br>    注册商<br>    DNS信息<br>    旁站信息<br>    真实IP     //通过多地ping查看<br>    whois反查<br>        邮箱反查域名<br>        联系人反查域名<br>    注册人信息<br>        邮箱<br>        电话<br>        购买时间<br>    在线Whois查询网站<br>        爱站工具网     <a href="https://whois.aizhan.com/" target="_blank" rel="noopener">https://whois.aizhan.com/</a><br>        站长之家       <a href="http://whois.chinaz.com/" target="_blank" rel="noopener">http://whois.chinaz.com/</a><br>        微步           <a href="https://x.threatbook.cn/" target="_blank" rel="noopener">https://x.threatbook.cn/</a><br>        国外的        <a href="https://who.is/" target="_blank" rel="noopener">https://who.is/</a><br>指纹信息<br>    操作系统            Linux/Windows    //可通过url大小写判断<br>    中间价            Apache/Nginx/IIS等<br>    数据库            Mysql/Mssql/Access等<br>    编程语言            PHP/ASP/ASPX/JSP等<br>    前端框架            jQuery/BootStrap/Vue/React等<br>    Web容器服务器    Tomcat/Jboss/Weblogic等<br>    后端框架            CMS<br>    在线指纹识别网站<br>        云悉            <a href="http://www.yunsee.cn/" target="_blank" rel="noopener">http://www.yunsee.cn/</a><br>        bugscaner     <a href="http://whatweb.bugscaner.com/" target="_blank" rel="noopener">http://whatweb.bugscaner.com/</a><br>        WhatWeb        <a href="https://whatweb.net/" target="_blank" rel="noopener">https://whatweb.net/</a><br>    本地工具<br>        whatweb<br>敏感信息<br>    敏感目录<br>    敏感文件<br>        robots.txt<br>        crossdomain.xml<br>        sitemap.xml<br>        xx.tar.gz<br>        xx.bak<br>        等<br>    本地工具<br>        dirsearch.py<br>        御剑<br>        DirBuster<br>        wwwsacn<br>        Spinder.py(轻量级快速单文件目录后台扫描)<br>        Sensitivefilescan(轻量级快速单文件目录后台扫描）<br>        Weakfilescan(轻量级快速单文件目录后台扫描)<br>    搜索引擎<br>        site—-指定域名<br>        inurl—-URL中存在关键字的网页<br>        intext—-网页正文中关键字<br>        intitle—-搜索到的网页标题包含关键字<br>        info—-查找指定站点的一些基本信息</p>
+<p>C段信息<br>子域名信息<br>    使用工具<br>端口信息<br>    使用工具Nmap<br>WEF信息<br>    使用工具<br>        wafw00f</p>
+]]></content>
+      <categories>
+        <category>渗透测试</category>
+      </categories>
+      <tags>
+        <tag>信息收集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQLMap</title>
     <url>/2019/12/24/SQLMap/</url>
     <content><![CDATA[<h1 id="SQlmap详解"><a href="#SQlmap详解" class="headerlink" title="SQlmap详解"></a>SQlmap详解</h1><h2 id="SQLMap概论"><a href="#SQLMap概论" class="headerlink" title="SQLMap概论"></a>SQLMap概论</h2><h3 id="5种SQL注入技术"><a href="#5种SQL注入技术" class="headerlink" title="5种SQL注入技术"></a>5种SQL注入技术</h3><p>布尔类型的盲注：返回页面判断条件真假的注入<br>基于时间的盲注：即不根据页面返回的内容判断任何信息，要用条件语句查看时间延迟语句是否执行（页面返回时间是否增加）来判断<br>基于报错注入：页面会返回错误信息，或者把注入语句的结果直接返回页面种<br>联合查询注入：在使用Union的情况下的注入<br>堆查询注入：同时执行多条语句时的注入</p>
