@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="渗透测试|网络安全|信息安全|WEB安全">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;tags&#x2F;index.html">
+  <meta name="description" content="代码审计环境准备PHPStudysublime    CTage、ConvertToUTF8firefox    FoxyProxy、hackbarburp suitevMysqlMonitoringWEB编码转换工具 常见的INI配置配置文件    php.ini        在php启动时被读取。对于服务器模块版本的php，仅在web服务器启动时读取一次。对于CGI和CLI版本，每次调用都会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP代码审计笔记">
+<meta property="og:url" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;2019&#x2F;12&#x2F;25&#x2F;PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%AC%94%E8%AE%B0&#x2F;index.html">
 <meta property="og:site_name" content="Timorblog">
-<meta property="og:description" content="渗透测试|网络安全|信息安全|WEB安全">
+<meta property="og:description" content="代码审计环境准备PHPStudysublime    CTage、ConvertToUTF8firefox    FoxyProxy、hackbarburp suitevMysqlMonitoringWEB编码转换工具 常见的INI配置配置文件    php.ini        在php启动时被读取。对于服务器模块版本的php，仅在web服务器启动时读取一次。对于CGI和CLI版本，每次调用都会">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-12-18T13:50:21.000Z">
-<meta property="article:modified_time" content="2019-12-18T13:51:59.705Z">
+<meta property="article:published_time" content="2019-12-25T05:14:48.000Z">
+<meta property="article:modified_time" content="2019-12-25T06:39:19.384Z">
 <meta property="article:author" content="Timor">
 <meta property="article:tag" content="Timor">
 <meta property="article:tag" content="渗透测试">
@@ -64,7 +64,7 @@
 <meta property="article:tag" content="GETSHELL">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://timorblog.cn/tags/">
+<link rel="canonical" href="https://timorblog.cn/2019/12/25/PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -72,12 +72,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>标签 | Timorblog
-  </title>
+  <title>PHP代码审计笔记 | Timorblog</title>
   
 
 
@@ -204,52 +203,102 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/2019/12/25/PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xiaobai.jpg">
+      <meta itemprop="name" content="Timor">
+      <meta itemprop="description" content="渗透测试|网络安全|信息安全|WEB安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Timorblog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PHP代码审计笔记
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">标签
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2019-12-25 13:14:48 / 修改时间：14:39:19" itemprop="dateCreated datePublished" datetime="2019-12-25T13:14:48+08:00">2019-12-25</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="代码审计环境准备"><a href="#代码审计环境准备" class="headerlink" title="代码审计环境准备"></a>代码审计环境准备</h2><p>PHPStudy<br>sublime<br>    CTage、ConvertToUTF8<br>firefox<br>    FoxyProxy、hackbar<br>burp suite<br>vMysqlMonitoring<br>WEB编码转换工具</p>
+<h2 id="常见的INI配置"><a href="#常见的INI配置" class="headerlink" title="常见的INI配置"></a>常见的INI配置</h2><p>配置文件<br>    php.ini<br>        在php启动时被读取。对于服务器模块版本的php，仅在web服务器启动时读取一次。对于CGI和CLI版本，每次调用都会读取。<br>        * Apache web 服务器在启动时会把目录转到根目录，这将导致php尝试在根目录下读取php.ini，如果存在的话。<br>        * 在php.ini中可以使用环境变量。<br>    .user.ini 文件<br>        自PHP5.3.0起，php支持基于每个目录的.htaccess风格的INI文件仅被CGI/FastCGI SAPI处理。此功能使得PECL的htscanner扩展作废。如果使用Apache，则用.htaccess文件有同样效果<br>语法<br>    该文件的语法非常简单。空白字符和以分号开始的行被简单的忽略，即使将来它们可能有某种意义。<br>    设置指令的格式如下：<br>        directive = value<br>    指令名(directive)是大小写敏感的！<br>    值(value)可以是:<br>    - 用引号界定的字符串(如:”foo”)<br>    - 一个数字(整数或浮点数，如:0,1,-1,1.111)<br>    - 一个PHP常量(如:E_ALL,M_PI)<br>    - 一个INI常量(On,Off,none)<br>    - 一个表达式(如：E_ALL &amp; ~E_NOTICE)</p>
+<p>变量相关<br>安全模式<br>上传文件及目录权限<br>错误信息<br>魔术引导及远程文件<br>(未完)</p>
+
+    </div>
+
+    
+    
+    
+        <div>
+            
+            <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+            
+        </div>
+      <footer class="post-footer">
+
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/25/Metasploit%E5%9F%BA%E7%A1%80/" rel="prev" title="Metasploit基础">
+      <i class="fa fa-chevron-left"></i> Metasploit基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/25/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="PHP学习笔记">
+      PHP学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              目前共计 8 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Bypass/" style="font-size: 12px; color: #ccc">Bypass</a> <a href="/tags/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" style="font-size: 12px; color: #ccc">Linux常用命令</a> <a href="/tags/Metasploit/" style="font-size: 12px; color: #ccc">Metasploit</a> <a href="/tags/Nmap/" style="font-size: 30px; color: #111">Nmap</a> <a href="/tags/SQLMap/" style="font-size: 30px; color: #111">SQLMap</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 30px; color: #111">SQL注入</a> <a href="/tags/burp-suite/" style="font-size: 12px; color: #ccc">burp suite</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 12px; color: #ccc">信息收集</a>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
   </div>
 
 
@@ -301,6 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码审计环境准备"><span class="nav-number">1.</span> <span class="nav-text">代码审计环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的INI配置"><span class="nav-number">2.</span> <span class="nav-text">常见的INI配置</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
