@@ -46,25 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="代码审计环境准备PHPStudysublime    CTage、ConvertToUTF8firefox    FoxyProxy、hackbarburp suitevMysqlMonitoringWEB编码转换工具 常见的INI配置配置文件    php.ini        在php启动时被读取。对于服务器模块版本的php，仅在web服务器启动时读取一次。对于CGI和CLI版本，每次调用都会">
+  <meta name="description" content="在渗透测试中我们常常是上来就开始搞事情不愿意去对目标的网站或服务做过多的信息收集，这有时会导致我们在特定的时间找不到相应的突破点，而这里就体现到了我们信息收集的意义与重要性，在我自己看来我们久攻不下的网站并不是我们能丽不够而是我们信息收集的不够，所以信息收集在我看来是整个渗透测试中最重要的一步也是非常有必要去做的一步">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP代码审计笔记">
-<meta property="og:url" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;undefined&#x2F;803f4340.html">
+<meta property="og:title" content="信息收集">
+<meta property="og:url" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;312e3d12.html">
 <meta property="og:site_name" content="Timorblog">
-<meta property="og:description" content="代码审计环境准备PHPStudysublime    CTage、ConvertToUTF8firefox    FoxyProxy、hackbarburp suitevMysqlMonitoringWEB编码转换工具 常见的INI配置配置文件    php.ini        在php启动时被读取。对于服务器模块版本的php，仅在web服务器启动时读取一次。对于CGI和CLI版本，每次调用都会">
+<meta property="og:description" content="在渗透测试中我们常常是上来就开始搞事情不愿意去对目标的网站或服务做过多的信息收集，这有时会导致我们在特定的时间找不到相应的突破点，而这里就体现到了我们信息收集的意义与重要性，在我自己看来我们久攻不下的网站并不是我们能丽不够而是我们信息收集的不够，所以信息收集在我看来是整个渗透测试中最重要的一步也是非常有必要去做的一步">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-12-25T05:14:48.000Z">
-<meta property="article:modified_time" content="2019-12-30T01:27:11.747Z">
+<meta property="article:published_time" content="2019-12-24T04:51:01.000Z">
+<meta property="article:modified_time" content="2019-12-30T01:27:11.760Z">
 <meta property="article:author" content="Timor">
-<meta property="article:tag" content="Timor">
-<meta property="article:tag" content="渗透测试">
-<meta property="article:tag" content="WEB安全">
-<meta property="article:tag" content="SQL注入">
-<meta property="article:tag" content="提权">
-<meta property="article:tag" content="GETSHELL">
+<meta property="article:tag" content="信息收集">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://timorblog.cn/undefined/803f4340.html">
+<link rel="canonical" href="https://timorblog.cn/posts/312e3d12.html">
 
 
 <script id="page-configurations">
@@ -76,7 +71,7 @@
   };
 </script>
 
-  <title>PHP代码审计笔记 | Timorblog</title>
+  <title>信息收集 | Timorblog</title>
   
 
 
@@ -213,7 +208,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/803f4340.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/312e3d12.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -226,7 +221,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          PHP代码审计笔记
+          信息收集
         </h2>
 
         <div class="post-meta">
@@ -236,7 +231,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-25 13:14:48" itemprop="dateCreated datePublished" datetime="2019-12-25T13:14:48+08:00">2019-12-25</time>
+              <time title="创建时间：2019-12-24 12:51:01" itemprop="dateCreated datePublished" datetime="2019-12-24T12:51:01+08:00">2019-12-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -245,6 +240,17 @@
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-12-30 09:27:11" itemprop="dateModified" datetime="2019-12-30T09:27:11+08:00">2019-12-30</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">渗透测试</span>
+                  </a>
+                </span>
+            </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -264,9 +270,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="代码审计环境准备"><a href="#代码审计环境准备" class="headerlink" title="代码审计环境准备"></a>代码审计环境准备</h2><p>PHPStudy<br>sublime<br>    CTage、ConvertToUTF8<br>firefox<br>    FoxyProxy、hackbar<br>burp suite<br>vMysqlMonitoring<br>WEB编码转换工具</p>
-<h2 id="常见的INI配置"><a href="#常见的INI配置" class="headerlink" title="常见的INI配置"></a>常见的INI配置</h2><p>配置文件<br>    php.ini<br>        在php启动时被读取。对于服务器模块版本的php，仅在web服务器启动时读取一次。对于CGI和CLI版本，每次调用都会读取。<br>        * Apache web 服务器在启动时会把目录转到根目录，这将导致php尝试在根目录下读取php.ini，如果存在的话。<br>        * 在php.ini中可以使用环境变量。<br>    .user.ini 文件<br>        自PHP5.3.0起，php支持基于每个目录的.htaccess风格的INI文件仅被CGI/FastCGI SAPI处理。此功能使得PECL的htscanner扩展作废。如果使用Apache，则用.htaccess文件有同样效果<br>语法<br>    该文件的语法非常简单。空白字符和以分号开始的行被简单的忽略，即使将来它们可能有某种意义。<br>    设置指令的格式如下：<br>        directive = value<br>    指令名(directive)是大小写敏感的！<br>    值(value)可以是:<br>    - 用引号界定的字符串(如:”foo”)<br>    - 一个数字(整数或浮点数，如:0,1,-1,1.111)<br>    - 一个PHP常量(如:E_ALL,M_PI)<br>    - 一个INI常量(On,Off,none)<br>    - 一个表达式(如：E_ALL &amp; ~E_NOTICE)</p>
-<p>变量相关<br>安全模式<br>上传文件及目录权限<br>错误信息<br>魔术引导及远程文件<br>(未完)</p>
+        <p>在渗透测试中我们常常是上来就开始搞事情不愿意去对目标的网站或服务做过多的信息收集，这有时会导致我们在特定的时间找不到相应的突破点，而这里就体现到了我们信息收集的意义与重要性，在我自己看来我们久攻不下的网站并不是我们能丽不够而是我们信息收集的不够，所以信息收集在我看来是整个渗透测试中最重要的一步也是非常有必要去做的一步</p>
+<a id="more"></a>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">Whois信息</span><br><span class="line">	域名信息</span><br><span class="line">	备案信息</span><br><span class="line">	注册商</span><br><span class="line">	DNS信息</span><br><span class="line">	旁站信息</span><br><span class="line">	真实IP     <span class="comment">//通过多地ping查看</span></span><br><span class="line">	whois反查</span><br><span class="line">		邮箱反查域名</span><br><span class="line">		联系人反查域名</span><br><span class="line">	注册人信息</span><br><span class="line">		邮箱</span><br><span class="line">		电话</span><br><span class="line">		购买时间</span><br><span class="line">	在线Whois查询网站</span><br><span class="line">		爱站工具网 	<span class="string">https:</span><span class="comment">//whois.aizhan.com/</span></span><br><span class="line">		站长之家   	<span class="string">http:</span><span class="comment">//whois.chinaz.com/</span></span><br><span class="line">		微步       	<span class="string">https:</span><span class="comment">//x.threatbook.cn/</span></span><br><span class="line">		国外的		<span class="string">https:</span><span class="comment">//who.is/</span></span><br><span class="line">指纹信息</span><br><span class="line">	操作系统			Linux<span class="regexp">/Windows	/</span>/可通过url大小写判断</span><br><span class="line">	中间价			Apache<span class="regexp">/Nginx/</span>IIS等</span><br><span class="line">	数据库			Mysql<span class="regexp">/Mssql/</span>Access等</span><br><span class="line">	编程语言			PHP<span class="regexp">/ASP/</span>ASPX/JSP等</span><br><span class="line">	前端框架			jQuery<span class="regexp">/BootStrap/</span>Vue/React等</span><br><span class="line">	Web容器服务器	Tomcat<span class="regexp">/Jboss/</span>Weblogic等</span><br><span class="line">	后端框架			CMS</span><br><span class="line">	在线指纹识别网站</span><br><span class="line">		云悉			<span class="string">http:</span><span class="comment">//www.yunsee.cn/</span></span><br><span class="line">		bugscaner 	<span class="string">http:</span><span class="comment">//whatweb.bugscaner.com/</span></span><br><span class="line">		WhatWeb		<span class="string">https:</span><span class="comment">//whatweb.net/</span></span><br><span class="line">	本地工具</span><br><span class="line">		whatweb</span><br><span class="line">敏感信息</span><br><span class="line">	敏感目录</span><br><span class="line">	敏感文件</span><br><span class="line">		robots.txt</span><br><span class="line">		crossdomain.xml</span><br><span class="line">		sitemap.xml</span><br><span class="line">		xx.tar.gz</span><br><span class="line">		xx.bak</span><br><span class="line">		等</span><br><span class="line">	本地工具</span><br><span class="line">		dirsearch.py</span><br><span class="line">		御剑</span><br><span class="line">		DirBuster</span><br><span class="line">		wwwsacn</span><br><span class="line">		Spinder.py(轻量级快速单文件目录后台扫描)</span><br><span class="line">		Sensitivefilescan(轻量级快速单文件目录后台扫描）</span><br><span class="line">		Weakfilescan(轻量级快速单文件目录后台扫描)</span><br><span class="line">	搜索引擎</span><br><span class="line">		site----指定域名</span><br><span class="line">		inurl----URL中存在关键字的网页</span><br><span class="line">		intext----网页正文中关键字</span><br><span class="line">		intitle----搜索到的网页标题包含关键字</span><br><span class="line">		info----查找指定站点的一些基本信息</span><br><span class="line"></span><br><span class="line">C段信息</span><br><span class="line">子域名信息</span><br><span class="line">	使用工具</span><br><span class="line">端口信息</span><br><span class="line">	使用工具</span><br><span class="line">		Nmap</span><br><span class="line">WEF信息</span><br><span class="line">	使用工具</span><br><span class="line">		wafw00f</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -283,6 +289,9 @@
             
         </div>
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag"># 信息收集</a>
+          </div>
 
 
         
@@ -291,12 +300,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/undefined/39fd836c.html" rel="prev" title="Metasploit基础">
-      <i class="fa fa-chevron-left"></i> Metasploit基础
+    <a href="/posts/bbc8ef4d.html" rel="prev" title="SQLMap">
+      <i class="fa fa-chevron-left"></i> SQLMap
     </a></div>
       <div class="post-nav-item">
-    <a href="/undefined/55d182ea.html" rel="next" title="PHP学习笔记">
-      PHP学习笔记 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/d0edc1ed.html" rel="next" title="Linux常用命令">
+      Linux常用命令 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -357,7 +366,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码审计环境准备"><span class="nav-number">1.</span> <span class="nav-text">代码审计环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的INI配置"><span class="nav-number">2.</span> <span class="nav-text">常见的INI配置</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

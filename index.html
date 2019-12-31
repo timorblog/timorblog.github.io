@@ -211,7 +211,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/55d182ea.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/55d182ea.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -225,7 +225,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/undefined/55d182ea.html" class="post-title-link" itemprop="url">PHP学习笔记</a>
+            <a href="/posts/55d182ea.html" class="post-title-link" itemprop="url">PHP学习笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -242,7 +242,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-30 09:27:11" itemprop="dateModified" datetime="2019-12-30T09:27:11+08:00">2019-12-30</time>
+                <time title="修改时间：2019-12-31 15:51:23" itemprop="dateModified" datetime="2019-12-31T15:51:23+08:00">2019-12-31</time>
               </span>
 
           
@@ -256,109 +256,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="php语法初步"><a href="#php语法初步" class="headerlink" title="php语法初步"></a>php语法初步</h3><pre><code>php是一种运行在服务器端的脚本语言，可以嵌入到HTML中</code></pre><h3 id="php代码标记"><a href="#php代码标记" class="headerlink" title="php代码标记"></a>php代码标记</h3><pre><code>在php历史发展中，可以使用多种标记来区分php脚本
-asp标记：&lt;%php代码%&gt;
-短标记：&lt;?php代码?&gt;
-脚本标记：&lt;script language=&quot;php&quot;&gt;php代码&lt;/script&gt;
-标准标记：&lt;?php php代码?&gt;     （常用）</code></pre><h3 id="php注释"><a href="#php注释" class="headerlink" title="php注释"></a>php注释</h3><pre><code>所有的代码在写的过程中都必须注释
-php中注释分为两种：
-    行注释：一次注释一行
-        //：后面的内容都是注释
-        #：同上
-    块注释：一次注释多行
-        /*注释*/:里面的内容全部注释</code></pre><h3 id="php语句分隔符"><a href="#php语句分隔符" class="headerlink" title="php语句分隔符"></a>php语句分隔符</h3><pre><code>语句分隔符：在PHP中，代码是一行为单位，系统需要通过判断行的结束，该结束通常都是一个符号“;”（英文状态下的分号）
-特殊说明：
-    1.php中标记结束符?&gt;有自带结束符的效果，最后一行php代码可以没有语句结束符“;”
-    2.php中其实很多代码的书写并不是嵌入到HTML中，而是单独存在，通常书写习惯中就不建议用标记结束符?&gt;,php会自动从开始到最后全部认为是php代码，从而解析。</code></pre><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><pre><code>php是一种动态开发的脚本语言，动态语言特点是交互性，会有数据的传递，而php作为“中间人”，需要进行数据的传递，传递的前提就是php能自己存储数据（临时存储）</code></pre><h4 id="变量基本概念"><a href="#变量基本概念" class="headerlink" title="变量基本概念"></a>变量基本概念</h4><pre><code>变量来源于数学，是计算机语言中能存储计算结果或能表示值抽象概念，变量可以通过变量名访问，在指令式语言中，变量通常是可变的。</code></pre><h4 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h4><pre><code>php中的所有变量都必须使用&quot;$&quot;
-1. 定义：在系统中增加对应的变量名字（内存）
-2. 赋值：可以将变量赋值给变量名（可以在定义的同时完成）
-3. 可以通过变量名访问存储的数据
-4. 可以将变量从内存中删除</code></pre><h4 id="变量命名规则"><a href="#变量命名规则" class="headerlink" title="变量命名规则"></a>变量命名规则</h4><pre><code>1. 在php中变量名字必须以“$”符号开始
-2. 名字由字母、数字和下划线“_”构成，但是不能以数字开头
-3. 在php中本身还允许中文变量（不建议）</code></pre><h4 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h4><pre><code>预定义变量：提前定义的变量，系统定义的变量，存储许多需要用的数据（预定义变量都是数据）
-$_POST    获取表单以get方式提交的数据
-$_GET    post提交的数据都会保存在此
-$_REQUEST    get和post提交的都会保存
-$GLOBALS    php中所有的全局变量
-$_SERVER    服务器信息
-$_SESSION    session会话数据
-$_COOKIE    cookie会话数据
-$_ENV    环境信息
-$_FLES    用户上传的文件信息</code></pre><h4 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h4><pre><code>可变变量：如果一个变量保存的值刚好是另外一个变量的名字，那么可以直接通过访问一个变量得到另一个变量的值：在变量前面再多加一个$符号
-$a = &apos;b&apos;;
-$b = &apos;bb&apos;;
-那么$$a就等于bb</code></pre><h4 id="变量传值"><a href="#变量传值" class="headerlink" title="变量传值"></a>变量传值</h4><pre><code>将一个变量赋值给另外变量：变量传值
-变量传值一共有两种方式：值传递，引用传递
-值传递：将变量保存的值赋值一份，然后将新的值给另外一个变量保存（两个变量没有关系）
-引用传递：将变量保存的值所在的内存地址，传递给另外一个变量：两个变量指向同一块内存空间（两个变量是同一个值）
-
-&lt;?php
-//php变量传值
-
-//值传递
-$a = 10;
-$b = $a;
-$b = 5;
-echo $a,$b,&apos;&lt;br/&gt;&apos;;
-
-//引用传递
-$c = 10;
-$d = &amp;$c;
-$c = 5;
-echo $c,$d,&apos;&lt;br/&gt;&apos;;
-?&gt;
-输出结果为  a = 10 , b = 5 , c = 5 , d = 5</code></pre><h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><pre><code>常量与变量一样，都是用来保存数据的</code></pre><h4 id="常量基本概念"><a href="#常量基本概念" class="headerlink" title="常量基本概念"></a>常量基本概念</h4><pre><code>常量：是一种在程序运行当中，不可改变的量（数据）
-常量一旦定义，通常数据不可改变（用户级别）</code></pre><h4 id="常量定义形式"><a href="#常量定义形式" class="headerlink" title="常量定义形式"></a>常量定义形式</h4><pre><code>1. 使用定义常量的函数：define(&apos;常量名&apos;,常量值);
-2. 5.3之后才有的：const 常量名 = 值;</code></pre><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"><span class="comment">//使用函数定义常量：define</span></span></span><br><span class="line"><span class="php">define(<span class="string">'PI'</span>,<span class="number">3.14</span>);</span></span><br><span class="line"><span class="php"><span class="comment">//使用const关键字定义</span></span></span><br><span class="line"><span class="php"><span class="keyword">const</span> PII = <span class="number">3</span>;</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="常量名字的命名规则"><a href="#常量名字的命名规则" class="headerlink" title="常量名字的命名规则"></a>常量名字的命名规则</h4><pre><code>1. 常量不需要使用“$”符号，一旦使用系统就会认为是变量
-2. 常量的名字组成由字母、数字、和下划线组成，不能以数字开头
-3. 常量的名字通常是以大写字母为主(与变量以示区别)
-4. 常量名名的规则比变量要松散，可以使用一些特殊字符，该方式只能使用define定义</code></pre><h4 id="常量适用形式"><a href="#常量适用形式" class="headerlink" title="常量适用形式"></a>常量适用形式</h4><pre><code>常量的使用与变量一样：不可改变值（在定义的时候必须赋值）</code></pre><p>说明：常量和变量的使用<br>    1. 凡是数据可能变化的，那么肯定是变量<br>    2. 数据不一定会变得，可以使用常量或者变量（变量居多）<br>    3. 数据不允许被修改的，一定用常量</p>
-<h4 id="系统常量"><a href="#系统常量" class="headerlink" title="系统常量"></a>系统常量</h4><pre><code>系统常量：系统帮助用户定义的常量，用户可以直接使用</code></pre><h4 id="常用的几个系统常量"><a href="#常用的几个系统常量" class="headerlink" title="常用的几个系统常量"></a>常用的几个系统常量</h4><pre><code>PHP_VERSION:PHP版本号
-PHP_INT_SIZE:整形大小
-PHP_INT_MAX:整形能表示的最大值（PHP中整形是允许出现负数：带符号）</code></pre><p>在php中还有一些特殊的常量，他们有双下划线开始+常量名+双下划线结束，这种常量称之为系统魔术常量：魔术常量的值通常会跟着环境变化，但是用户改变不了<br>    <strong>DIR</strong>:当前被执行的脚本所在电脑的绝对路径<br>    <strong>FILE</strong>:当前被执行的脚本所在的电脑的绝对路径（带自己文件的名字）<br>    <strong>LINE</strong>:当前所属的行数<br>    <strong>NAMESPACE</strong>:当前所属的命名空间<br>    <strong>CLASS</strong>:当前所属的类<br>    <strong>METHOD</strong>:当前所属的方法</p>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><pre><code>数据类型：data type,在php中指的是存储的数据本身的类型，而不是变量的类型，php是一种弱类型语言，变量本身没有数据类型</code></pre><h4 id="php的八种数据类型"><a href="#php的八种数据类型" class="headerlink" title="php的八种数据类型"></a>php的八种数据类型</h4><pre><code>在php中将数据分为三大类八小类：
-
-简单（基本）数据类型：4个小类
-整形：int 系统分配4个字节存储，表示整数类型（有前提）
-浮点型：float 系统分配8个字节存储，表示小数或者整形存不下的整数
-字符串型：string 系统根据实际长度分配，表示字符串(引号)
-布尔类型：bool 表示布尔类型，只有两个值：true和false
-
-复合数据类型：两个小类
-对象类型：objict 存放对象（面对对象）
-数组类型：array 存储多个数据（一次性）
-
-特殊数据类型：2个小类
-资源类型：resource 存放资源数据（php外部数据，如数据库、文件）
-空类型：NULL，只有一个值就是NULL（不能运算）</code></pre><h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><pre><code>类型转换：在很多的条件下，需要指定的数据类型，需要外部数据（当前php取得的数据），转换成目标数据类型
-在php中有两种类型转换方式：
-    1. 自动转换：系统根据需求自己判定，自己转换（用的比较多，效率偏低）
-    2. 强制（手动）转换：认为根据需要的目标类型转换
-
-    强制转换规则：在变量之前增加一个括号（），然后在里面写上对应类型：int 等等
-    其中NULL类型用到unset()
-
-在转换过程中，用得比较多的就是转布尔类型（判断）和转数值类型（算术运算）
-
-其他类型转布尔类型：true或者false，在php中比较少类型会变成false
-
-其他类型转数值的说明
-    1. 布尔true为1，false为0
-    2. 字符串转数值有自己的规则
-        2.1 以字母开头的字符串，永远为0
-        2.2 以数字开头的字符串，取到碰到字符串为止（不会同时包含两个小数点）</code></pre><h4 id="数据类型判断"><a href="#数据类型判断" class="headerlink" title="数据类型判断"></a>数据类型判断</h4><pre><code>通过一组类型判断函数，来判断变量，最终返回这个变量所保存数据的数据类型（相同结果为true，不同为false）：是一组以is_开头后面跟类型名字的函数：is_XXX(变量名)
-bool类型不能用echo来查看，可以使用var_dump结构查看
-还有一组函数可以用来获取以及设定数据（变量）的类型
-Gettype(变量名)：获取类型，得到的是该类型对应的字符串
-Settype(变量名,类型):设定数据类型：与强制转换不同
-    1. 强制转换（类型）变量名，是对数据值复制的内容进行处理（不会处理实际存储的内容）
-    2.settype会直接改变数据本身</code></pre><h4 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h4><pre><code>整数类型：保存整数数值（范围限制）4个字节存储数字，最大就是32位 </code></pre><h4 id="浮点类型"><a href="#浮点类型" class="headerlink" title="浮点类型"></a>浮点类型</h4><h4 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h4><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>运算符：是一种将数据进行运算的特殊符号，在php中一共有十种运算符之多</p>
-<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>符号是“=”表示将右边的结果赋值给左边（可以是变量、数据、常量和其他晕死出来的结果）</p>
-<h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><p>基本算术操作<br>    + 加<br>    - 减<br>    * 乘<br>    / 除<br>    % 取余</p>
-<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>比较运算：比较两个数据的大小，或者两个内部是否相同，返回的结果都是布尔类型：满足返回true，不满足返回false<br>    &gt;    左边大于右边，返回true<br>    &gt;=     大于等于<br>    &lt;    小于<br>    &lt;=    小于等于<br>    ==    相等（大小相同）<br>    !=    不等（大小不同）<br>    ===    全等于，大小以及数据的类型都要相同<br>    !== 不全等于，只有大小或者类型不同</p>
-<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>逻辑运算：针对不同的结果进行匹配<br>    &amp;&amp;    逻辑与，左边的条件与右边的条件同时成立<br>    ||    逻辑或，左边的条件或者右边的条件只要有一个满足即可<br>    ！    逻辑非，对已有条件进行取反</p>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
+          <h3 id="php语法初步"><a href="#php语法初步" class="headerlink" title="php语法初步"></a>php语法初步</h3><pre><code>php是一种运行在服务器端的脚本语言，可以嵌入到HTML中</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/55d182ea.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -377,7 +283,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/803f4340.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/803f4340.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -391,7 +297,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/undefined/803f4340.html" class="post-title-link" itemprop="url">PHP代码审计笔记</a>
+            <a href="/posts/803f4340.html" class="post-title-link" itemprop="url">PHP代码审计笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -444,7 +350,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/39fd836c.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/39fd836c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -458,7 +364,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/undefined/39fd836c.html" class="post-title-link" itemprop="url">Metasploit基础</a>
+            <a href="/posts/39fd836c.html" class="post-title-link" itemprop="url">Metasploit基础</a>
         </h2>
 
         <div class="post-meta">
@@ -526,7 +432,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/d0edc1ed.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/d0edc1ed.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -540,7 +446,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/undefined/d0edc1ed.html" class="post-title-link" itemprop="url">Linux常用命令</a>
+            <a href="/posts/d0edc1ed.html" class="post-title-link" itemprop="url">Linux常用命令</a>
         </h2>
 
         <div class="post-meta">
@@ -585,7 +491,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
           <h2 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h2><p>ls命令用来显示目标列表，在Linux中是使用率较高的命令。ls命令的输出信息可以进行彩色加亮显示，以分区不同类型的文件。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/undefined/d0edc1ed.html#more" rel="contents">
+              <a class="btn" href="/posts/d0edc1ed.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -609,7 +515,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/312e3d12.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/312e3d12.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -623,7 +529,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/undefined/312e3d12.html" class="post-title-link" itemprop="url">信息收集</a>
+            <a href="/posts/312e3d12.html" class="post-title-link" itemprop="url">信息收集</a>
         </h2>
 
         <div class="post-meta">
@@ -668,7 +574,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
           <p>在渗透测试中我们常常是上来就开始搞事情不愿意去对目标的网站或服务做过多的信息收集，这有时会导致我们在特定的时间找不到相应的突破点，而这里就体现到了我们信息收集的意义与重要性，在我自己看来我们久攻不下的网站并不是我们能丽不够而是我们信息收集的不够，所以信息收集在我看来是整个渗透测试中最重要的一步也是非常有必要去做的一步</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/undefined/312e3d12.html#more" rel="contents">
+              <a class="btn" href="/posts/312e3d12.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -692,7 +598,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/bbc8ef4d.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/bbc8ef4d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -706,7 +612,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/undefined/bbc8ef4d.html" class="post-title-link" itemprop="url">SQLMap</a>
+            <a href="/posts/bbc8ef4d.html" class="post-title-link" itemprop="url">SQLMap</a>
         </h2>
 
         <div class="post-meta">
@@ -751,7 +657,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
           <h1 id="SQlmap详解"><a href="#SQlmap详解" class="headerlink" title="SQlmap详解"></a>SQlmap详解</h1><h2 id="SQLMap概论"><a href="#SQLMap概论" class="headerlink" title="SQLMap概论"></a>SQLMap概论</h2><h3 id="5种SQL注入技术"><a href="#5种SQL注入技术" class="headerlink" title="5种SQL注入技术"></a>5种SQL注入技术</h3><p>布尔类型的盲注：返回页面判断条件真假的注入<br>基于时间的盲注：即不根据页面返回的内容判断任何信息，要用条件语句查看时间延迟语句是否执行（页面返回时间是否增加）来判断<br>基于报错注入：页面会返回错误信息，或者把注入语句的结果直接返回页面种<br>联合查询注入：在使用Union的情况下的注入<br>堆查询注入：同时执行多条语句时的注入</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/undefined/bbc8ef4d.html#more" rel="contents">
+              <a class="btn" href="/posts/bbc8ef4d.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -775,7 +681,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/366383bb.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/366383bb.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -789,7 +695,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/undefined/366383bb.html" class="post-title-link" itemprop="url">Nmap</a>
+            <a href="/posts/366383bb.html" class="post-title-link" itemprop="url">Nmap</a>
         </h2>
 
         <div class="post-meta">
@@ -834,7 +740,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
           <h1 id="Nmap介绍与安装"><a href="#Nmap介绍与安装" class="headerlink" title="Nmap介绍与安装"></a>Nmap介绍与安装</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Nmap是一款开源、免费的网络探测、安全审计的工具。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/undefined/366383bb.html#more" rel="contents">
+              <a class="btn" href="/posts/366383bb.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -858,7 +764,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/e73517db.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/e73517db.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -872,7 +778,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/undefined/e73517db.html" class="post-title-link" itemprop="url">SQL注入</a>
+            <a href="/posts/e73517db.html" class="post-title-link" itemprop="url">SQL注入</a>
         </h2>
 
         <div class="post-meta">
@@ -889,7 +795,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-30 09:27:11" itemprop="dateModified" datetime="2019-12-30T09:27:11+08:00">2019-12-30</time>
+                <time title="修改时间：2019-12-31 15:51:13" itemprop="dateModified" datetime="2019-12-31T15:51:13+08:00">2019-12-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -914,10 +820,10 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
     <div class="post-body" itemprop="articleBody">
 
       
-          <img src="/undefined/e73517db/1.jpg" class="" title="This is an 1 image">
+          <img src="/posts/e73517db/1.jpg" class="" title="This is an 1 image">
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/undefined/e73517db.html#more" rel="contents">
+              <a class="btn" href="/posts/e73517db.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -941,7 +847,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/fc2bb35a.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/fc2bb35a.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -955,7 +861,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/undefined/fc2bb35a.html" class="post-title-link" itemprop="url">ms17-010永恒之蓝复现</a>
+            <a href="/posts/fc2bb35a.html" class="post-title-link" itemprop="url">ms17-010永恒之蓝复现</a>
         </h2>
 
         <div class="post-meta">
@@ -1000,7 +906,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
           <h1 id="ms17-010永恒之蓝复现"><a href="#ms17-010永恒之蓝复现" class="headerlink" title="ms17-010永恒之蓝复现"></a>ms17-010永恒之蓝复现</h1><p>永恒之蓝是指2017年4月14日晚，黑客团体Shadow Brokers（影子经纪人）公布一大批网络攻击工具，其中包含“永恒之蓝”工具，“永恒之蓝”利用Windows系统的SMB漏洞可以获取系统最高权限。5月12日，不法分子通过改造“永恒之蓝”制作了wannacry勒索病毒，英国、俄罗斯、整个欧洲以及中国国内多个高校校内网、大型企业内网和政府机构专网中招，被勒索支付高额赎金才能解密恢复文件。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/undefined/fc2bb35a.html#more" rel="contents">
+              <a class="btn" href="/posts/fc2bb35a.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1024,7 +930,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/undefined/53936b16.html">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/53936b16.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/xiaobai.jpg">
@@ -1038,7 +944,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/undefined/53936b16.html" class="post-title-link" itemprop="url">手机添加burp证书</a>
+            <a href="/posts/53936b16.html" class="post-title-link" itemprop="url">手机添加burp证书</a>
         </h2>
 
         <div class="post-meta">
@@ -1083,7 +989,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
           <h1 id="手机添加burp证书"><a href="#手机添加burp证书" class="headerlink" title="手机添加burp证书"></a>手机添加burp证书</h1><p>手机使用逍遥模拟器<br>电脑windows10</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/undefined/53936b16.html#more" rel="contents">
+              <a class="btn" href="/posts/53936b16.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
