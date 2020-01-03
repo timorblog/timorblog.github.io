@@ -54,7 +54,7 @@
 <meta property="og:description" content="php语法初步php是一种运行在服务器端的脚本语言，可以嵌入到HTML中">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-25T06:58:42.000Z">
-<meta property="article:modified_time" content="2019-12-31T07:51:23.115Z">
+<meta property="article:modified_time" content="2020-01-03T02:46:22.678Z">
 <meta property="article:author" content="Timor">
 <meta property="article:tag" content="Timor">
 <meta property="article:tag" content="渗透测试">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-31 15:51:23" itemprop="dateModified" datetime="2019-12-31T15:51:23+08:00">2019-12-31</time>
+                <time title="修改时间：2020-01-03 10:46:22" itemprop="dateModified" datetime="2020-01-03T10:46:22+08:00">2020-01-03</time>
               </span>
 
           
@@ -366,8 +366,121 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
 <h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>符号是“=”表示将右边的结果赋值给左边（可以是变量、数据、常量和其他晕死出来的结果）</p>
 <h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><p>基本算术操作<br>    + 加<br>    - 减<br>    * 乘<br>    / 除<br>    % 取余</p>
 <h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>比较运算：比较两个数据的大小，或者两个内部是否相同，返回的结果都是布尔类型：满足返回true，不满足返回false<br>    &gt;    左边大于右边，返回true<br>    &gt;=     大于等于<br>    &lt;    小于<br>    &lt;=    小于等于<br>    ==    相等（大小相同）<br>    !=    不等（大小不同）<br>    ===    全等于，大小以及数据的类型都要相同<br>    !== 不全等于，只有大小或者类型不同</p>
-<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>逻辑运算：针对不同的结果进行匹配<br>    &amp;&amp;    逻辑与，左边的条件与右边的条件同时成立<br>    ||    逻辑或，左边的条件或者右边的条件只要有一个满足即可<br>    ！    逻辑非，对已有条件进行取反</p>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
+<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><pre><code>逻辑运算：针对不同的结果进行匹配
+&amp;&amp;    逻辑与，左边的条件与右边的条件同时成立
+||    逻辑或，左边的条件或者右边的条件只要有一个满足即可
+！    逻辑非，对已有条件进行取反</code></pre><h4 id="连接运算符"><a href="#连接运算符" class="headerlink" title="连接运算符"></a>连接运算符</h4><pre><code>连接运算：是php中将多个字符串拼接的一种符号
+.:将两个字符串连接到一起
+.=:复合运算，将左边的内容与右边的内容连接起来，然后重新赋值给左边变量</code></pre><h4 id="错误抑制符"><a href="#错误抑制符" class="headerlink" title="错误抑制符"></a>错误抑制符</h4><pre><code>在PHP中有一些错误可以提前预知，但是这些错误可能无法避免，但是又比希望报错给用户看，可以使用错误抑制符处理。
+@:在可能出错的表达式前面使用@符号即可。</code></pre><h4 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h4><pre><code>三目运算:有三个表达式参与的运算（简单的分支结构缩写）
+语法格式：
+    表达式1 ? 表达式2 : 表达式3;
+运算：如果表达式1成立，那么执行表达式2，否则执行表达式3；</code></pre><h4 id="自操作运算符"><a href="#自操作运算符" class="headerlink" title="自操作运算符"></a>自操作运算符</h4><pre><code>自操作：自己操作自己的运算符
+++：在原来的值上+1
+--：在原来的值上-1
+后置自操作：先把自己所保存的值留下来，然后改变自己，自己给别人的值是原来的值；
+前置自操作：先把自己改变，然后把改变后的值给别人
+衍生符号：类似自操作
++=
+-=
+*=
+/=
+%=</code></pre><h4 id="计算机码"><a href="#计算机码" class="headerlink" title="计算机码"></a>计算机码</h4><pre><code>计算机码：计算机在实际存储数据的时候，采用的编码规则（二进制规则）
+计算机码：原码、反码、补码，数值本身最左边以为是用来充当符号位：正数为0，负数为1
+原码：数据本身从十进制转换成二进制得到的结果
+    正数：左边符号位为0
+    负数：左边符号位为1
+反码：针对负数，符号位不变，其他位取反
+补码：针对负数，反码+1</code></pre><h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><pre><code>位运算：取出计算机中最小的单位（位 bit）进行运算
+&amp;:按位与，两个位都为1，结果为1，否则为0
+|:按位或，两个有一个为1，结果为1
+~:按位非，一个位如果位1则变成0，否则反之
+^:按位异或，两个相同则为0，不同则为1
+&lt;&lt;:按位左移，整数位（32位），向左移动一位，右边补0
+&gt;&gt;:按位右移，整个位向右移动一位，左边补符号位对应内容（正数补0，负数补1）
+按位左移：乘以2的操作
+按位右移：除以2的操作（不完全正确）：整数除以2会出现小数</code></pre><h4 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h4><pre><code>运算符优先级：在多种运算符同时存在的时候，如何结合运算</code></pre><h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><pre><code>流程控制：代码执行的方向</code></pre><h4 id="控制分类"><a href="#控制分类" class="headerlink" title="控制分类"></a>控制分类</h4><pre><code>顺序结构：代码从上往下，顺序执行。（代码执行的最基本结构）
+分支结构：给定一个条件，同时有多种可执行代码（块），然后会根据条件执行某一段代码
+循环结构：在某个条件控制范围内，指定代码（块）可以重复执行</code></pre><h4 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h4><pre><code>顺序结构：最基本结构，所有代码默认都是从上往下依次执行</code></pre><h4 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h4><pre><code>在php中分支结构主要有两种：if分支和switch分支</code></pre><h4 id="if分支"><a href="#if分支" class="headerlink" title="if分支"></a>if分支</h4><pre><code>if：如果的意思，给定一个条件，同时为该条件设置多种（两种）情况，然后通过条件判断来实现具体的执行段
+
+基本语法：if分支php也提供多种方式来实现
+最简if：只有一段代码，但是可以选择是否执行
+if(条件表达式){
+    //满足条件所要执行的内容；//顺序结构
+}
+
+基础if：有两面性，满足条件或者不满足条件都有对应的执行代码
+if(条件表达式){
+    //满足条件后执行的代码段
+}else{
+    //不满足条件执行的代码段
+}
+
+复杂if结构：在判断条件之后，通常就有两种结果：满足或不满足，在不满足后还可以再次进行条件判断
+if(条件表达式1){
+    //满足条件表达式1的代码段
+}elseif(条件表达式2){
+    //不满足条件表达式1，但是满足条件表达式2的代码
+}.....//可以使用多个elseif来进行再次条件筛选
+else{
+    //全部不满足要执行的代码
+}</code></pre><h4 id="Switch分支"><a href="#Switch分支" class="headerlink" title="Switch分支"></a>Switch分支</h4><pre><code>switch分支：有一组情形存在，通过一个条件，通常有多个值，但是每一个值都会有对应不同的代码要执行，
+switch判断方式：是将条件放到分支结构内部判断
+
+switch基本语法：
+switch(条件表达式){
+    //所有条件判断：逐个进行
+    Case值1:                        //当前条件表达式的结果与值1相等（==）
+        要执行的代码段;
+        Break;                    //在switch中，如果条件匹配成功，那么系统就不会再次匹配条件，会自动顺序向下的所有代码（case代码除外），需要终端执行：break表示中断switch（结束）。
+    Case值2:
+        要执行的代码段;
+        break;
+
+
+    //可以使用类似else的语法：都不匹配
+    Default:
+        //匹配失败的代码;
+        Break;
+}</code></pre><p>if 和 switch 的选择<br>1、 if能做所有的分支结构事情<br>2、 switch处理的是条件比较多，同时比较单一，而且是固定值匹配的分支结构</p>
+<h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><pre><code>循环结构：代码段在一定的控制下，可以多次执行
+在php中循环结构有以下几种：
+    for循环：通过条件、起始和终止判断执行
+    while循环：通过判断条件终止
+    Do-while循环：跟while差不多
+    Foreach循环：专门针对数组</code></pre><h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><pre><code>for循环基本语法
+for(条件表达式1;条件表达式2;条件表达式3){
+    //条件表达式1：定义初始化条件，可以有多种赋值语句存在，使用逗号分割即可
+    //条件表达式2：边界判定，限定循环执行的次数
+    //条件表达式3：用来执行条件变化
+    //循环体
+}
+
+for循环执行原理：
+1、 执行条件表达式1：定义初始化条件（执行一次）
+2、 执行条件表达式2：判断条件（N次）
+    2.1 满足条件：执行循环体
+    2.2 不满足条件：循环结束
+3、 执行循环体（N次）
+4、 执行条件表达式3：循环标量变化（N次）
+5、 重复执行2-4步，直到不满足条件结束循环</code></pre><h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><pre><code>while循环基本语法：
+
+条件初始化;
+while(条件表达式){
+    //条件表达式就是判断边界条件
+    循环体;    //循环条件的变化
+}</code></pre><p>for与while的选择<br>1、 如果是基于固定已知条件（数值而且是有规律的变化），使用for循环<br>2、 while可以做灵活的条件判定（while使用的比较多）</p>
+<h4 id="do-while循环"><a href="#do-while循环" class="headerlink" title="do-while循环"></a>do-while循环</h4><pre><code>do-while：看着很像while，while首先进行条件判定然后执行循环体，有可能出现第一次就条件不满足那么就会直接失败（循环体一次都不执行）。do-while就是先干了再说（执行循环体），后判断条件。（至少会执行一次循环体）
+
+do-while 基本语法：
+do{
+    //循环体
+    }while(条件表达式);</code></pre><h4 id="循环控制"><a href="#循环控制" class="headerlink" title="循环控制"></a>循环控制</h4><pre><code>循环控制：在循环内部对循环本身进行控制
+中断控制：重新开始循环，循环体中还有其他内容，也不再执行
+continue 层级; //默认是1（循环可以多层嵌套）
+
+终止控制：循环直接结束
+break 层级;  //默认是1</code></pre>
     </div>
 
     
@@ -454,7 +567,7 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#php语法初步"><span class="nav-number">1.</span> <span class="nav-text">php语法初步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php代码标记"><span class="nav-number">2.</span> <span class="nav-text">php代码标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php注释"><span class="nav-number">3.</span> <span class="nav-text">php注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php语句分隔符"><span class="nav-number">4.</span> <span class="nav-text">php语句分隔符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">5.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量基本概念"><span class="nav-number">5.1.</span> <span class="nav-text">变量基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的使用"><span class="nav-number">5.2.</span> <span class="nav-text">变量的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量命名规则"><span class="nav-number">5.3.</span> <span class="nav-text">变量命名规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预定义变量"><span class="nav-number">5.4.</span> <span class="nav-text">预定义变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可变变量"><span class="nav-number">5.5.</span> <span class="nav-text">可变变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量传值"><span class="nav-number">5.6.</span> <span class="nav-text">变量传值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量"><span class="nav-number">6.</span> <span class="nav-text">常量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常量基本概念"><span class="nav-number">6.1.</span> <span class="nav-text">常量基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量定义形式"><span class="nav-number">6.2.</span> <span class="nav-text">常量定义形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量名字的命名规则"><span class="nav-number">6.3.</span> <span class="nav-text">常量名字的命名规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量适用形式"><span class="nav-number">6.4.</span> <span class="nav-text">常量适用形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统常量"><span class="nav-number">6.5.</span> <span class="nav-text">系统常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的几个系统常量"><span class="nav-number">6.6.</span> <span class="nav-text">常用的几个系统常量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">7.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#php的八种数据类型"><span class="nav-number">7.1.</span> <span class="nav-text">php的八种数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">7.2.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型判断"><span class="nav-number">7.3.</span> <span class="nav-text">数据类型判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整数类型"><span class="nav-number">7.4.</span> <span class="nav-text">整数类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浮点类型"><span class="nav-number">7.5.</span> <span class="nav-text">浮点类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔类型"><span class="nav-number">7.6.</span> <span class="nav-text">布尔类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">8.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算符"><span class="nav-number">8.1.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算符"><span class="nav-number">8.2.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较运算符"><span class="nav-number">8.3.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">8.4.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">8.5.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#php语法初步"><span class="nav-number">1.</span> <span class="nav-text">php语法初步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php代码标记"><span class="nav-number">2.</span> <span class="nav-text">php代码标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php注释"><span class="nav-number">3.</span> <span class="nav-text">php注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#php语句分隔符"><span class="nav-number">4.</span> <span class="nav-text">php语句分隔符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">5.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量基本概念"><span class="nav-number">5.1.</span> <span class="nav-text">变量基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的使用"><span class="nav-number">5.2.</span> <span class="nav-text">变量的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量命名规则"><span class="nav-number">5.3.</span> <span class="nav-text">变量命名规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预定义变量"><span class="nav-number">5.4.</span> <span class="nav-text">预定义变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可变变量"><span class="nav-number">5.5.</span> <span class="nav-text">可变变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量传值"><span class="nav-number">5.6.</span> <span class="nav-text">变量传值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量"><span class="nav-number">6.</span> <span class="nav-text">常量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常量基本概念"><span class="nav-number">6.1.</span> <span class="nav-text">常量基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量定义形式"><span class="nav-number">6.2.</span> <span class="nav-text">常量定义形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量名字的命名规则"><span class="nav-number">6.3.</span> <span class="nav-text">常量名字的命名规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量适用形式"><span class="nav-number">6.4.</span> <span class="nav-text">常量适用形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统常量"><span class="nav-number">6.5.</span> <span class="nav-text">系统常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的几个系统常量"><span class="nav-number">6.6.</span> <span class="nav-text">常用的几个系统常量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">7.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#php的八种数据类型"><span class="nav-number">7.1.</span> <span class="nav-text">php的八种数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">7.2.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型判断"><span class="nav-number">7.3.</span> <span class="nav-text">数据类型判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整数类型"><span class="nav-number">7.4.</span> <span class="nav-text">整数类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浮点类型"><span class="nav-number">7.5.</span> <span class="nav-text">浮点类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔类型"><span class="nav-number">7.6.</span> <span class="nav-text">布尔类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">8.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算符"><span class="nav-number">8.1.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算符"><span class="nav-number">8.2.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较运算符"><span class="nav-number">8.3.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">8.4.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接运算符"><span class="nav-number">8.5.</span> <span class="nav-text">连接运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误抑制符"><span class="nav-number">8.6.</span> <span class="nav-text">错误抑制符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三目运算符"><span class="nav-number">8.7.</span> <span class="nav-text">三目运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自操作运算符"><span class="nav-number">8.8.</span> <span class="nav-text">自操作运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机码"><span class="nav-number">8.9.</span> <span class="nav-text">计算机码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位运算符"><span class="nav-number">8.10.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符优先级"><span class="nav-number">8.11.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程控制"><span class="nav-number">9.</span> <span class="nav-text">流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#控制分类"><span class="nav-number">9.1.</span> <span class="nav-text">控制分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序结构"><span class="nav-number">9.2.</span> <span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支结构"><span class="nav-number">9.3.</span> <span class="nav-text">分支结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if分支"><span class="nav-number">9.4.</span> <span class="nav-text">if分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Switch分支"><span class="nav-number">9.5.</span> <span class="nav-text">Switch分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环结构"><span class="nav-number">9.6.</span> <span class="nav-text">循环结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for循环"><span class="nav-number">9.7.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while循环"><span class="nav-number">9.8.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#do-while循环"><span class="nav-number">9.9.</span> <span class="nav-text">do-while循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环控制"><span class="nav-number">9.10.</span> <span class="nav-text">循环控制</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -519,8 +632,8 @@ Settype(变量名,类型):设定数据类型：与强制转换不同
 
 <div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
