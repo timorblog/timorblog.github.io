@@ -161,7 +161,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">11</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">12</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -211,6 +211,140 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/843f3569.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xiaobai.jpg">
+      <meta itemprop="name" content="Timor">
+      <meta itemprop="description" content="渗透测试|网络安全|信息安全|WEB安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Timorblog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/843f3569.html" class="post-title-link" itemprop="url">Windows常用命令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-07 14:58:20 / 修改时间：16:07:18" itemprop="dateCreated datePublished" datetime="2020-01-07T14:58:20+08:00">2020-01-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>查看所有网络进程占用的端口与PID</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">netstat -ano</span></span><br></pre></td></tr></table></figure>
+<p>对想看的端口做截取</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano <span class="string">| findstr 端口</span></span><br></pre></td></tr></table></figure>
+<p>查看某PID的服务是什么进程</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist <span class="string">| findstr 端口</span></span><br></pre></td></tr></table></figure>
+<p>杀死进程</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">taskkill/pid 端口PID <span class="literal">-t</span> <span class="operator">-f</span></span><br><span class="line"><span class="operator">-f</span> 用来强制执行</span><br></pre></td></tr></table></figure>
+<p>查看本机任务列表</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">tasklist</span></span><br></pre></td></tr></table></figure>
+<p>获取系统环境变量信息</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">path</span></span><br></pre></td></tr></table></figure>
+<p>设置系统环境变量</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span></span><br></pre></td></tr></table></figure>
+<p>远程桌面连接</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mstsc</span></span><br></pre></td></tr></table></figure>
+<p>查看ip</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig  /<span class="keyword">all</span></span><br></pre></td></tr></table></figure>
+<p>查看系统信息</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systeminfo</span></span><br></pre></td></tr></table></figure>
+<p>查看局域网 同一网段存在的ip</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">arp -a</span></span><br></pre></td></tr></table></figure>
+<p>查看局域网内其他计算机名称</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">net</span> <span class="keyword">view</span></span><br></pre></td></tr></table></figure>
+<p>查看目录</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
+<p>切换目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br></pre></td></tr></table></figure>
+<p>创建目录</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span></span><br></pre></td></tr></table></figure>
+<p>创建空文件</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> <span class="built_in">nul</span>&gt;<span class="number">1</span>.txt</span><br></pre></td></tr></table></figure>
+<p>创建非空文件</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 内容&gt;<span class="number">1.</span>txt</span><br></pre></td></tr></table></figure>
+<p>打开文件</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start <span class="number">1.</span>txt</span><br></pre></td></tr></table></figure>
+<p>打开文件（在命令行中显示文件内容）</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> 1.txt</span><br></pre></td></tr></table></figure>
+<p>复制文件</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy <span class="number">1.</span>txt D:\       <span class="comment">//把目录中的1.txt复制到d盘下的2.txt</span></span><br></pre></td></tr></table></figure>
+<p>移动文件</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">move <span class="number">1.</span>txt D:\       <span class="comment">//把目录中的1.txt移动到d盘下</span></span><br></pre></td></tr></table></figure>
+<p>树形文件结构</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tree</span></span><br></pre></td></tr></table></figure>
+<p>开启服务</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> 服务名</span><br></pre></td></tr></table></figure>
+<p>暂停某服务</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net <span class="built_in">stop</span> 服务名</span><br></pre></td></tr></table></figure>
+<p>建立用户</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>用户名 密码 /add</span><br><span class="line">建立隐藏用户  ：   net<span class="built_in"> user </span>用户名$ 密码 /add</span><br></pre></td></tr></table></figure>
+<p>激活guest用户</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>guest / active:yes</span><br></pre></td></tr></table></figure>
+<p>查看有哪些用户</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net <span class="keyword">user</span></span><br></pre></td></tr></table></figure>
+<p>查看账户的属性</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>用户名</span><br></pre></td></tr></table></figure>
+<p>把用户添加到管理员中使其具有管理员权限</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup administrators 用户名 /<span class="keyword">add</span></span><br></pre></td></tr></table></figure>
+<p>用guest用户登录后将密码改为123456</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>guest 123456</span><br></pre></td></tr></table></figure>
+<p>更改系统登陆密码</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> password 密码</span><br></pre></td></tr></table></figure>
+<p>ping命令 </p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ping</span> ip  / <span class="built_in">ping</span> 域名      //向对方主机发送数据，查看是否互通</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<p>```</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/55d182ea.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -242,7 +376,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-03 10:46:22" itemprop="dateModified" datetime="2020-01-03T10:46:22+08:00">2020-01-03</time>
+                <time title="修改时间：2020-01-07 14:57:23" itemprop="dateModified" datetime="2020-01-07T14:57:23+08:00">2020-01-07</time>
               </span>
 
           
@@ -314,7 +448,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-30 09:27:11" itemprop="dateModified" datetime="2019-12-30T09:27:11+08:00">2019-12-30</time>
+                <time title="修改时间：2020-01-03 10:48:20" itemprop="dateModified" datetime="2020-01-03T10:48:20+08:00">2020-01-03</time>
               </span>
 
           
@@ -329,9 +463,14 @@
 
       
           <h2 id="代码审计环境准备"><a href="#代码审计环境准备" class="headerlink" title="代码审计环境准备"></a>代码审计环境准备</h2><p>PHPStudy<br>sublime<br>    CTage、ConvertToUTF8<br>firefox<br>    FoxyProxy、hackbar<br>burp suite<br>vMysqlMonitoring<br>WEB编码转换工具</p>
-<h2 id="常见的INI配置"><a href="#常见的INI配置" class="headerlink" title="常见的INI配置"></a>常见的INI配置</h2><p>配置文件<br>    php.ini<br>        在php启动时被读取。对于服务器模块版本的php，仅在web服务器启动时读取一次。对于CGI和CLI版本，每次调用都会读取。<br>        * Apache web 服务器在启动时会把目录转到根目录，这将导致php尝试在根目录下读取php.ini，如果存在的话。<br>        * 在php.ini中可以使用环境变量。<br>    .user.ini 文件<br>        自PHP5.3.0起，php支持基于每个目录的.htaccess风格的INI文件仅被CGI/FastCGI SAPI处理。此功能使得PECL的htscanner扩展作废。如果使用Apache，则用.htaccess文件有同样效果<br>语法<br>    该文件的语法非常简单。空白字符和以分号开始的行被简单的忽略，即使将来它们可能有某种意义。<br>    设置指令的格式如下：<br>        directive = value<br>    指令名(directive)是大小写敏感的！<br>    值(value)可以是:<br>    - 用引号界定的字符串(如:”foo”)<br>    - 一个数字(整数或浮点数，如:0,1,-1,1.111)<br>    - 一个PHP常量(如:E_ALL,M_PI)<br>    - 一个INI常量(On,Off,none)<br>    - 一个表达式(如：E_ALL &amp; ~E_NOTICE)</p>
-<p>变量相关<br>安全模式<br>上传文件及目录权限<br>错误信息<br>魔术引导及远程文件<br>(未完)</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/803f4340.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -712,7 +851,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-30 09:27:11" itemprop="dateModified" datetime="2019-12-30T09:27:11+08:00">2019-12-30</time>
+                <time title="修改时间：2020-01-10 11:41:41" itemprop="dateModified" datetime="2020-01-10T11:41:41+08:00">2020-01-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -926,89 +1065,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/53936b16.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/xiaobai.jpg">
-      <meta itemprop="name" content="Timor">
-      <meta itemprop="description" content="渗透测试|网络安全|信息安全|WEB安全">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Timorblog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/53936b16.html" class="post-title-link" itemprop="url">手机添加burp证书</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-20 15:22:32" itemprop="dateCreated datePublished" datetime="2019-12-20T15:22:32+08:00">2019-12-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-30 09:27:11" itemprop="dateModified" datetime="2019-12-30T09:27:11+08:00">2019-12-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="手机添加burp证书"><a href="#手机添加burp证书" class="headerlink" title="手机添加burp证书"></a>手机添加burp证书</h1><p>手机使用逍遥模拟器<br>电脑windows10</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/53936b16.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1081,7 +1137,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

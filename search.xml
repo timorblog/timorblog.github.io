@@ -1,6 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Windows常用命令</title>
+    <url>/posts/843f3569.html</url>
+    <content><![CDATA[<p>查看所有网络进程占用的端口与PID</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">netstat -ano</span></span><br></pre></td></tr></table></figure>
+<p>对想看的端口做截取</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">netstat -ano <span class="string">| findstr 端口</span></span><br></pre></td></tr></table></figure>
+<p>查看某PID的服务是什么进程</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">tasklist <span class="string">| findstr 端口</span></span><br></pre></td></tr></table></figure>
+<p>杀死进程</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">taskkill/pid 端口PID <span class="literal">-t</span> <span class="operator">-f</span></span><br><span class="line"><span class="operator">-f</span> 用来强制执行</span><br></pre></td></tr></table></figure>
+<p>查看本机任务列表</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">tasklist</span></span><br></pre></td></tr></table></figure>
+<p>获取系统环境变量信息</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">path</span></span><br></pre></td></tr></table></figure>
+<p>设置系统环境变量</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">set</span></span><br></pre></td></tr></table></figure>
+<p>远程桌面连接</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">mstsc</span></span><br></pre></td></tr></table></figure>
+<p>查看ip</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">ipconfig  /<span class="keyword">all</span></span><br></pre></td></tr></table></figure>
+<p>查看系统信息</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">systeminfo</span></span><br></pre></td></tr></table></figure>
+<p>查看局域网 同一网段存在的ip</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">arp -a</span></span><br></pre></td></tr></table></figure>
+<p>查看局域网内其他计算机名称</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">net</span> <span class="keyword">view</span></span><br></pre></td></tr></table></figure>
+<p>查看目录</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
+<p>切换目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br></pre></td></tr></table></figure>
+<p>创建目录</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span></span><br></pre></td></tr></table></figure>
+<p>创建空文件</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span> <span class="built_in">nul</span>&gt;<span class="number">1</span>.txt</span><br></pre></td></tr></table></figure>
+<p>创建非空文件</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">echo 内容&gt;<span class="number">1.</span>txt</span><br></pre></td></tr></table></figure>
+<p>打开文件</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">start <span class="number">1.</span>txt</span><br></pre></td></tr></table></figure>
+<p>打开文件（在命令行中显示文件内容）</p>
+<figure class="highlight elm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> 1.txt</span><br></pre></td></tr></table></figure>
+<p>复制文件</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">copy <span class="number">1.</span>txt D:\       <span class="comment">//把目录中的1.txt复制到d盘下的2.txt</span></span><br></pre></td></tr></table></figure>
+<p>移动文件</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">move <span class="number">1.</span>txt D:\       <span class="comment">//把目录中的1.txt移动到d盘下</span></span><br></pre></td></tr></table></figure>
+<p>树形文件结构</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tree</span></span><br></pre></td></tr></table></figure>
+<p>开启服务</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> 服务名</span><br></pre></td></tr></table></figure>
+<p>暂停某服务</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">net <span class="built_in">stop</span> 服务名</span><br></pre></td></tr></table></figure>
+<p>建立用户</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">net<span class="built_in"> user </span>用户名 密码 /add</span><br><span class="line">建立隐藏用户  ：   net<span class="built_in"> user </span>用户名$ 密码 /add</span><br></pre></td></tr></table></figure>
+<p>激活guest用户</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">net<span class="built_in"> user </span>guest / active:yes</span><br></pre></td></tr></table></figure>
+<p>查看有哪些用户</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">net <span class="keyword">user</span></span><br></pre></td></tr></table></figure>
+<p>查看账户的属性</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">net<span class="built_in"> user </span>用户名</span><br></pre></td></tr></table></figure>
+<p>把用户添加到管理员中使其具有管理员权限</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">net localgroup administrators 用户名 /<span class="keyword">add</span></span><br></pre></td></tr></table></figure>
+<p>用guest用户登录后将密码改为123456</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">net<span class="built_in"> user </span>guest 123456</span><br></pre></td></tr></table></figure>
+<p>更改系统登陆密码</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">net</span> password 密码</span><br></pre></td></tr></table></figure>
+<p>ping命令 </p>
+<figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ping</span> ip  / <span class="built_in">ping</span> 域名      //向对方主机发送数据，查看是否互通</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
+<p>```</p>
+]]></content>
+  </entry>
+  <entry>
     <title>PHP学习笔记</title>
     <url>/posts/55d182ea.html</url>
     <content><![CDATA[<h3 id="php语法初步"><a href="#php语法初步" class="headerlink" title="php语法初步"></a>php语法初步</h3><pre><code>php是一种运行在服务器端的脚本语言，可以嵌入到HTML中</code></pre><a id="more"></a>
@@ -219,12 +300,97 @@ do{
 continue 层级; //默认是1（循环可以多层嵌套）
 
 终止控制：循环直接结束
-break 层级;  //默认是1</code></pre>]]></content>
+break 层级;  //默认是1</code></pre><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">$i = <span class="number">1</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">while</span>($i &lt;= <span class="number">100</span>)&#123;</span></span><br><span class="line"><span class="php">	<span class="keyword">if</span>($i % <span class="number">5</span> != <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="php">		$i++;</span></span><br><span class="line"><span class="php">		<span class="comment">//重新循环</span></span></span><br><span class="line"><span class="php">		<span class="keyword">continue</span>;</span></span><br><span class="line"><span class="php">		<span class="comment">//结束循环</span></span></span><br><span class="line"><span class="php">		<span class="comment">//break;</span></span></span><br><span class="line"><span class="php">	&#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="keyword">echo</span> $i++,<span class="string">'&lt;br/&gt;'</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>因为循环经常性会碰到嵌套（循环中间包含循环），如果在循环内部有些条件下，明确可以知道当前循环（或者说外部循环）不需要继续执行了，那么就是可以使用循环控制来实现：其中内部循环也可以控制到外部，就是通过使用层级参数。<br>continue 2 ;   //当前自己循环后面内部不再执行，同时外部循环如果还有循环体也不再执行，重新来过；<br>break 2; //当前自己循环结束，同时外部也结束（如果还有外部不受影响，继续执行）</p>
+<h4 id="流程控制替代语法"><a href="#流程控制替代语法" class="headerlink" title="流程控制替代语法"></a>流程控制替代语法</h4><pre><code>流程控制替代语法：分支和循环构造的替代语法
+php本身是嵌入到HTML中的脚本语言，需要在HTML中书写一下关于判断或者循环的结构语法，必须符合PHP标签规范，需要html与php进行混搭，如果使用原始的php代码那么会非常不美观。</code></pre><p>需求：打印一个九九乘法表，使用表格来展示</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">1</span>&gt;</span></span><br><span class="line">	<span class="php"><span class="meta">&lt;?php</span> <span class="keyword">for</span>($i = <span class="number">1</span>;$i &lt; <span class="number">10</span>;$i++)&#123;<span class="meta">?&gt;</span></span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="php"><span class="meta">&lt;?php</span> <span class="keyword">for</span>($j = <span class="number">1</span>;$j &lt;= $i;$j++)&#123;<span class="meta">?&gt;</span></span></span><br><span class="line">				<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">					<span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $i . <span class="string">' * '</span> . $j . <span class="string">' = '</span> . $i * $j;<span class="meta">?&gt;</span></span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="php"><span class="meta">&lt;?php</span> &#125;<span class="meta">?&gt;</span></span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="php"><span class="meta">&lt;?php</span> &#125;<span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在php书写到html中的这些大括号{}非常不美观，所以php提供了一种代替机制，让其可以不用书写大括号：<br>for(;;){ 可以替代为 for(;;):</p>
+<p>}        可以替代为 endfor;</p>
+<h4 id="浮点类型-1"><a href="#浮点类型-1" class="headerlink" title="浮点类型"></a>浮点类型</h4><pre><code>浮点型：小数类型以及超过整型所能存储范围的证书（不保证精度），精度范围大概在15个有效数字左右
+
+浮点型定义有两种方式
+$f = 1.23;
+$f = 1.23e10 //科学计数法，其中e表示底10   1.23乘以十的十次方</code></pre><h4 id="布尔类型-1"><a href="#布尔类型-1" class="headerlink" title="布尔类型"></a>布尔类型</h4><pre><code>布尔类型：两个值true和false，通常适用于判断比较
+
+在进行某些数据判断的时候，需要特别注意类型转换
+empty(): 判断数据的值是否为“空”，不是NULL，如果为空返回true，不为空返回false
+lsset(): 判断数据存储的变量本身是否存在，存在变量返回true，不存在返回false</code></pre><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="函数的基本概念"><a href="#函数的基本概念" class="headerlink" title="函数的基本概念"></a>函数的基本概念</h4><p>函数：function，是一种语法结构，将实现某一个功能的代码块（多行代码）封装到一个结构中，从而实现代码的重复利用</p>
+<h4 id="函数定义语法"><a href="#函数定义语法" class="headerlink" title="函数定义语法"></a>函数定义语法</h4><pre><code>函数有几个对应的关键点：function关键字、函数名、参数（形参和实参）、函数体和返回值
+
+基本语法如下：
+function函数名(参数){
+    //函数体
+    //返回值：return 结果;
+}
+
+定义函数的目的：是为了实现代码的重复利用，一个功能用一个函数来实现（简单利用）
+函数的使用：通过访问函数的名字+(); //如果函数在定义的过程中有参数，那么在调用的时候就必须传入对应的参数:函数是一种结构不会自动运行，必须通过调用才会执行</code></pre><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">	<span class="comment">//函数</span></span></span><br><span class="line"></span><br><span class="line"><span class="php">	<span class="comment">//定义函数</span></span></span><br><span class="line"><span class="php">	<span class="function"><span class="keyword">function</span> <span class="title">display</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="php">		<span class="comment">//函数体</span></span></span><br><span class="line"><span class="php">		<span class="keyword">echo</span> <span class="string">'hello word'</span>;</span></span><br><span class="line"><span class="php">	&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="php">	<span class="comment">//调用函数</span></span></span><br><span class="line"><span class="php">	display();</span></span><br><span class="line"></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="函数命名规范"><a href="#函数命名规范" class="headerlink" title="函数命名规范"></a>函数命名规范</h4><pre><code>命名规范：由字母、数字和下划线组成，但不能以数字开头
+函数作为常用结构，一般遵循以下规则：
+    1、 驼峰法：除了第一个单词外，后面所有的单词首字母都大写：showParentinfo()
+    2、 下划线法：单词之间通过下划线链接，单词都是小写：show_parent_info()
+
+函数名字：在一个脚本周期中，不允许出现同名函数（通常在一个系统开发中都不会）</code></pre><h4 id="参数详解"><a href="#参数详解" class="headerlink" title="参数详解"></a>参数详解</h4><pre><code>函数的参数分为两种：形参和实参</code></pre><h5 id="形参"><a href="#形参" class="headerlink" title="形参"></a>形参</h5><pre><code>形参：形式参数，不具有实际意义的参数，是在函数定义是使用的参数</code></pre><h5 id="实参"><a href="#实参" class="headerlink" title="实参"></a>实参</h5><pre><code>实参：实际参数，具有实际意义的参数，是在函数调用时使用的参数
+形参实施惨的载体：实参在调用时通常需要传入到函数内部参与计算（运算），那么需要在函数内部去找到实际数据所在的位置才能找到数据本身：需要实际调用的时候，将数据以实参形式传递给形参，给形参赋值，从而使得函数内部可以用到外部数据</code></pre><h5 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h5><pre><code>默认值： default value，指的是形参的默认值，在函数定义的时候，就给形参进行初始赋值：如果实际调用传入的实参没有提供，那么形参就会使用定义时的值来进入函数内部参与运算。
+
+通常默认值使用在一些，一定会有某个数据参与，单数可能通常是某个我们知道的值。</code></pre><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$t = <span class="number">10</span> ;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//函数默认值</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">tm</span><span class="params">($t = <span class="number">0</span>,$m = <span class="number">0</span>)</span>  </span>&#123;<span class="comment">//当前的$t是形参，在编译时不执行，即使执行也是在tm函数内部，不会与外部的$t变量冲突</span></span><br><span class="line">		<span class="keyword">echo</span> $t - $m;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//调用：默认值如果存在，可以不用传入</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"><span class="comment">//调用：默认值如果存在，可以不用传入</span></span><br><span class="line"></span><br><span class="line">tm($t);</span><br><span class="line"><span class="keyword">echo</span> $t;</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>注意事项：
+    1、 默认值的定义是放在最后边的（多个），不能左边形参有默认值，但是右边没有
+    函数外部定义的变量名字与函数定义的形参名字冲突（同名）是没有任何关联关系的；如果多个函数使用同样的形参名字也不冲突。</code></pre><h5 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h5><pre><code>实参在调用时会将值赋值给形参，那么实际上使用的方式就是一种简单的值传递：将实参（如果是变量或者常量或者其他表达式）的结果（值）取出来赋值给形参：形参与外部实际传入的参数本身没有任何关联关系：只是结果一样。
+
+有的时候，希望在函数内部拿到的外部数据，能够在函数内部改变，那么就需要明确告知函数（定义时），函数才会调用的时候去主动获取外部数据的内存地址。以上这种定义形式参数的方式叫做引用传值。
+
+基本定义语法：
+
+function 函数名（形参1，&amp;形参2）{
+    //函数体
+}
+
+在调用的时候，必须给引用传值的参数位置传入实际参数，而且参数本身必须是变量。（变量才有指向的数据的内存地址）</code></pre><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">display</span><span class="params">($a,&amp;$b)</span></span>&#123;</span><br><span class="line">		<span class="comment">//修改形参的值</span></span><br><span class="line">		$a = $a * $a;</span><br><span class="line">		$b = $b * $b;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">echo</span> $a,<span class="string">'&lt;br/&gt;'</span>,$b,<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//定义变量</span></span><br><span class="line">	$a = <span class="number">10</span>;</span><br><span class="line">	$b = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//调用函数</span></span><br><span class="line">	display($a,$b);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'&lt;hr/&gt;'</span>,$a,<span class="string">'&lt;br/&gt;'</span>,$b;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"><span class="comment">//输入后 值为  100    25   10   25</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="函数体"><a href="#函数体" class="headerlink" title="函数体"></a>函数体</h4><pre><code>函数体：函数内部（大括号{}里面）的所有代码都称之为函数体
+
+函数体：基本上所有代码都可以实现
+    1、 定义变量
+    2、 定义常量
+    3、 使用流程控制（分支、循环）
+    4、 可以调用函数</code></pre><h4 id="函数返回值"><a href="#函数返回值" class="headerlink" title="函数返回值"></a>函数返回值</h4><pre><code>返回值：return，指的是将函数实现的结果，通过return关键字，返回给函数外部（函数调用处）：在php中所有的函数都有返回值。（如果没有明确return使用，那么系统默认返回NULL）
+
+返回值作用：将计算结果返回给调用处
+
+注意：函数的返回值可以是任意类型
+
+return关键字：
+    1、 return在函数内部存在的价值：返回当前函数结果（当前函数运行结束）
+    2、 return还可以在文件中直接使用（不在函数里面）：代表文件将结果return后面跟的内容，转交给包含当前文件的位置</code></pre><h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><pre><code>作用域：变量（常量）能够被访问的区域
+    1、 变量可以再普通代码中定义
+    2、 变量也可以在函数内部定义
+
+在php中作用域严格来说分为两种：但是php内部还定义一些严格意义之外的一种，所以总共三种：
+    1、 全局变量：就是用户普通定义的变量（函数外部定义）
+        所属全局空间：在php中只允许在全局空间使用：理论上函数内部不可访问
+        脚本周期：直到脚本运行结束（函数外部定义）
+    2、 局部变量：就是在函数内部的变量
+        所属当前函数空间：在php中只允许在当前函数自己内部使用
+        函数周期：函数执行结束（函数是在栈区中开辟独立内存空间运行）
+    3、 超全局变量：系统定义的变量（预定义变量：$_SERVER、$POST等）
+        所属超全局空间：没有访问限制（函数以外都可以访问）
+    超全局变量    </code></pre><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">	<span class="regexp">//</span>php中作用域</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span>默认的代码空间：全局空间</span><br><span class="line">	<span class="variable">$global</span> = <span class="string">'global area'</span>;	<span class="regexp">//</span>最终会被系统纳入到超全局变量中:<span class="variable">$GLOBALS</span>[<span class="string">'global'</span>] = global area;</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span>局部变量（函数内部定义）</span><br><span class="line">	<span class="keyword">function</span> display()&#123;</span><br><span class="line">		<span class="regexp">//</span>所有的形参都可以理解为局部变量</span><br><span class="line">		<span class="variable">$inner</span> = __FUNCTION__;	<span class="regexp">//</span>局部变量</span><br><span class="line"></span><br><span class="line">		<span class="regexp">//</span>访问全局变量</span><br><span class="line">		<span class="regexp">//</span>echo <span class="variable">$global</span>;	<span class="regexp">//</span>不能访问</span><br><span class="line"></span><br><span class="line">		<span class="regexp">//</span>访问全局变量</span><br><span class="line">		<span class="regexp">//</span>ver_dump(<span class="variable">$GLOBALS</span>);</span><br><span class="line">		echo <span class="variable">$GLOBALS</span>[<span class="string">'global'</span>];	<span class="regexp">//</span>可以访问</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span>调用函数</span><br><span class="line">	display();</span><br><span class="line"></span><br><span class="line">	<span class="regexp">//</span>全局变量访问局部变量</span><br><span class="line">	<span class="regexp">//</span>echo <span class="variable">$inner</span>;	<span class="regexp">//</span>不能访问</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>如果想</code></pre><h3 id="常用系统函数"><a href="#常用系统函数" class="headerlink" title="常用系统函数"></a>常用系统函数</h3><h4 id="有关输出的函数"><a href="#有关输出的函数" class="headerlink" title="有关输出的函数"></a>有关输出的函数</h4><p>print():类似于echo输出提供的内容，本质是一种结构（不是函数），返回1，可以不需要使用括号<br>print_r()：类似于ver_dump，但是比ver_dump简单，不会输出数据的类型，只会输出值（数组打印使用比较多）</p>
+<h4 id="有关时间的函数"><a href="#有关时间的函数" class="headerlink" title="有关时间的函数"></a>有关时间的函数</h4><p>date():按照指定格式对对应的时间戳（从1970年格林威治时间开始计算秒数）<br>time():获取当前时间对应的时间戳<br>microtime()：获取微秒级别的时间</p>
+<h4 id="有关数学的函数"><a href="#有关数学的函数" class="headerlink" title="有关数学的函数"></a>有关数学的函数</h4><p>max()<br>min()<br>rand()</p>
+]]></content>
   </entry>
   <entry>
     <title>PHP代码审计笔记</title>
     <url>/posts/803f4340.html</url>
     <content><![CDATA[<h2 id="代码审计环境准备"><a href="#代码审计环境准备" class="headerlink" title="代码审计环境准备"></a>代码审计环境准备</h2><p>PHPStudy<br>sublime<br>    CTage、ConvertToUTF8<br>firefox<br>    FoxyProxy、hackbar<br>burp suite<br>vMysqlMonitoring<br>WEB编码转换工具</p>
+<a id="more"></a>
 <h2 id="常见的INI配置"><a href="#常见的INI配置" class="headerlink" title="常见的INI配置"></a>常见的INI配置</h2><p>配置文件<br>    php.ini<br>        在php启动时被读取。对于服务器模块版本的php，仅在web服务器启动时读取一次。对于CGI和CLI版本，每次调用都会读取。<br>        * Apache web 服务器在启动时会把目录转到根目录，这将导致php尝试在根目录下读取php.ini，如果存在的话。<br>        * 在php.ini中可以使用环境变量。<br>    .user.ini 文件<br>        自PHP5.3.0起，php支持基于每个目录的.htaccess风格的INI文件仅被CGI/FastCGI SAPI处理。此功能使得PECL的htscanner扩展作废。如果使用Apache，则用.htaccess文件有同样效果<br>语法<br>    该文件的语法非常简单。空白字符和以分号开始的行被简单的忽略，即使将来它们可能有某种意义。<br>    设置指令的格式如下：<br>        directive = value<br>    指令名(directive)是大小写敏感的！<br>    值(value)可以是:<br>    - 用引号界定的字符串(如:”foo”)<br>    - 一个数字(整数或浮点数，如:0,1,-1,1.111)<br>    - 一个PHP常量(如:E_ALL,M_PI)<br>    - 一个INI常量(On,Off,none)<br>    - 一个表达式(如：E_ALL &amp; ~E_NOTICE)</p>
 <p>变量相关<br>安全模式<br>上传文件及目录权限<br>错误信息<br>魔术引导及远程文件<br>(未完)</p>
 ]]></content>
@@ -677,10 +843,12 @@ UNIX/Linux文件系统每个文件都有三种时间戳：</li>
 <figure class="highlight plain"><figcaption><span>-A -v -T4 192.168.248.129```</span></figcaption><table><tr><td class="code"><pre><span class="line">使用nmap -sC -sV -O IP地址 来探测目标机器的操作系统、服务等信息。</span><br><span class="line">其中sC参数表示使用Nmap脚本进行探测，sV表示探测目标机器上的服务信息，O表示探测目标机器的操作系统信息。-sC：equivalent to –script&#x3D;default</span><br><span class="line">&#96;&#96;&#96;nmap -sC -sV -O 192.168.248.129</span><br></pre></td></tr></table></figure>
 <h3 id="Nmap发现局域网中存活主机"><a href="#Nmap发现局域网中存活主机" class="headerlink" title="Nmap发现局域网中存活主机"></a>Nmap发现局域网中存活主机</h3><h4 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h4><p>一个局域网中肯定是连接着多台设备，那么我们如何获取哪些设备正在开机状态呢？<br>使用ping ip 地址进行探测，但是如果一个网络很大的情况下，这样的手工探测显得很费劲。<br>可以使用不同的工具来进行批量探测，在探测之间需要明白CIDR的含义。<br>CIDR CIDR（无类别域间路由，Classless Inter-Domain Routing），可以快速表示一个网络。<br>比如：192.168.1.1/24 表示在192.168.1.1-192.168.1.255之间的所有主机IP地址。</p>
 <h4 id="Nmap主机发现"><a href="#Nmap主机发现" class="headerlink" title="Nmap主机发现"></a>Nmap主机发现</h4><p>使用Nmap命令：nmap -sP CIDR 对该网络中所有主机进行ping扫描，以探测主机存活性。扫描过程中使用了TCP SYN扫描、ICMP echo Request来探测主机存活。</p>
-<figure class="highlight plain"><figcaption><span>-sP 192.168.248.1/24```</span></figcaption><table><tr><td class="code"><pre><span class="line">使用Nmap命令：nmap -sn CIDR 对该网络中所有主机进行ping扫描，以探测主机存活性</span><br><span class="line">&#96;&#96;&#96;nmap -sn 192.168.248.1&#x2F;24</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>-sP 192.168.248.1/24```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">使用Nmap命令：nmap -sn CIDR 对该网络中所有主机进行ping扫描，以探测主机存活性</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;nmap -sn 192.168.248.1&#x2F;24</span><br></pre></td></tr></table></figure>
 <h4 id="Nmap主机发现，结果输出"><a href="#Nmap主机发现，结果输出" class="headerlink" title="Nmap主机发现，结果输出"></a>Nmap主机发现，结果输出</h4><p>使用Nmap命令：nmap -sn CIDR -oX text.xml 对该网络中所有主机进行ping扫描，以探测主机存活性。<br>同时将结果输出到text.xml文件中，以便后续使用。</p>
-<figure class="highlight plain"><figcaption><span>-sn 192.168.248.1/24 -oX text.xml```</span></figcaption><table><tr><td class="code"><pre><span class="line">### Nmap端口探测技巧</span><br><span class="line">#### 对某个端口进行探测</span><br><span class="line">&#96;&#96;&#96;nmap -p 80 192.168.248.129</span><br></pre></td></tr></table></figure>
-<h4 id="对某几个端口进行探测"><a href="#对某几个端口进行探测" class="headerlink" title="对某几个端口进行探测"></a>对某几个端口进行探测</h4><figure class="highlight plain"><figcaption><span>-p 80,139 192.168.248.129```</span></figcaption><table><tr><td class="code"><pre><span class="line">#### 对某个范围端口进行探测</span><br><span class="line">&#96;&#96;&#96;nmap -p 1-100 192.168.248.129</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>-sn 192.168.248.1/24 -oX text.xml```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### Nmap端口探测技巧</span><br><span class="line"></span><br><span class="line">#### 对某个端口进行探测</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;nmap -p 80 192.168.248.129</span><br></pre></td></tr></table></figure>
+
+<h4 id="对某几个端口进行探测"><a href="#对某几个端口进行探测" class="headerlink" title="对某几个端口进行探测"></a>对某几个端口进行探测</h4><figure class="highlight plain"><figcaption><span>-p 80,139 192.168.248.129```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">#### 对某个范围端口进行探测</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;nmap -p 1-100 192.168.248.129</span><br></pre></td></tr></table></figure>
+
 <h4 id="对所有端口进行探测"><a href="#对所有端口进行探测" class="headerlink" title="对所有端口进行探测"></a>对所有端口进行探测</h4><figure class="highlight plain"><figcaption><span>-p - 192.168.248.129```</span></figcaption><table><tr><td class="code"><pre><span class="line">#### 指定协议探测端口</span><br><span class="line">&#96;&#96;&#96;nmap -p T:25,U:53 192.168.248.129</span><br></pre></td></tr></table></figure>
 <h4 id="通过协议名来扫描端口"><a href="#通过协议名来扫描端口" class="headerlink" title="通过协议名来扫描端口"></a>通过协议名来扫描端口</h4><figure class="highlight plain"><figcaption><span>-p http 192.168.248.129```</span></figcaption><table><tr><td class="code"><pre><span class="line">#### 通过名称范围扫描</span><br><span class="line">&#96;&#96;&#96;nmap -p h* 192.168.248.129</span><br></pre></td></tr></table></figure>
 <h4 id="扫描注册在nmap中的端口"><a href="#扫描注册在nmap中的端口" class="headerlink" title="扫描注册在nmap中的端口"></a>扫描注册在nmap中的端口</h4><figure class="highlight plain"><figcaption><span>-p [1-65535] 192.168.248.129```</span></figcaption><table><tr><td class="code"><pre><span class="line">### Nmap NSE脚本使用</span><br><span class="line">#### NSE介绍</span><br><span class="line">NSE（Namp Script Engine）Nmap脚本引擎，内置很多可以用来扫描的、针对特定任务的脚本。通过NSE可以不断拓展Nmap的扫描策略，加强Nmap的功能。</span><br><span class="line">Nmap中使用 –script 参数来指定调用的脚本，并且脚本存储在Nmap安装路径下的script文件夹下，对于kali Linux存储在&#x2F;usr&#x2F;share&#x2F;nmap&#x2F;script&#x2F;下。</span><br><span class="line">#### NSE使用</span><br><span class="line">使用Nmap探测 Web服务的title信息。 nmap –script 脚本名称 目标</span><br><span class="line">&#96;&#96;&#96;nmap --script http-title 192.168.248.129</span><br></pre></td></tr></table></figure>
