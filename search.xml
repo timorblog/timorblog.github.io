@@ -537,6 +537,12 @@ return关键字：
 <h4 id="有关时间的函数"><a href="#有关时间的函数" class="headerlink" title="有关时间的函数"></a>有关时间的函数</h4><p>date():按照指定格式对对应的时间戳（从1970年格林威治时间开始计算秒数）<br>time():获取当前时间对应的时间戳<br>microtime()：获取微秒级别的时间</p>
 <h4 id="有关数学的函数"><a href="#有关数学的函数" class="headerlink" title="有关数学的函数"></a>有关数学的函数</h4><p>max()<br>min()<br>rand()</p>
 ]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
   </entry>
   <entry>
     <title>PHP代码审计笔记</title>
@@ -546,6 +552,13 @@ return关键字：
 <h2 id="常见的INI配置"><a href="#常见的INI配置" class="headerlink" title="常见的INI配置"></a>常见的INI配置</h2><p>配置文件<br>    php.ini<br>        在php启动时被读取。对于服务器模块版本的php，仅在web服务器启动时读取一次。对于CGI和CLI版本，每次调用都会读取。<br>        * Apache web 服务器在启动时会把目录转到根目录，这将导致php尝试在根目录下读取php.ini，如果存在的话。<br>        * 在php.ini中可以使用环境变量。<br>    .user.ini 文件<br>        自PHP5.3.0起，php支持基于每个目录的.htaccess风格的INI文件仅被CGI/FastCGI SAPI处理。此功能使得PECL的htscanner扩展作废。如果使用Apache，则用.htaccess文件有同样效果<br>语法<br>    该文件的语法非常简单。空白字符和以分号开始的行被简单的忽略，即使将来它们可能有某种意义。<br>    设置指令的格式如下：<br>        directive = value<br>    指令名(directive)是大小写敏感的！<br>    值(value)可以是:<br>    - 用引号界定的字符串(如:”foo”)<br>    - 一个数字(整数或浮点数，如:0,1,-1,1.111)<br>    - 一个PHP常量(如:E_ALL,M_PI)<br>    - 一个INI常量(On,Off,none)<br>    - 一个表达式(如：E_ALL &amp; ~E_NOTICE)</p>
 <p>变量相关<br>安全模式<br>上传文件及目录权限<br>错误信息<br>魔术引导及远程文件<br>(未完)</p>
 ]]></content>
+      <categories>
+        <category>Web安全</category>
+      </categories>
+      <tags>
+        <tag>代码审计</tag>
+        <tag>php</tag>
+      </tags>
   </entry>
   <entry>
     <title>Metasploit基础</title>
@@ -569,6 +582,12 @@ return关键字：
 
 <h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>终端中输入<code>msfconsole</code></p>
 ]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>Metasploit</tag>
+      </tags>
   </entry>
   <entry>
     <title>Linux常用命令</title>
@@ -974,6 +993,7 @@ UNIX/Linux文件系统每个文件都有三种时间戳：</li>
         <category>工具使用</category>
       </categories>
       <tags>
+        <tag>SQL注入</tag>
         <tag>SQLMap</tag>
       </tags>
   </entry>
