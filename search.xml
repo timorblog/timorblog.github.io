@@ -12,7 +12,24 @@
 <p>打开上传的文件执行phpinfo</p>
 <img src="/posts/54783098/3.png" class="" title="This is an 3 image">
 
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+<h2 id="解析漏洞"><a href="#解析漏洞" class="headerlink" title="解析漏洞"></a>解析漏洞</h2><p>这个是真的不好弄 只有jpg、png、gif才可以上传 上传其他的就弹框error<br>00截断    失败<br>1.php.asd    失败<br>::$DATA    失败<br>查看一下代码</p>
+<img src="/posts/54783098/4.png" class="" title="This is an 4 image">
+<p>白名单过滤<br>最后看到别人写的 在php后面加中文就能绕过了 试一下</p>
+<img src="/posts/54783098/5.png" class="" title="This is an 5 image">
+
+<h2 id="畸形文件"><a href="#畸形文件" class="headerlink" title="畸形文件"></a>畸形文件</h2><p>查看代码</p>
+<img src="/posts/54783098/6.png" class="" title="This is an 6 image">
+
+<p>str_replace() 函数</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">str<span class="constructor">_replace(<span class="string">"world"</span>,<span class="string">"Peter"</span>,<span class="string">"Hello world!"</span>)</span>;</span><br><span class="line">把字符串 <span class="string">"Hello world!"</span> 中的字符 <span class="string">"world"</span> 替换成 <span class="string">"Peter"</span></span><br></pre></td></tr></table></figure>
+<p>可以通过双写绕过<code>pphphp</code></p>
+<img src="/posts/54783098/7.png" class="" title="This is an 7 image">
+
+<h2 id="截断上传"><a href="#截断上传" class="headerlink" title="截断上传"></a>截断上传</h2><p>还是截断 和上面的解析漏洞一样 加个中文就可以绕过了</p>
+<img src="/posts/54783098/7.png" class="" title="This is an 7 image">
+
+<h2 id="htaccess"><a href="#htaccess" class="headerlink" title="htaccess"></a>htaccess</h2><p>这个怎么做怎么错 看别人说是作者弄错了  那就不做了</p>
+]]></content>
       <categories>
         <category>Webug 靶场</category>
       </categories>
