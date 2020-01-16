@@ -4,7 +4,7 @@
     <title>Webug靶场-其他</title>
     <url>/posts/382e01ad.html</url>
     <content><![CDATA[<h2 id="URL跳转"><a href="#URL跳转" class="headerlink" title="URL跳转"></a>URL跳转</h2><p>既然是URL跳转 那么就找跳转到外部的链接</p>
-<img src="/posts/undefined/1.png" class="" title="This is an 1 image">
+<img src="/posts/382e01ad/1.png" class="" title="This is an 1 image">
 <p>上图就是跳转到外部的链接 那么只要修改链接即可</p>
 <figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="string">/url_redirect.php</span>?url=https:<span class="string">//timorblog.cn</span></span><br></pre></td></tr></table></figure>
 <p>完成跳转</p>
@@ -13,20 +13,20 @@
 <p>我们把后面的参数改成我们想看的参数</p>
 <figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">file_include.php?filename=../../<span class="keyword">sql</span>/webug.<span class="keyword">sql</span></span><br></pre></td></tr></table></figure>
 <p>查看效果</p>
-<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
+<img src="/posts/382e01ad/2.png" class="" title="This is an 2 image">
 
 <h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><p>页面报错了？？？？</p>
-<img src="/posts/undefined/3.png" class="" title="This is an 3 image">
+<img src="/posts/382e01ad/3.png" class="" title="This is an 3 image">
 <p>修改一下php版本就好</p>
-<img src="/posts/undefined/4.png" class="" title="This is an 4 image">
+<img src="/posts/382e01ad/4.png" class="" title="This is an 4 image">
 <p>ok 正常了<br>但是 这页面有什么问题吗  不太懂</p>
 <h2 id="webshell爆破"><a href="#webshell爆破" class="headerlink" title="webshell爆破"></a>webshell爆破</h2><p>如果有报错就把php版本降低<br>打开界面是一个大马的webshell<br>就是想办法爆破密码<br>使用burp爆破</p>
-<img src="/posts/undefined/5.png" class="" title="This is an 5 image">
+<img src="/posts/382e01ad/5.png" class="" title="This is an 5 image">
 <p>密码是a1</p>
 <h2 id="ssrf"><a href="#ssrf" class="headerlink" title="ssrf"></a>ssrf</h2><p>查看了一下靶机 他url写错了<br>正确url是</p>
 <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line"><span class="section">control</span>/more/ssrf.php?url=localhost/<span class="section">control</span>/xss/xss_1.php?id=<span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>可以在url后面加入php协议或查看内网网站信息</p>
-<img src="/posts/undefined/6.png" class="" title="This is an 6 image">]]></content>
+<img src="/posts/382e01ad/6.png" class="" title="This is an 6 image">]]></content>
       <categories>
         <category>Webug 靶场</category>
       </categories>
@@ -35,29 +35,29 @@
     <title>Webug靶场-逻辑漏洞</title>
     <url>/posts/33048d81.html</url>
     <content><![CDATA[<h2 id="越权修改密码"><a href="#越权修改密码" class="headerlink" title="越权修改密码"></a>越权修改密码</h2><p>进入界面后，查看代码</p>
-<img src="/posts/undefined/1.png" class="" title="This is an 1 image">
+<img src="/posts/33048d81/1.png" class="" title="This is an 1 image">
 <p>如果账号密码正确跳转到另一个页面<br>查看数据库里相关的账号</p>
-<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
+<img src="/posts/33048d81/2.png" class="" title="This is an 2 image">
 <p>找到了两个账号 那么我们用aaaa账号去修改admin的密码</p>
-<img src="/posts/undefined/3.png" class="" title="This is an 3 image">
+<img src="/posts/33048d81/3.png" class="" title="This is an 3 image">
 <p>看到url为</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">cross_auth_passwd2.php?<span class="attribute">id</span>=2</span><br></pre></td></tr></table></figure>
 <p>那么把id=2改成id=1在修改密码查看是否成功</p>
-<img src="/posts/undefined/4.png" class="" title="This is an 4 image">
+<img src="/posts/33048d81/4.png" class="" title="This is an 4 image">
 <p>再去数据库里看一下</p>
-<img src="/posts/undefined/5.png" class="" title="This is an 5 image">
+<img src="/posts/33048d81/5.png" class="" title="This is an 5 image">
 <p>成功修改</p>
 <h2 id="支付漏洞"><a href="#支付漏洞" class="headerlink" title="支付漏洞"></a>支付漏洞</h2><p>进入页面 点击立即购买 有一个弹窗 花费了100元</p>
-<img src="/posts/undefined/6.png" class="" title="This is an 6 image">
+<img src="/posts/33048d81/6.png" class="" title="This is an 6 image">
 <p>发现url也有变化 </p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">cross_permission_pay.php?<span class="attribute">price</span>=100</span><br></pre></td></tr></table></figure>
 <p>这好像开玩笑一样  这么改就可以了？<br>把100修改一下</p>
-<img src="/posts/undefined/7.png" class="" title="This is an 7 image">
+<img src="/posts/33048d81/7.png" class="" title="This is an 7 image">
 <p>开玩笑。。。。。。。</p>
 <h2 id="邮箱轰炸"><a href="#邮箱轰炸" class="headerlink" title="邮箱轰炸"></a>邮箱轰炸</h2><p>不知道怎么玩</p>
 <h2 id="越权查看admin"><a href="#越权查看admin" class="headerlink" title="越权查看admin"></a>越权查看admin</h2><p>这个没什么好说的 基本和越权修改密码一个步骤</p>
-<img src="/posts/undefined/8.png" class="" title="This is an 8 image">
-<img src="/posts/undefined/9.png" class="" title="This is an 9 image">]]></content>
+<img src="/posts/33048d81/8.png" class="" title="This is an 8 image">
+<img src="/posts/33048d81/9.png" class="" title="This is an 9 image">]]></content>
       <categories>
         <category>Webug 靶场</category>
       </categories>
