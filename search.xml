@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CSRF</title>
+    <url>/posts/d12d6355.html</url>
+    <content><![CDATA[<h1 id="CSRF漏洞"><a href="#CSRF漏洞" class="headerlink" title="CSRF漏洞"></a>CSRF漏洞</h1><h2 id="什么是CSRF漏洞"><a href="#什么是CSRF漏洞" class="headerlink" title="什么是CSRF漏洞"></a>什么是CSRF漏洞</h2><p>CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。而XSS是直接盗取了用户的Cookie，从而登录到用户的后台修改相关信息</p>
+<h2 id="CSRF攻击流程"><a href="#CSRF攻击流程" class="headerlink" title="CSRF攻击流程"></a>CSRF攻击流程</h2><p>受害者登录A网站。<br>攻击者引诱受害者访问B网站（B网站是攻击者构造的一个恶意网站）。<br>当用户没有退出A网站或A网站的Cookie没有过期，只要在同一个浏览器中打开B网站，攻击者就可以利用用户的身份进行操作。</p>
+<h2 id="CSRF漏洞的主要原因"><a href="#CSRF漏洞的主要原因" class="headerlink" title="CSRF漏洞的主要原因"></a>CSRF漏洞的主要原因</h2><p>请求所有的参数均可确定<br>请求的审核不严格，比如只验证了Cookie</p>
+<h2 id="挖掘CSRF漏洞"><a href="#挖掘CSRF漏洞" class="headerlink" title="挖掘CSRF漏洞"></a>挖掘CSRF漏洞</h2><p>特征点：</p>
+<ul>
+<li>增删改查的交互点</li>
+<li>无验证码，无token等</li>
+<li>判断服务器是否对referer头判断，是的话尝试能不能绕过正则<br>常出现在修改用户信息，重置密码等等这些功能模块。</li>
+</ul>
+<h2 id="利用CSRF漏洞"><a href="#利用CSRF漏洞" class="headerlink" title="利用CSRF漏洞"></a>利用CSRF漏洞</h2><p>在利用之前，要知道CSRF漏洞有什么类型，分别有GET型和POST型。<br>这里我是用DVWA靶场做例子<br>打开靶场 进入修改密码的界面 输入密码 </p>
+<img src="/posts/undefined/1.png" class="" title="This is an 1 image">
+<p>进行抓包 发现是get型 无token验证</p>
+<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
+<p>删除referer字段 重放查看是否正常</p>
+<img src="/posts/undefined/3.png" class="" title="This is an 3 image">
+<p>返回正常 那么可以直接构造url</p>
+<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="symbol">http:</span>/<span class="regexp">/192.168.248.142:85/vulnerabilities</span><span class="regexp">/csrf/</span>?password_new=admin&amp;password_conf=admin&amp;Change=Change<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>我们把这个链接缩短做成短链接</p>
+<img src="/posts/undefined/4.png" class="" title="This is an 4 image">
+<p>还可以通过burp的功能</p>
+<img src="/posts/undefined/5.png" class="" title="This is an 5 image">
+<img src="/posts/undefined/6.png" class="" title="This is an 6 image">
+<p>copy代码 然后把代码存放到.html文件中打开就可以了</p>
+<h2 id="CSRF漏洞造成的危害"><a href="#CSRF漏洞造成的危害" class="headerlink" title="CSRF漏洞造成的危害"></a>CSRF漏洞造成的危害</h2><ul>
+<li>篡改目标网站上的用户数据信息</li>
+<li>盗取用户隐私数据</li>
+<li>配合XSS漏洞造成更大危害</li>
+<li>传播CSRF蠕虫</li>
+</ul>
+<h2 id="修复CSRF漏洞"><a href="#修复CSRF漏洞" class="headerlink" title="修复CSRF漏洞"></a>修复CSRF漏洞</h2><p>加入token机制，通过token或者session来判断当前用户身份。</p>
+<h2 id="防范CSRF漏洞"><a href="#防范CSRF漏洞" class="headerlink" title="防范CSRF漏洞"></a>防范CSRF漏洞</h2><ol>
+<li>尽可能使用POST方式。</li>
+<li>设置验证码，能够很好遏制CSRF攻击，但是增加验证码降低了用户的体验，所以网站不可能给所有的操作都加上验证码，所以只能将验证码作为一种辅助的手段，在关键业务点设置验证码。</li>
+<li>检查HTTP请求的Referer字段，但是这种方法的有效性不高，第一，可以抓包修改该字段；第二，在https跳转到http的情况下，浏览器出于安全考虑，不会发送referer，服务器就无法进行检查了，而且如果该网站同域的其他网站有XSS漏洞，那么攻击者可以在其他网站注入恶意脚本，受害者进入了此类同域的网址，也会遭到攻击。所以说有效性不高。（不靠谱的原因是服务器并不是随时都能获得referer，只能监控是否发生，并且不能防范统一域上的CSRF攻击）</li>
+<li>加入Anti-CSRF-Token，也就是发送请求时在HTTP请求中以参数的形式加入一个随机产生的token（一次性随机值），并在服务器建立一个拦截器来验证这个token。服务器读取浏览器当前域Cookie中这个token值，会进行校验该请求当中的token和Cookie当中的token值是否都存在且相等，当判断出存在且相等才认为这是合法的请求。否则认为这次请求是违法的，拒绝该次服务。（个人觉得此方法能杜绝大部分CSRF攻击，那还有小部分通常是因为网站存在XSS漏洞，从而获取到用户Cookie，这就是CSRF+XSS组合拳）。<br>参考链接：<a href="https://mp.weixin.qq.com/s/0u33kOB4NKJG0uhAWsAh0A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/0u33kOB4NKJG0uhAWsAh0A</a></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>Webug靶场-其他</title>
     <url>/posts/382e01ad.html</url>
     <content><![CDATA[<h2 id="URL跳转"><a href="#URL跳转" class="headerlink" title="URL跳转"></a>URL跳转</h2><p>既然是URL跳转 那么就找跳转到外部的链接</p>
+<a id="more"></a>
 <img src="/posts/382e01ad/1.png" class="" title="This is an 1 image">
 <p>上图就是跳转到外部的链接 那么只要修改链接即可</p>
 <figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="string">/url_redirect.php</span>?url=https:<span class="string">//timorblog.cn</span></span><br></pre></td></tr></table></figure>
@@ -222,6 +264,7 @@
     <url>/posts/843f3569.html</url>
     <content><![CDATA[<p>查看所有网络进程占用的端口与PID</p>
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">netstat -ano</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>对想看的端口做截取</p>
 <figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">netstat -ano <span class="string">| findstr 端口</span></span><br></pre></td></tr></table></figure>
 <p>查看某PID的服务是什么进程</p>
@@ -284,18 +327,6 @@
 <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">net</span> password 密码</span><br></pre></td></tr></table></figure>
 <p>ping命令 </p>
 <figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ping</span> ip  / <span class="built_in">ping</span> 域名      //向对方主机发送数据，查看是否互通</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<p>```</p>
 ]]></content>
   </entry>
   <entry>

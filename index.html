@@ -161,7 +161,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">19</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -211,6 +211,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/d12d6355.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xiaobai.jpg">
+      <meta itemprop="name" content="Timor">
+      <meta itemprop="description" content="渗透测试|网络安全|信息安全|WEB安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Timorblog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/d12d6355.html" class="post-title-link" itemprop="url">CSRF</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-20 08:54:37 / 修改时间：10:48:57" itemprop="dateCreated datePublished" datetime="2020-01-20T08:54:37+08:00">2020-01-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="CSRF漏洞"><a href="#CSRF漏洞" class="headerlink" title="CSRF漏洞"></a>CSRF漏洞</h1><h2 id="什么是CSRF漏洞"><a href="#什么是CSRF漏洞" class="headerlink" title="什么是CSRF漏洞"></a>什么是CSRF漏洞</h2><p>CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。而XSS是直接盗取了用户的Cookie，从而登录到用户的后台修改相关信息</p>
+<h2 id="CSRF攻击流程"><a href="#CSRF攻击流程" class="headerlink" title="CSRF攻击流程"></a>CSRF攻击流程</h2><p>受害者登录A网站。<br>攻击者引诱受害者访问B网站（B网站是攻击者构造的一个恶意网站）。<br>当用户没有退出A网站或A网站的Cookie没有过期，只要在同一个浏览器中打开B网站，攻击者就可以利用用户的身份进行操作。</p>
+<h2 id="CSRF漏洞的主要原因"><a href="#CSRF漏洞的主要原因" class="headerlink" title="CSRF漏洞的主要原因"></a>CSRF漏洞的主要原因</h2><p>请求所有的参数均可确定<br>请求的审核不严格，比如只验证了Cookie</p>
+<h2 id="挖掘CSRF漏洞"><a href="#挖掘CSRF漏洞" class="headerlink" title="挖掘CSRF漏洞"></a>挖掘CSRF漏洞</h2><p>特征点：</p>
+<ul>
+<li>增删改查的交互点</li>
+<li>无验证码，无token等</li>
+<li>判断服务器是否对referer头判断，是的话尝试能不能绕过正则<br>常出现在修改用户信息，重置密码等等这些功能模块。</li>
+</ul>
+<h2 id="利用CSRF漏洞"><a href="#利用CSRF漏洞" class="headerlink" title="利用CSRF漏洞"></a>利用CSRF漏洞</h2><p>在利用之前，要知道CSRF漏洞有什么类型，分别有GET型和POST型。<br>这里我是用DVWA靶场做例子<br>打开靶场 进入修改密码的界面 输入密码 </p>
+<img src="/posts/undefined/1.png" class="" title="This is an 1 image">
+<p>进行抓包 发现是get型 无token验证</p>
+<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
+<p>删除referer字段 重放查看是否正常</p>
+<img src="/posts/undefined/3.png" class="" title="This is an 3 image">
+<p>返回正常 那么可以直接构造url</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http:</span>/<span class="regexp">/192.168.248.142:85/vulnerabilities</span><span class="regexp">/csrf/</span>?password_new=admin&amp;password_conf=admin&amp;Change=Change<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>我们把这个链接缩短做成短链接</p>
+<img src="/posts/undefined/4.png" class="" title="This is an 4 image">
+<p>还可以通过burp的功能</p>
+<img src="/posts/undefined/5.png" class="" title="This is an 5 image">
+<img src="/posts/undefined/6.png" class="" title="This is an 6 image">
+<p>copy代码 然后把代码存放到.html文件中打开就可以了</p>
+<h2 id="CSRF漏洞造成的危害"><a href="#CSRF漏洞造成的危害" class="headerlink" title="CSRF漏洞造成的危害"></a>CSRF漏洞造成的危害</h2><ul>
+<li>篡改目标网站上的用户数据信息</li>
+<li>盗取用户隐私数据</li>
+<li>配合XSS漏洞造成更大危害</li>
+<li>传播CSRF蠕虫</li>
+</ul>
+<h2 id="修复CSRF漏洞"><a href="#修复CSRF漏洞" class="headerlink" title="修复CSRF漏洞"></a>修复CSRF漏洞</h2><p>加入token机制，通过token或者session来判断当前用户身份。</p>
+<h2 id="防范CSRF漏洞"><a href="#防范CSRF漏洞" class="headerlink" title="防范CSRF漏洞"></a>防范CSRF漏洞</h2><ol>
+<li>尽可能使用POST方式。</li>
+<li>设置验证码，能够很好遏制CSRF攻击，但是增加验证码降低了用户的体验，所以网站不可能给所有的操作都加上验证码，所以只能将验证码作为一种辅助的手段，在关键业务点设置验证码。</li>
+<li>检查HTTP请求的Referer字段，但是这种方法的有效性不高，第一，可以抓包修改该字段；第二，在https跳转到http的情况下，浏览器出于安全考虑，不会发送referer，服务器就无法进行检查了，而且如果该网站同域的其他网站有XSS漏洞，那么攻击者可以在其他网站注入恶意脚本，受害者进入了此类同域的网址，也会遭到攻击。所以说有效性不高。（不靠谱的原因是服务器并不是随时都能获得referer，只能监控是否发生，并且不能防范统一域上的CSRF攻击）</li>
+<li>加入Anti-CSRF-Token，也就是发送请求时在HTTP请求中以参数的形式加入一个随机产生的token（一次性随机值），并在服务器建立一个拦截器来验证这个token。服务器读取浏览器当前域Cookie中这个token值，会进行校验该请求当中的token和Cookie当中的token值是否都存在且相等，当判断出存在且相等才认为这是合法的请求。否则认为这次请求是违法的，拒绝该次服务。（个人觉得此方法能杜绝大部分CSRF攻击，那还有小部分通常是因为网站存在XSS漏洞，从而获取到用户Cookie，这就是CSRF+XSS组合拳）。<br>参考链接：<a href="https://mp.weixin.qq.com/s/0u33kOB4NKJG0uhAWsAh0A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/0u33kOB4NKJG0uhAWsAh0A</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/382e01ad.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -242,7 +336,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 11:01:01" itemprop="dateModified" datetime="2020-01-16T11:01:01+08:00">2020-01-16</time>
+                <time title="修改时间：2020-01-20 08:51:22" itemprop="dateModified" datetime="2020-01-20T08:51:22+08:00">2020-01-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,29 +362,14 @@
 
       
           <h2 id="URL跳转"><a href="#URL跳转" class="headerlink" title="URL跳转"></a>URL跳转</h2><p>既然是URL跳转 那么就找跳转到外部的链接</p>
-<img src="/posts/382e01ad/1.png" class="" title="This is an 1 image">
-<p>上图就是跳转到外部的链接 那么只要修改链接即可</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/url_redirect.php</span>?url=https:<span class="string">//timorblog.cn</span></span><br></pre></td></tr></table></figure>
-<p>完成跳转</p>
-<h2 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h2><p>查看url</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/file_include.php?filename=../</span>..<span class="regexp">/template/</span>dom_xss.html</span><br></pre></td></tr></table></figure>
-<p>我们把后面的参数改成我们想看的参数</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file_include.php?filename=../../<span class="keyword">sql</span>/webug.<span class="keyword">sql</span></span><br></pre></td></tr></table></figure>
-<p>查看效果</p>
-<img src="/posts/382e01ad/2.png" class="" title="This is an 2 image">
-
-<h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><p>页面报错了？？？？</p>
-<img src="/posts/382e01ad/3.png" class="" title="This is an 3 image">
-<p>修改一下php版本就好</p>
-<img src="/posts/382e01ad/4.png" class="" title="This is an 4 image">
-<p>ok 正常了<br>但是 这页面有什么问题吗  不太懂</p>
-<h2 id="webshell爆破"><a href="#webshell爆破" class="headerlink" title="webshell爆破"></a>webshell爆破</h2><p>如果有报错就把php版本降低<br>打开界面是一个大马的webshell<br>就是想办法爆破密码<br>使用burp爆破</p>
-<img src="/posts/382e01ad/5.png" class="" title="This is an 5 image">
-<p>密码是a1</p>
-<h2 id="ssrf"><a href="#ssrf" class="headerlink" title="ssrf"></a>ssrf</h2><p>查看了一下靶机 他url写错了<br>正确url是</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">control</span>/more/ssrf.php?url=localhost/<span class="section">control</span>/xss/xss_1.php?id=<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>可以在url后面加入php协议或查看内网网站信息</p>
-<img src="/posts/382e01ad/6.png" class="" title="This is an 6 image">
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/382e01ad.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -761,7 +840,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-10 11:42:37" itemprop="dateModified" datetime="2020-01-10T11:42:37+08:00">2020-01-10</time>
+                <time title="修改时间：2020-01-20 08:52:00" itemprop="dateModified" datetime="2020-01-20T08:52:00+08:00">2020-01-20</time>
               </span>
 
           
@@ -777,81 +856,14 @@
       
           <p>查看所有网络进程占用的端口与PID</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">netstat -ano</span></span><br></pre></td></tr></table></figure>
-<p>对想看的端口做截取</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano <span class="string">| findstr 端口</span></span><br></pre></td></tr></table></figure>
-<p>查看某PID的服务是什么进程</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist <span class="string">| findstr 端口</span></span><br></pre></td></tr></table></figure>
-<p>杀死进程</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">taskkill/pid 端口PID <span class="literal">-t</span> <span class="operator">-f</span></span><br><span class="line"><span class="operator">-f</span> 用来强制执行</span><br></pre></td></tr></table></figure>
-<p>查看本机任务列表</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">tasklist</span></span><br></pre></td></tr></table></figure>
-<p>获取系统环境变量信息</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">path</span></span><br></pre></td></tr></table></figure>
-<p>设置系统环境变量</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span></span><br></pre></td></tr></table></figure>
-<p>远程桌面连接</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mstsc</span></span><br></pre></td></tr></table></figure>
-<p>查看ip</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig  /<span class="keyword">all</span></span><br></pre></td></tr></table></figure>
-<p>查看系统信息</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systeminfo</span></span><br></pre></td></tr></table></figure>
-<p>查看局域网 同一网段存在的ip</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">arp -a</span></span><br></pre></td></tr></table></figure>
-<p>查看局域网内其他计算机名称</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">net</span> <span class="keyword">view</span></span><br></pre></td></tr></table></figure>
-<p>查看目录</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
-<p>切换目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br></pre></td></tr></table></figure>
-<p>创建目录</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span></span><br></pre></td></tr></table></figure>
-<p>创建空文件</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> <span class="built_in">nul</span>&gt;<span class="number">1</span>.txt</span><br></pre></td></tr></table></figure>
-<p>创建非空文件</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 内容&gt;<span class="number">1.</span>txt</span><br></pre></td></tr></table></figure>
-<p>打开文件</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start <span class="number">1.</span>txt</span><br></pre></td></tr></table></figure>
-<p>打开文件（在命令行中显示文件内容）</p>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> 1.txt</span><br></pre></td></tr></table></figure>
-<p>复制文件</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy <span class="number">1.</span>txt D:\       <span class="comment">//把目录中的1.txt复制到d盘下的2.txt</span></span><br></pre></td></tr></table></figure>
-<p>移动文件</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">move <span class="number">1.</span>txt D:\       <span class="comment">//把目录中的1.txt移动到d盘下</span></span><br></pre></td></tr></table></figure>
-<p>树形文件结构</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tree</span></span><br></pre></td></tr></table></figure>
-<p>开启服务</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> 服务名</span><br></pre></td></tr></table></figure>
-<p>暂停某服务</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net <span class="built_in">stop</span> 服务名</span><br></pre></td></tr></table></figure>
-<p>建立用户</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>用户名 密码 /add</span><br><span class="line">建立隐藏用户  ：   net<span class="built_in"> user </span>用户名$ 密码 /add</span><br></pre></td></tr></table></figure>
-<p>激活guest用户</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>guest / active:yes</span><br></pre></td></tr></table></figure>
-<p>查看有哪些用户</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net <span class="keyword">user</span></span><br></pre></td></tr></table></figure>
-<p>查看账户的属性</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>用户名</span><br></pre></td></tr></table></figure>
-<p>把用户添加到管理员中使其具有管理员权限</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup administrators 用户名 /<span class="keyword">add</span></span><br></pre></td></tr></table></figure>
-<p>用guest用户登录后将密码改为123456</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>guest 123456</span><br></pre></td></tr></table></figure>
-<p>更改系统登陆密码</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> password 密码</span><br></pre></td></tr></table></figure>
-<p>ping命令 </p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ping</span> ip  / <span class="built_in">ping</span> 域名      //向对方主机发送数据，查看是否互通</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```</span><br></pre></td></tr></table></figure>
-<p>```</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/843f3569.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1032,99 +1044,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/39fd836c.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/xiaobai.jpg">
-      <meta itemprop="name" content="Timor">
-      <meta itemprop="description" content="渗透测试|网络安全|信息安全|WEB安全">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Timorblog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/39fd836c.html" class="post-title-link" itemprop="url">Metasploit基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-25 11:01:32" itemprop="dateCreated datePublished" datetime="2019-12-25T11:01:32+08:00">2019-12-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-15 09:59:57" itemprop="dateModified" datetime="2020-01-15T09:59:57+08:00">2020-01-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Metasploit就是一个漏洞框架。它的全称叫做The Metasploit Framework，简称叫做MSF（美少妇）。Metasploit作为全球最受欢迎的工具，</p>
-<p>不仅仅是因为它的方便性和强大性，更重要的是它的框架。它允许使用者开发自己的漏洞脚本，从而进行测试。</p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="专业术语"><a href="#专业术语" class="headerlink" title="专业术语"></a>专业术语</h3><ul>
-<li>Auxiliarity（辅助模块）<pre><code>只负责执行扫描，嗅探，指纹识别等相关功能以辅助渗透测试</code></pre></li>
-<li>Expoit（漏洞利用模块）<pre><code>漏洞利用是指由渗透测试者利用一个系统，应用或者服务中的安全漏洞进行的攻击行为。流行的渗透攻击包括缓冲区溢出，Web应用程序攻击，以及利用配置错误等，其中包含攻击者或测试人员针对系统的中的漏洞而设计的各种POC验证程序，用于破坏系统安全性的攻击代码，每个漏洞都有相应的攻击代码。</code></pre></li>
-<li>Payload(攻击载荷模块）<pre><code>攻击载荷是我们期望目标系统在被渗透攻击之后完成攻击功能的代码，成功渗透目标后，用于在目标系统上运行任意命令或执行特定代码，在Metasploit框架中可以自由选择，传送和植入。攻击载荷也可能是简单的在目标操作系统上执行一些命令，如添加用户账号 </code></pre></li>
-<li>Post(后期渗透模块)<pre><code>该模块用于取得目标系统远程控制权后，进行一系列后渗透攻击动作，如获取敏感信息，实施跳板攻击等。   </code></pre></li>
-<li>Encoders(编码工具模块)<pre><code>负责免杀，以防止被杀毒软件，防火墙，IDS及类似安全软件检测出来。</code></pre></li>
-</ul>
-<h3 id="渗透攻击步骤"><a href="#渗透攻击步骤" class="headerlink" title="渗透攻击步骤"></a>渗透攻击步骤</h3><pre><code>侦察并发动攻击
-    扫描目标机系统，寻找可用漏洞
-    选择并配置一个漏洞利用模块
-    选择并配置一个攻击载荷模块
-    选择一个编码技术，用来绕过杀毒软件的查杀
-    渗透攻击</code></pre><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">search</span>	根据关键字搜索模块</span><br><span class="line">use	进入某渗透攻击模块</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">options</span>	查看该模块所有可用选项</span><br><span class="line"><span class="keyword">set</span> RHOSTS	设置</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>终端中输入<code>msfconsole</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1197,7 +1116,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
