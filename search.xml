@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Kali Linux基础配置</title>
+    <url>/posts/2f7b2975.html</url>
+    <content><![CDATA[<img src="/posts/undefined/0.png" class="" title="This is an 0 image">
+<a id="more"></a>
+<h2 id="下载Kali-Linux"><a href="#下载Kali-Linux" class="headerlink" title="下载Kali Linux"></a>下载Kali Linux</h2><p>下载网址：<a href="https://www.kali.org/downloads/" target="_blank" rel="noopener">https://www.kali.org/downloads/</a><br>我使用的是VMware的所以我下载对应的版本</p>
+<img src="/posts/undefined/1.png" class="" title="This is an 1 image">
+<h2 id="软件更新"><a href="#软件更新" class="headerlink" title="软件更新"></a>软件更新</h2><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 我习惯一次升级所有软件</span></span><br><span class="line">apt-<span class="builtin-name">get</span> update &amp;&amp; apt-<span class="builtin-name">get</span><span class="built_in"> upgrade </span>&amp;&amp; apt-<span class="builtin-name">get</span> clean</span><br></pre></td></tr></table></figure>
+<h2 id="Kali-2019-4-中文乱码解决问题"><a href="#Kali-2019-4-中文乱码解决问题" class="headerlink" title="Kali 2019.4 中文乱码解决问题"></a>Kali 2019.4 中文乱码解决问题</h2><figure class="highlight vala"><table><tr><td class="code"><pre><span class="line">dpkg-reconfigure locales</span><br><span class="line"><span class="comment">//设置编码字体为：zh_CN.UTF-8 UTF-8 和 en_US.UTF-8 UTF-8</span></span><br><span class="line"><span class="comment">//空格为选中 tab为切换  回车确定</span></span><br><span class="line"><span class="comment">//选中 zh_CN.UTF-8 UTF-8 为默认</span></span><br><span class="line"><span class="meta"># 安装中文字体</span></span><br><span class="line">apt-<span class="keyword">get</span> install  fonts-wqy-microhei </span><br><span class="line">apt-<span class="keyword">get</span> install  fonts-wqy-zenhei </span><br><span class="line"><span class="meta"># 重启</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装VMware-Tools"><a href="#安装VMware-Tools" class="headerlink" title="安装VMware Tools"></a>安装VMware Tools</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">apt <span class="keyword">install</span> <span class="keyword">open</span>-vm-tools-desktop fuse</span><br><span class="line"><span class="comment">#重启 </span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装酸酸乳"><a href="#安装酸酸乳" class="headerlink" title="安装酸酸乳"></a>安装酸酸乳</h2><figure class="highlight q"><table><tr><td class="code"><pre><span class="line"># 下载<span class="built_in">ssr</span></span><br><span class="line">https:<span class="comment">//github.com/the0demiurge/CharlesScripts/blob/master/charles/bin/ssr</span></span><br><span class="line"></span><br><span class="line"># 将<span class="built_in">ssr</span>添加到bin目录下 修改权限</span><br><span class="line">mv <span class="built_in">ssr</span> /usr/local/bin</span><br><span class="line">chmod <span class="number">766</span> /usr/local/bin/<span class="built_in">ssr</span></span><br><span class="line"></span><br><span class="line"># 显示帮助信息</span><br><span class="line"><span class="built_in">ssr</span> help</span><br><span class="line"></span><br><span class="line"># 安装<span class="built_in">ssr</span></span><br><span class="line"><span class="built_in">ssr</span> install</span><br><span class="line"></span><br><span class="line"># 配置<span class="built_in">ssr</span></span><br><span class="line"><span class="built_in">ssr</span> config</span><br><span class="line"><span class="comment">//就是这个文件./root/.local/share/shadowsocksr/config.json</span></span><br><span class="line"></span><br><span class="line"># 相关参数</span><br><span class="line"><span class="built_in">ssr</span> start  <span class="comment">//启动</span></span><br><span class="line"><span class="built_in">ssr</span> stop	<span class="comment">//关闭</span></span><br><span class="line"><span class="built_in">ssr</span> uninstall	<span class="comment">//卸载</span></span><br></pre></td></tr></table></figure>
+<p>一般情况只需要修改以下有注释的地方</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"server"</span>: <span class="string">"0.0.0.0"</span>,   <span class="comment">//服务器IP地址</span></span><br><span class="line">    <span class="attr">"server_ipv6"</span>: <span class="string">"::"</span>,</span><br><span class="line">    <span class="attr">"server_port"</span>: <span class="number">2333</span>,  <span class="comment">//端口</span></span><br><span class="line">    <span class="attr">"local_address"</span>: <span class="string">"127.0.0.1"</span>, </span><br><span class="line">    <span class="attr">"local_port"</span>: <span class="number">1080</span>,</span><br><span class="line"> </span><br><span class="line">    <span class="attr">"password"</span>: <span class="string">"password"</span>,  <span class="comment">//密码</span></span><br><span class="line">    <span class="attr">"method"</span>: <span class="string">"aes-256-cfb"</span>, <span class="comment">//加密方式</span></span><br><span class="line">    <span class="attr">"protocol"</span>: <span class="string">"auth_aes128_md5"</span>, <span class="comment">//协议</span></span><br><span class="line">    <span class="attr">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"obfs"</span>: <span class="string">"plain"</span>,  <span class="comment">//混淆方式</span></span><br><span class="line">    <span class="attr">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"speed_limit_per_con"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"speed_limit_per_user"</span>: <span class="number">0</span>,</span><br><span class="line"> </span><br><span class="line">    <span class="attr">"additional_ports"</span> : &#123;&#125;, </span><br><span class="line">    <span class="attr">"additional_ports_only"</span> : <span class="literal">false</span>, </span><br><span class="line">    <span class="attr">"timeout"</span>: <span class="number">120</span>,</span><br><span class="line">    <span class="attr">"udp_timeout"</span>: <span class="number">60</span>,</span><br><span class="line">    <span class="attr">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"connect_verbose_info"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"fast_open"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="proxychains"><a href="#proxychains" class="headerlink" title="proxychains"></a>proxychains</h2><p>终端命令行代理神器，科学上网，内网穿透渗透必备</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">vim</span> /etc/proxychains.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+<p>编辑配置文件，某尾修改自己的socks5本地代理地址很端口。</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">socks5 <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">1080</span></span><br></pre></td></tr></table></figure>
+<h2 id="FoxyProxy-Options"><a href="#FoxyProxy-Options" class="headerlink" title="FoxyProxy Options"></a>FoxyProxy Options</h2><p>安装火狐插件 FoxyProxy Options 添加代理 方便浏览网页</p>
+]]></content>
+  </entry>
+  <entry>
     <title>CSRF</title>
     <url>/posts/d12d6355.html</url>
     <content><![CDATA[<h1 id="CSRF漏洞"><a href="#CSRF漏洞" class="headerlink" title="CSRF漏洞"></a>CSRF漏洞</h1><h2 id="什么是CSRF漏洞"><a href="#什么是CSRF漏洞" class="headerlink" title="什么是CSRF漏洞"></a>什么是CSRF漏洞</h2><p>CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。而XSS是直接盗取了用户的Cookie，从而登录到用户的后台修改相关信息</p>
@@ -13,18 +36,18 @@
 <li>判断服务器是否对referer头判断，是的话尝试能不能绕过正则<br>常出现在修改用户信息，重置密码等等这些功能模块。</li>
 </ul>
 <h2 id="利用CSRF漏洞"><a href="#利用CSRF漏洞" class="headerlink" title="利用CSRF漏洞"></a>利用CSRF漏洞</h2><p>在利用之前，要知道CSRF漏洞有什么类型，分别有GET型和POST型。<br>这里我是用DVWA靶场做例子<br>打开靶场 进入修改密码的界面 输入密码 </p>
-<img src="/posts/undefined/1.png" class="" title="This is an 1 image">
+<img src="/posts/d12d6355/1.png" class="" title="This is an 1 image">
 <p>进行抓包 发现是get型 无token验证</p>
-<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
+<img src="/posts/d12d6355/2.png" class="" title="This is an 2 image">
 <p>删除referer字段 重放查看是否正常</p>
-<img src="/posts/undefined/3.png" class="" title="This is an 3 image">
+<img src="/posts/d12d6355/3.png" class="" title="This is an 3 image">
 <p>返回正常 那么可以直接构造url</p>
 <figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="symbol">http:</span>/<span class="regexp">/192.168.248.142:85/vulnerabilities</span><span class="regexp">/csrf/</span>?password_new=admin&amp;password_conf=admin&amp;Change=Change<span class="comment">#</span></span><br></pre></td></tr></table></figure>
 <p>我们把这个链接缩短做成短链接</p>
-<img src="/posts/undefined/4.png" class="" title="This is an 4 image">
+<img src="/posts/d12d6355/4.png" class="" title="This is an 4 image">
 <p>还可以通过burp的功能</p>
-<img src="/posts/undefined/5.png" class="" title="This is an 5 image">
-<img src="/posts/undefined/6.png" class="" title="This is an 6 image">
+<img src="/posts/d12d6355/5.png" class="" title="This is an 5 image">
+<img src="/posts/d12d6355/6.png" class="" title="This is an 6 image">
 <p>copy代码 然后把代码存放到.html文件中打开就可以了</p>
 <h2 id="CSRF漏洞造成的危害"><a href="#CSRF漏洞造成的危害" class="headerlink" title="CSRF漏洞造成的危害"></a>CSRF漏洞造成的危害</h2><ul>
 <li>篡改目标网站上的用户数据信息</li>
