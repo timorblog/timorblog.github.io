@@ -3,10 +3,10 @@
   <entry>
     <title>Kali Linux基础配置</title>
     <url>/posts/2f7b2975.html</url>
-    <content><![CDATA[<img src="/posts/undefined/0.png" class="" title="This is an 0 image">
+    <content><![CDATA[<img src="/posts/2f7b2975/0.png" class="" title="This is an 0 image">
 <a id="more"></a>
 <h2 id="下载Kali-Linux"><a href="#下载Kali-Linux" class="headerlink" title="下载Kali Linux"></a>下载Kali Linux</h2><p>下载网址：<a href="https://www.kali.org/downloads/" target="_blank" rel="noopener">https://www.kali.org/downloads/</a><br>我使用的是VMware的所以我下载对应的版本</p>
-<img src="/posts/undefined/1.png" class="" title="This is an 1 image">
+<img src="/posts/2f7b2975/1.png" class="" title="This is an 1 image">
 <h2 id="软件更新"><a href="#软件更新" class="headerlink" title="软件更新"></a>软件更新</h2><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 我习惯一次升级所有软件</span></span><br><span class="line">apt-<span class="builtin-name">get</span> update &amp;&amp; apt-<span class="builtin-name">get</span><span class="built_in"> upgrade </span>&amp;&amp; apt-<span class="builtin-name">get</span> clean</span><br></pre></td></tr></table></figure>
 <h2 id="Kali-2019-4-中文乱码解决问题"><a href="#Kali-2019-4-中文乱码解决问题" class="headerlink" title="Kali 2019.4 中文乱码解决问题"></a>Kali 2019.4 中文乱码解决问题</h2><figure class="highlight vala"><table><tr><td class="code"><pre><span class="line">dpkg-reconfigure locales</span><br><span class="line"><span class="comment">//设置编码字体为：zh_CN.UTF-8 UTF-8 和 en_US.UTF-8 UTF-8</span></span><br><span class="line"><span class="comment">//空格为选中 tab为切换  回车确定</span></span><br><span class="line"><span class="comment">//选中 zh_CN.UTF-8 UTF-8 为默认</span></span><br><span class="line"><span class="meta"># 安装中文字体</span></span><br><span class="line">apt-<span class="keyword">get</span> install  fonts-wqy-microhei </span><br><span class="line">apt-<span class="keyword">get</span> install  fonts-wqy-zenhei </span><br><span class="line"><span class="meta"># 重启</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 
@@ -27,6 +27,7 @@
     <title>CSRF</title>
     <url>/posts/d12d6355.html</url>
     <content><![CDATA[<h1 id="CSRF漏洞"><a href="#CSRF漏洞" class="headerlink" title="CSRF漏洞"></a>CSRF漏洞</h1><h2 id="什么是CSRF漏洞"><a href="#什么是CSRF漏洞" class="headerlink" title="什么是CSRF漏洞"></a>什么是CSRF漏洞</h2><p>CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。而XSS是直接盗取了用户的Cookie，从而登录到用户的后台修改相关信息</p>
+<a id="more"></a>
 <h2 id="CSRF攻击流程"><a href="#CSRF攻击流程" class="headerlink" title="CSRF攻击流程"></a>CSRF攻击流程</h2><p>受害者登录A网站。<br>攻击者引诱受害者访问B网站（B网站是攻击者构造的一个恶意网站）。<br>当用户没有退出A网站或A网站的Cookie没有过期，只要在同一个浏览器中打开B网站，攻击者就可以利用用户的身份进行操作。</p>
 <h2 id="CSRF漏洞的主要原因"><a href="#CSRF漏洞的主要原因" class="headerlink" title="CSRF漏洞的主要原因"></a>CSRF漏洞的主要原因</h2><p>请求所有的参数均可确定<br>请求的审核不严格，比如只验证了Cookie</p>
 <h2 id="挖掘CSRF漏洞"><a href="#挖掘CSRF漏洞" class="headerlink" title="挖掘CSRF漏洞"></a>挖掘CSRF漏洞</h2><p>特征点：</p>
