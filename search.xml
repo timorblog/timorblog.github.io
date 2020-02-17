@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>AWVS Linux 破解版在 Centos7 下安装过程</title>
+    <url>/posts/d2a75358.html</url>
+    <content><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>下载AWVS安装包及破解文件</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>环境： Centos 7.6<br>安装依赖包</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">yum</span> <span class="selector-tag">install</span> <span class="selector-tag">libXrender</span>  <span class="selector-tag">libXext</span> <span class="selector-tag">libXcursor</span>  <span class="selector-tag">libXfixes</span> <span class="selector-tag">libXcomposite</span> <span class="selector-tag">libXrandr</span> <span class="selector-tag">libXdamage</span>  <span class="selector-tag">libXtst</span> <span class="selector-tag">libXi</span> <span class="selector-tag">cups-libs</span> <span class="selector-tag">dbus-glib</span> <span class="selector-tag">libXrandr</span> <span class="selector-tag">libXcursor</span> <span class="selector-tag">libXinerama</span> <span class="selector-tag">cairo</span> <span class="selector-tag">cairo-gobject</span> <span class="selector-tag">pango</span>  <span class="selector-tag">libXScrnSaver</span> <span class="selector-tag">libatk-bridge-2</span><span class="selector-class">.0</span><span class="selector-class">.so</span><span class="selector-class">.0</span> <span class="selector-tag">libgdk-3</span><span class="selector-class">.so</span><span class="selector-class">.0</span> <span class="selector-tag">libgtk-3</span><span class="selector-class">.so</span><span class="selector-class">.0</span> <span class="selector-tag">libgdk_pixbuf-2</span><span class="selector-class">.0</span><span class="selector-class">.so</span><span class="selector-class">.0</span> <span class="selector-tag">-y</span></span><br></pre></td></tr></table></figure>
+<p>给安装文件赋予权限 </p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">chmod</span> <span class="selector-tag">a</span>+<span class="selector-tag">x</span> <span class="selector-tag">acunetix_12</span><span class="selector-class">.0</span><span class="selector-class">.191218085_x64</span><span class="selector-class">.sh</span></span><br></pre></td></tr></table></figure>
+<p>执行文件</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">./acunetix_12<span class="number">.0</span><span class="number">.191218085</span>_x64.sh</span><br></pre></td></tr></table></figure>
+<p>按照提示，脚本交互式输入用户信息:</p>
+<ol>
+<li>是否同意协议: yes</li>
+<li>输入主机名: (可是输入IP地址)</li>
+<li>输入管理员邮箱:  <a href="mailto:123456@qq.com">123456@qq.com</a></li>
+<li>输入密码:<br>安装成功<br>给破解文件权限<figure class="highlight glsl"><table><tr><td class="code"><pre><span class="line">chmod a+x <span class="keyword">patch</span></span><br></pre></td></tr></table></figure>
+执行破解文件<figure class="highlight glsl"><table><tr><td class="code"><pre><span class="line">./<span class="keyword">patch</span></span><br></pre></td></tr></table></figure>
+发现报错<br>./patch: /lib64/libstdc++.so.6: version GLIBCXX_3.4.21’ not found (required by ./patch)</li>
+</ol>
+<p>看到了这个文章<br><a href="https://blog.csdn.net/salman_tan/article/details/83147827" target="_blank" rel="noopener">https://blog.csdn.net/salman_tan/article/details/83147827</a><br>就可以解决<br>然后执行</p>
+<figure class="highlight glsl"><table><tr><td class="code"><pre><span class="line">./<span class="keyword">patch</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Input</span> your license_key:9999-9999-9999</span><br><span class="line"><span class="keyword">Input</span> your company:<span class="keyword">test</span></span><br><span class="line"><span class="keyword">Input</span> your name:<span class="keyword">test</span></span><br><span class="line"><span class="keyword">Input</span> your phone:<span class="keyword">test</span></span><br><span class="line"><span class="keyword">Input</span> your email:<span class="keyword">test</span></span><br><span class="line"><span class="keyword">Input</span> your country:<span class="keyword">test</span></span><br><span class="line"><span class="keyword">Input</span> your max_engines:999</span><br><span class="line"><span class="keyword">Input</span> your max_targets:999999</span><br></pre></td></tr></table></figure>
+<p>就可以了</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Kali Linux基础配置</title>
     <url>/posts/2f7b2975.html</url>
     <content><![CDATA[<img src="/posts/2f7b2975/0.png" class="" title="This is an 0 image">
