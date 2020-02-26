@@ -161,7 +161,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">21</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">22</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -211,6 +211,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/59b4f38.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xiaobai.jpg">
+      <meta itemprop="name" content="Timor">
+      <meta itemprop="description" content="渗透测试|网络安全|信息安全|WEB安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Timorblog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/59b4f38.html" class="post-title-link" itemprop="url">Frp-内网穿透工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-26 13:37:38 / 修改时间：15:10:36" itemprop="dateCreated datePublished" datetime="2020-02-26T13:37:38+08:00">2020-02-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/59b4f38.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/d2a75358.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -234,10 +300,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-17 15:00:14 / 修改时间：17:40:44" itemprop="dateCreated datePublished" datetime="2020-02-17T15:00:14+08:00">2020-02-17</time>
+              <time title="创建时间：2020-02-17 15:00:14" itemprop="dateCreated datePublished" datetime="2020-02-17T15:00:14+08:00">2020-02-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-26 15:10:58" itemprop="dateModified" datetime="2020-02-26T15:10:58+08:00">2020-02-26</time>
+              </span>
 
           
 
@@ -251,26 +323,14 @@
 
       
           <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>下载AWVS安装包及破解文件</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>环境： Centos 7.6<br>安装依赖包</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">yum</span> <span class="selector-tag">install</span> <span class="selector-tag">libXrender</span>  <span class="selector-tag">libXext</span> <span class="selector-tag">libXcursor</span>  <span class="selector-tag">libXfixes</span> <span class="selector-tag">libXcomposite</span> <span class="selector-tag">libXrandr</span> <span class="selector-tag">libXdamage</span>  <span class="selector-tag">libXtst</span> <span class="selector-tag">libXi</span> <span class="selector-tag">cups-libs</span> <span class="selector-tag">dbus-glib</span> <span class="selector-tag">libXrandr</span> <span class="selector-tag">libXcursor</span> <span class="selector-tag">libXinerama</span> <span class="selector-tag">cairo</span> <span class="selector-tag">cairo-gobject</span> <span class="selector-tag">pango</span>  <span class="selector-tag">libXScrnSaver</span> <span class="selector-tag">libatk-bridge-2</span><span class="selector-class">.0</span><span class="selector-class">.so</span><span class="selector-class">.0</span> <span class="selector-tag">libgdk-3</span><span class="selector-class">.so</span><span class="selector-class">.0</span> <span class="selector-tag">libgtk-3</span><span class="selector-class">.so</span><span class="selector-class">.0</span> <span class="selector-tag">libgdk_pixbuf-2</span><span class="selector-class">.0</span><span class="selector-class">.so</span><span class="selector-class">.0</span> <span class="selector-tag">-y</span></span><br></pre></td></tr></table></figure>
-<p>给安装文件赋予权限 </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">chmod</span> <span class="selector-tag">a</span>+<span class="selector-tag">x</span> <span class="selector-tag">acunetix_12</span><span class="selector-class">.0</span><span class="selector-class">.191218085_x64</span><span class="selector-class">.sh</span></span><br></pre></td></tr></table></figure>
-<p>执行文件</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./acunetix_12<span class="number">.0</span><span class="number">.191218085</span>_x64.sh</span><br></pre></td></tr></table></figure>
-<p>按照提示，脚本交互式输入用户信息:</p>
-<ol>
-<li>是否同意协议: yes</li>
-<li>输入主机名: (可是输入IP地址)</li>
-<li>输入管理员邮箱:  <a href="mailto:123456@qq.com">123456@qq.com</a></li>
-<li>输入密码:<br>安装成功<br>给破解文件权限<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+x <span class="keyword">patch</span></span><br></pre></td></tr></table></figure>
-执行破解文件<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="keyword">patch</span></span><br></pre></td></tr></table></figure>
-发现报错<br>./patch: /lib64/libstdc++.so.6: version GLIBCXX_3.4.21’ not found (required by ./patch)</li>
-</ol>
-<p>看到了这个文章<br><a href="https://blog.csdn.net/salman_tan/article/details/83147827" target="_blank" rel="noopener">https://blog.csdn.net/salman_tan/article/details/83147827</a><br>就可以解决<br>然后执行</p>
-<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="keyword">patch</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Input</span> your license_key:9999-9999-9999</span><br><span class="line"><span class="keyword">Input</span> your company:<span class="keyword">test</span></span><br><span class="line"><span class="keyword">Input</span> your name:<span class="keyword">test</span></span><br><span class="line"><span class="keyword">Input</span> your phone:<span class="keyword">test</span></span><br><span class="line"><span class="keyword">Input</span> your email:<span class="keyword">test</span></span><br><span class="line"><span class="keyword">Input</span> your country:<span class="keyword">test</span></span><br><span class="line"><span class="keyword">Input</span> your max_engines:999</span><br><span class="line"><span class="keyword">Input</span> your max_targets:999999</span><br></pre></td></tr></table></figure>
-<p>就可以了</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/d2a75358.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -927,79 +987,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/843f3569.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/xiaobai.jpg">
-      <meta itemprop="name" content="Timor">
-      <meta itemprop="description" content="渗透测试|网络安全|信息安全|WEB安全">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Timorblog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/843f3569.html" class="post-title-link" itemprop="url">Windows常用命令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-07 14:58:20" itemprop="dateCreated datePublished" datetime="2020-01-07T14:58:20+08:00">2020-01-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-20 08:52:00" itemprop="dateModified" datetime="2020-01-20T08:52:00+08:00">2020-01-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>查看所有网络进程占用的端口与PID</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">netstat -ano</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/843f3569.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1072,7 +1059,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
