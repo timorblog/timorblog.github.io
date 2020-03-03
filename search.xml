@@ -4,8 +4,8 @@
     <title>Cobalt Strike 安装</title>
     <url>/posts/431a3a09.html</url>
     <content><![CDATA[<img src="/posts/431a3a09/1.jpg" class="" title="This is an 1 image">
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Cobalt Strike 分为客户端和服务端，可分布式操作、协同作战。服务器端只能运行在Linux系统中，可搭建在VPS上。</p>
 <a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Cobalt Strike 分为客户端和服务端，可分布式操作、协同作战。服务器端只能运行在Linux系统中，可搭建在VPS上。</p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Cobalt Strike 1.4 破解汉化版<br>服务器：Centos 7.6<br>客户端：Windows 10</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p>上传CS到服务端<br>安装java环境</p>
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">yum install -y java<span class="number">-1.8</span><span class="number">.0</span>-openjdk*</span><br></pre></td></tr></table></figure>
