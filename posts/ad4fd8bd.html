@@ -46,13 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="渗透测试|网络安全|信息安全|WEB安全">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Timorblog">
-<meta property="og:url" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;tags&#x2F;SQL%E6%B3%A8%E5%85%A5&#x2F;index.html">
+  <meta name="description" content="常见端口和服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见端口和服务">
+<meta property="og:url" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;ad4fd8bd.html">
 <meta property="og:site_name" content="Timorblog">
-<meta property="og:description" content="渗透测试|网络安全|信息安全|WEB安全">
+<meta property="og:description" content="常见端口和服务">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-03T08:21:07.000Z">
+<meta property="article:modified_time" content="2020-03-04T07:15:43.104Z">
 <meta property="article:author" content="Timor">
 <meta property="article:tag" content="Timor">
 <meta property="article:tag" content="渗透测试">
@@ -62,7 +64,7 @@
 <meta property="article:tag" content="GETSHELL">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://timorblog.cn/tags/SQL%E6%B3%A8%E5%85%A5/">
+<link rel="canonical" href="https://timorblog.cn/posts/ad4fd8bd.html">
 
 
 <script id="page-configurations">
@@ -70,11 +72,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>标签: SQL注入 | Timorblog</title>
+  <title>常见端口和服务 | Timorblog</title>
   
 
 
@@ -206,113 +208,354 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">SQL注入
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/ad4fd8bd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xiaobai.jpg">
+      <meta itemprop="name" content="Timor">
+      <meta itemprop="description" content="渗透测试|网络安全|信息安全|WEB安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Timorblog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          常见端口和服务
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-03 16:21:07" itemprop="dateCreated datePublished" datetime="2020-03-03T16:21:07+08:00">2020-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-04 15:15:43" itemprop="dateModified" datetime="2020-03-04T15:15:43+08:00">2020-03-04</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h2 class="collection-header">2020</h2>
+        <h2 id="常见端口和服务"><a href="#常见端口和服务" class="headerlink" title="常见端口和服务"></a>常见端口和服务</h2><a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th align="center">服务说明</th>
+<th align="right">攻击方法(漏洞)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21</td>
+<td align="center">FTP-文件传输协议</td>
+<td align="right">默认密码、暴力破解密码、VSFTP某版本后门、嗅探</td>
+</tr>
+<tr>
+<td>22</td>
+<td align="center">ssh-远程登录会话</td>
+<td align="right">弱口令、暴力破解密码</td>
+</tr>
+<tr>
+<td>23</td>
+<td align="center">Telent-远程登录服务</td>
+<td align="right">弱口令、爆破、嗅探</td>
+</tr>
+<tr>
+<td>25</td>
+<td align="center">SMTP-简单邮件服务器</td>
+<td align="right">无认证时可伪造发件人</td>
+</tr>
+<tr>
+<td>53</td>
+<td align="center">domain-DNS域名解析服务</td>
+<td align="right">测试域传送漏洞、SPF / DMARC Check、DDoS（DNS Query Flood / DNS 反弹）</td>
+</tr>
+<tr>
+<td>69</td>
+<td align="center">TFTP-小型文件传输协议</td>
+<td align="right">弱口令</td>
+</tr>
+<tr>
+<td>80</td>
+<td align="center">HTTP-超文本传输协议</td>
+<td align="right">常见web漏洞</td>
+</tr>
+<tr>
+<td>139</td>
+<td align="center">NetBIOS/SMB服务</td>
+<td align="right">爆破、远程代码执行</td>
+</tr>
+<tr>
+<td>443</td>
+<td align="center">HTTPS服务</td>
+<td align="right">心脏滴血等与SSL有关的漏洞</td>
+</tr>
+<tr>
+<td>445</td>
+<td align="center">SMB服务端口</td>
+<td align="right">MS17-010</td>
+</tr>
+<tr>
+<td>873</td>
+<td align="center">Rsync</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>1433</td>
+<td align="center">MSSQL数据库</td>
+<td align="right">爆破、SQL注入</td>
+</tr>
+<tr>
+<td>1521</td>
+<td align="center">Oracle数据库</td>
+<td align="right">SQL注入</td>
+</tr>
+<tr>
+<td>2049</td>
+<td align="center">NFS</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>2181</td>
+<td align="center">ZooKeeper监听端口</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>2375</td>
+<td align="center">Docker端口</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>2601</td>
+<td align="center">Zebra</td>
+<td align="right">弱口令zebr</td>
+</tr>
+<tr>
+<td>3306</td>
+<td align="center">Mysql数据库</td>
+<td align="right">爆破、SQL注入</td>
+</tr>
+<tr>
+<td>3389</td>
+<td align="center">Windows远程桌面服务</td>
+<td align="right">弱口令、CVE-2019-0708、ms12-020</td>
+</tr>
+<tr>
+<td>3690</td>
+<td align="center">SVN服务</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>4440</td>
+<td align="center">Rundeck</td>
+<td align="right">弱口令admin</td>
+</tr>
+<tr>
+<td>4560</td>
+<td align="center">log4j SocketServer监听的端口</td>
+<td align="right">log4j&lt;=1.2.17反序列化漏洞（CVE-2019-17571）</td>
+</tr>
+<tr>
+<td>4750</td>
+<td align="center">BMC</td>
+<td align="right">BMC服务器自动化RSCD代理远程代码执行(CVE-2016-1542)</td>
+</tr>
+<tr>
+<td>4848</td>
+<td align="center">GlassFish控制台端口</td>
+<td align="right">弱口令admin/adminadmin</td>
+</tr>
+<tr>
+<td>5000</td>
+<td align="center">SysBase/DB2数据库端口</td>
+<td align="right">爆破、注入漏洞</td>
+</tr>
+<tr>
+<td>5432</td>
+<td align="center">PostGreSQL数据库</td>
+<td align="right">爆破、注入</td>
+</tr>
+<tr>
+<td>5632</td>
+<td align="center">PyAnywhere服务端口</td>
+<td align="right">代码执行漏洞</td>
+</tr>
+<tr>
+<td>5900/5901</td>
+<td align="center">VNC监听端口</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>5984</td>
+<td align="center">CouchDB端口</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>6379</td>
+<td align="center">Redis数据库端口</td>
+<td align="right">Redis未授权访问漏洞</td>
+</tr>
+<tr>
+<td>8009</td>
+<td align="center">Tomcat AJP 协议</td>
+<td align="right">CVE-2020-1938</td>
+</tr>
+<tr>
+<td>7001/7002</td>
+<td align="center">Weblogic</td>
+<td align="right">Weblogic反序列化漏洞</td>
+</tr>
+<tr>
+<td>8069</td>
+<td align="center">Zabbix服务端口</td>
+<td align="right">Zabbix弱口令 Getshell漏洞</td>
+</tr>
+<tr>
+<td>8080</td>
+<td align="center">Tomcat、JBoss</td>
+<td align="right">omcat管理页面弱口令Getshell，JBoss未授权访问漏洞</td>
+</tr>
+<tr>
+<td>8080-8090</td>
+<td align="center"></td>
+<td align="right">可能存在web服务</td>
+</tr>
+<tr>
+<td>8089</td>
+<td align="center">Jetty、Jenkins服务端口</td>
+<td align="right">反序列化、控制台弱口令等漏洞</td>
+</tr>
+<tr>
+<td>8161</td>
+<td align="center">Apache ActiveMQ后台管理系统端口</td>
+<td align="right">弱口令admin/admin、CVE-2016-3088漏洞</td>
+</tr>
+<tr>
+<td>9000</td>
+<td align="center">fastcgi端口</td>
+<td align="right">远程命令执行漏洞</td>
+</tr>
+<tr>
+<td>9001</td>
+<td align="center">Supervisord</td>
+<td align="right">远程命令执行漏洞(CVE-2017-11610)</td>
+</tr>
+<tr>
+<td>9043/9090</td>
+<td align="center">WebSphere</td>
+<td align="right">WebSphere反序列化漏洞</td>
+</tr>
+<tr>
+<td>9200/9300</td>
+<td align="center">Elasticsearch监听端口</td>
+<td align="right">Elasticsearch未授权访问漏洞</td>
+</tr>
+<tr>
+<td>9990</td>
+<td align="center">jboss</td>
+<td align="right">远程代码执行、Java反序列化</td>
+</tr>
+<tr>
+<td>10000</td>
+<td align="center">Webmin-Web控制面板</td>
+<td align="right">弱口令</td>
+</tr>
+<tr>
+<td>10001/10002</td>
+<td align="center">JmxRemoteLifecycleListener监听</td>
+<td align="right">Tomcat反序列化漏洞(CVE-2016-8735)</td>
+</tr>
+<tr>
+<td>11211</td>
+<td align="center">Memcached监听端口</td>
+<td align="right">Memcached未授权访问漏洞</td>
+</tr>
+<tr>
+<td>27017/27018</td>
+<td align="center">MongoDB数据库端口</td>
+<td align="right">MongoDB未授权访问漏洞</td>
+</tr>
+<tr>
+<td>50000</td>
+<td align="center">SAP Management Console服务端口</td>
+<td align="right">远程命令执行漏洞。</td>
+</tr>
+<tr>
+<td>50070</td>
+<td align="center">Hadoop服务端口</td>
+<td align="right">Hadoop未授权访问漏洞</td>
+</tr>
+<tr>
+<td>61616</td>
+<td align="center">Apache ActiveMQ服务端口</td>
+<td align="right">Apache ActiveMQ任意文件写入漏洞（CVE-2016-3088）</td>
+</tr>
+</tbody></table>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        <div>
+            
+            <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+            
+        </div>
+      <footer class="post-footer">
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-13T09:24:25+08:00"
-              content="2020-01-13">
-          01-13
-        </time>
-      </div>
 
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/dfca0ed5.html" itemprop="url">
-            <span itemprop="name">Webug靶场-注入</span>
-          </a>
-      </h3>
+        
 
-    </header>
-  </article>
-    <div class="collection-year">
-      <h2 class="collection-header">2019</h2>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/431a3a09.html" rel="prev" title="Cobalt Strike 安装">
+      <i class="fa fa-chevron-left"></i> Cobalt Strike 安装
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-24T11:21:39+08:00"
-              content="2019-12-24">
-          12-24
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/bbc8ef4d.html" itemprop="url">
-            <span itemprop="name">SQLMap</span>
-          </a>
-      </h3>
-
-    </header>
+      </footer>
+    
   </article>
+  
+  
+  
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-20T16:28:36+08:00"
-              content="2019-12-20">
-          12-20
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/e73517db.html" itemprop="url">
-            <span itemprop="name">SQL注入</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-20T10:12:54+08:00"
-              content="2019-12-20">
-          12-20
-        </time>
-      </div>
-
-      <h3 class="post-title">
-          <a class="post-title-link" href="/posts/d4529150.html" itemprop="url">
-            <span itemprop="name">渗透LOL钓鱼网站</span>
-          </a>
-      </h3>
-
-    </header>
-  </article>
-
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -363,6 +606,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见端口和服务"><span class="nav-number">1.</span> <span class="nav-text">常见端口和服务</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

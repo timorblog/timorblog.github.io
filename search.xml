@@ -1,6 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>常见端口和服务</title>
+    <url>/posts/ad4fd8bd.html</url>
+    <content><![CDATA[<h2 id="常见端口和服务"><a href="#常见端口和服务" class="headerlink" title="常见端口和服务"></a>常见端口和服务</h2><a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th align="center">服务说明</th>
+<th align="right">攻击方法(漏洞)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21</td>
+<td align="center">FTP-文件传输协议</td>
+<td align="right">默认密码、暴力破解密码、VSFTP某版本后门、嗅探</td>
+</tr>
+<tr>
+<td>22</td>
+<td align="center">ssh-远程登录会话</td>
+<td align="right">弱口令、暴力破解密码</td>
+</tr>
+<tr>
+<td>23</td>
+<td align="center">Telent-远程登录服务</td>
+<td align="right">弱口令、爆破、嗅探</td>
+</tr>
+<tr>
+<td>25</td>
+<td align="center">SMTP-简单邮件服务器</td>
+<td align="right">无认证时可伪造发件人</td>
+</tr>
+<tr>
+<td>53</td>
+<td align="center">domain-DNS域名解析服务</td>
+<td align="right">测试域传送漏洞、SPF / DMARC Check、DDoS（DNS Query Flood / DNS 反弹）</td>
+</tr>
+<tr>
+<td>69</td>
+<td align="center">TFTP-小型文件传输协议</td>
+<td align="right">弱口令</td>
+</tr>
+<tr>
+<td>80</td>
+<td align="center">HTTP-超文本传输协议</td>
+<td align="right">常见web漏洞</td>
+</tr>
+<tr>
+<td>139</td>
+<td align="center">NetBIOS/SMB服务</td>
+<td align="right">爆破、远程代码执行</td>
+</tr>
+<tr>
+<td>443</td>
+<td align="center">HTTPS服务</td>
+<td align="right">心脏滴血等与SSL有关的漏洞</td>
+</tr>
+<tr>
+<td>445</td>
+<td align="center">SMB服务端口</td>
+<td align="right">MS17-010</td>
+</tr>
+<tr>
+<td>873</td>
+<td align="center">Rsync</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>1433</td>
+<td align="center">MSSQL数据库</td>
+<td align="right">爆破、SQL注入</td>
+</tr>
+<tr>
+<td>1521</td>
+<td align="center">Oracle数据库</td>
+<td align="right">SQL注入</td>
+</tr>
+<tr>
+<td>2049</td>
+<td align="center">NFS</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>2181</td>
+<td align="center">ZooKeeper监听端口</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>2375</td>
+<td align="center">Docker端口</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>2601</td>
+<td align="center">Zebra</td>
+<td align="right">弱口令zebr</td>
+</tr>
+<tr>
+<td>3306</td>
+<td align="center">Mysql数据库</td>
+<td align="right">爆破、SQL注入</td>
+</tr>
+<tr>
+<td>3389</td>
+<td align="center">Windows远程桌面服务</td>
+<td align="right">弱口令、CVE-2019-0708、ms12-020</td>
+</tr>
+<tr>
+<td>3690</td>
+<td align="center">SVN服务</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>4440</td>
+<td align="center">Rundeck</td>
+<td align="right">弱口令admin</td>
+</tr>
+<tr>
+<td>4560</td>
+<td align="center">log4j SocketServer监听的端口</td>
+<td align="right">log4j&lt;=1.2.17反序列化漏洞（CVE-2019-17571）</td>
+</tr>
+<tr>
+<td>4750</td>
+<td align="center">BMC</td>
+<td align="right">BMC服务器自动化RSCD代理远程代码执行(CVE-2016-1542)</td>
+</tr>
+<tr>
+<td>4848</td>
+<td align="center">GlassFish控制台端口</td>
+<td align="right">弱口令admin/adminadmin</td>
+</tr>
+<tr>
+<td>5000</td>
+<td align="center">SysBase/DB2数据库端口</td>
+<td align="right">爆破、注入漏洞</td>
+</tr>
+<tr>
+<td>5432</td>
+<td align="center">PostGreSQL数据库</td>
+<td align="right">爆破、注入</td>
+</tr>
+<tr>
+<td>5632</td>
+<td align="center">PyAnywhere服务端口</td>
+<td align="right">代码执行漏洞</td>
+</tr>
+<tr>
+<td>5900/5901</td>
+<td align="center">VNC监听端口</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>5984</td>
+<td align="center">CouchDB端口</td>
+<td align="right">未授权访问</td>
+</tr>
+<tr>
+<td>6379</td>
+<td align="center">Redis数据库端口</td>
+<td align="right">Redis未授权访问漏洞</td>
+</tr>
+<tr>
+<td>8009</td>
+<td align="center">Tomcat AJP 协议</td>
+<td align="right">CVE-2020-1938</td>
+</tr>
+<tr>
+<td>7001/7002</td>
+<td align="center">Weblogic</td>
+<td align="right">Weblogic反序列化漏洞</td>
+</tr>
+<tr>
+<td>8069</td>
+<td align="center">Zabbix服务端口</td>
+<td align="right">Zabbix弱口令 Getshell漏洞</td>
+</tr>
+<tr>
+<td>8080</td>
+<td align="center">Tomcat、JBoss</td>
+<td align="right">omcat管理页面弱口令Getshell，JBoss未授权访问漏洞</td>
+</tr>
+<tr>
+<td>8080-8090</td>
+<td align="center"></td>
+<td align="right">可能存在web服务</td>
+</tr>
+<tr>
+<td>8089</td>
+<td align="center">Jetty、Jenkins服务端口</td>
+<td align="right">反序列化、控制台弱口令等漏洞</td>
+</tr>
+<tr>
+<td>8161</td>
+<td align="center">Apache ActiveMQ后台管理系统端口</td>
+<td align="right">弱口令admin/admin、CVE-2016-3088漏洞</td>
+</tr>
+<tr>
+<td>9000</td>
+<td align="center">fastcgi端口</td>
+<td align="right">远程命令执行漏洞</td>
+</tr>
+<tr>
+<td>9001</td>
+<td align="center">Supervisord</td>
+<td align="right">远程命令执行漏洞(CVE-2017-11610)</td>
+</tr>
+<tr>
+<td>9043/9090</td>
+<td align="center">WebSphere</td>
+<td align="right">WebSphere反序列化漏洞</td>
+</tr>
+<tr>
+<td>9200/9300</td>
+<td align="center">Elasticsearch监听端口</td>
+<td align="right">Elasticsearch未授权访问漏洞</td>
+</tr>
+<tr>
+<td>9990</td>
+<td align="center">jboss</td>
+<td align="right">远程代码执行、Java反序列化</td>
+</tr>
+<tr>
+<td>10000</td>
+<td align="center">Webmin-Web控制面板</td>
+<td align="right">弱口令</td>
+</tr>
+<tr>
+<td>10001/10002</td>
+<td align="center">JmxRemoteLifecycleListener监听</td>
+<td align="right">Tomcat反序列化漏洞(CVE-2016-8735)</td>
+</tr>
+<tr>
+<td>11211</td>
+<td align="center">Memcached监听端口</td>
+<td align="right">Memcached未授权访问漏洞</td>
+</tr>
+<tr>
+<td>27017/27018</td>
+<td align="center">MongoDB数据库端口</td>
+<td align="right">MongoDB未授权访问漏洞</td>
+</tr>
+<tr>
+<td>50000</td>
+<td align="center">SAP Management Console服务端口</td>
+<td align="right">远程命令执行漏洞。</td>
+</tr>
+<tr>
+<td>50070</td>
+<td align="center">Hadoop服务端口</td>
+<td align="right">Hadoop未授权访问漏洞</td>
+</tr>
+<tr>
+<td>61616</td>
+<td align="center">Apache ActiveMQ服务端口</td>
+<td align="right">Apache ActiveMQ任意文件写入漏洞（CVE-2016-3088）</td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
+  <entry>
     <title>Cobalt Strike 安装</title>
     <url>/posts/431a3a09.html</url>
     <content><![CDATA[<img src="/posts/431a3a09/1.jpg" class="" title="This is an 1 image">
@@ -426,6 +686,8 @@
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">mstsc</span></span><br></pre></td></tr></table></figure>
 <p>查看ip</p>
 <figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">ipconfig  /<span class="keyword">all</span></span><br></pre></td></tr></table></figure>
+<p>查看本地DNS缓存</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ipconfig</span> /displaydns</span><br></pre></td></tr></table></figure>
 <p>查看系统信息</p>
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">systeminfo</span></span><br></pre></td></tr></table></figure>
 <p>查看局域网 同一网段存在的ip</p>
@@ -452,6 +714,8 @@
 <figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">move <span class="number">1.</span>txt D:\       <span class="comment">//把目录中的1.txt移动到d盘下</span></span><br></pre></td></tr></table></figure>
 <p>树形文件结构</p>
 <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">tree</span></span><br></pre></td></tr></table></figure>
+<p>查看所有服务</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
 <p>开启服务</p>
 <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> 服务名</span><br></pre></td></tr></table></figure>
 <p>暂停某服务</p>
@@ -462,6 +726,10 @@
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">net<span class="built_in"> user </span>guest / active:yes</span><br></pre></td></tr></table></figure>
 <p>查看有哪些用户</p>
 <figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">net <span class="keyword">user</span></span><br></pre></td></tr></table></figure>
+<p>查看所有组名</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">net</span> localgroup</span><br></pre></td></tr></table></figure>
+<p>查看指定组中的成员</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">net</span> localgroup <span class="string">"Administrators"</span></span><br></pre></td></tr></table></figure>
 <p>查看账户的属性</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">net<span class="built_in"> user </span>用户名</span><br></pre></td></tr></table></figure>
 <p>把用户添加到管理员中使其具有管理员权限</p>
@@ -474,7 +742,26 @@
 <figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ping</span> ip  / <span class="built_in">ping</span> 域名      //向对方主机发送数据，查看是否互通</span><br></pre></td></tr></table></figure>
 <p>查看用户登陆时间</p>
 <figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">query <span class="keyword">user</span></span><br></pre></td></tr></table></figure>
-]]></content>
+<p>查看当前用户在系统中的权限</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">whoami /<span class="keyword">all</span></span><br></pre></td></tr></table></figure>
+<p>查看机器名</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hostname</span></span><br></pre></td></tr></table></figure>
+<p>查看路由信息</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">route <span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>NT内核版本</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">ver <span class="comment">//代码行显示</span></span><br><span class="line">winver <span class="comment">//弹出界面</span></span><br></pre></td></tr></table></figure>
+<p>查看所有盘符</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">fsutil fsinfo drives</span></span><br></pre></td></tr></table></figure>
+<p>查看主机开启的共享</p>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">net</span> share</span><br></pre></td></tr></table></figure>
+<p>在指定目录下搜集各种敏感文件</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.xml"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.mdb"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.sql"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.mdf"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.eml"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.pst"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*conf*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*bak*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*pwd*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*pass*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*login*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*user*"</span></span><br></pre></td></tr></table></figure>
+<p>强制删除指定路径下的所有文件</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">del d:\ad\*.* <span class="string">/a</span> <span class="string">/s</span> <span class="string">/q</span> <span class="string">/f</span></span><br></pre></td></tr></table></figure>
+<p>立即重启当前机器</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">restart <span class="string">/r</span> <span class="string">/t</span> 0</span><br></pre></td></tr></table></figure>
+<p>查看当前机器安装的驱动列表</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">driverquery</span></span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>PHP学习笔记</title>
