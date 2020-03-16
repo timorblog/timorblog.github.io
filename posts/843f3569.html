@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="查看所有网络进程占用的端口与PID 1netstat -ano">
+  <meta name="description" content="内网渗透命令查询命令123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960tree  &#x2F;&#x2F;树形文件结构dir  &#x2F;&#x2F;查看目录ipconfig &#x2F;all    &#x2F;&#x2F;查看ipwhoami  &#x2F;&#x2F; 查看当前用户在系统中的权限systemi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows常用命令">
 <meta property="og:url" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;843f3569.html">
 <meta property="og:site_name" content="Timorblog">
-<meta property="og:description" content="查看所有网络进程占用的端口与PID 1netstat -ano">
+<meta property="og:description" content="内网渗透命令查询命令123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960tree  &#x2F;&#x2F;树形文件结构dir  &#x2F;&#x2F;查看目录ipconfig &#x2F;all    &#x2F;&#x2F;查看ipwhoami  &#x2F;&#x2F; 查看当前用户在系统中的权限systemi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-01-07T06:58:20.000Z">
-<meta property="article:modified_time" content="2020-03-04T03:53:32.935Z">
+<meta property="article:modified_time" content="2020-03-16T07:23:59.429Z">
 <meta property="article:author" content="Timor">
 <meta property="article:tag" content="Timor">
 <meta property="article:tag" content="渗透测试">
@@ -163,7 +163,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">24</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">26</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-04 11:53:32" itemprop="dateModified" datetime="2020-03-04T11:53:32+08:00">2020-03-04</time>
+                <time title="修改时间：2020-03-16 15:23:59" itemprop="dateModified" datetime="2020-03-16T15:23:59+08:00">2020-03-16</time>
               </span>
 
           
@@ -264,101 +264,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>查看所有网络进程占用的端口与PID</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">netstat -ano</span></span><br></pre></td></tr></table></figure>
+        <h2 id="内网渗透命令"><a href="#内网渗透命令" class="headerlink" title="内网渗透命令"></a>内网渗透命令</h2><h3 id="查询命令"><a href="#查询命令" class="headerlink" title="查询命令"></a>查询命令</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">tree  <span class="string">//</span>树形文件结构</span><br><span class="line">dir  <span class="string">//</span>查看目录</span><br><span class="line">ipconfig <span class="string">/all</span>    <span class="string">//</span>查看ip</span><br><span class="line">whoami  <span class="string">//</span> 查看当前用户在系统中的权限</span><br><span class="line">systeminfo  <span class="string">//</span>查询系统以及补丁信息</span><br><span class="line">tasklist    <span class="string">//</span>查看本机任务列表</span><br><span class="line">tasklist <span class="string">/svc</span>   <span class="string">//</span>查看进程、pid及服务名</span><br><span class="line">wmic qfe  get hotfixid    <span class="string">//</span>查看已安装过得补丁</span><br><span class="line">net start   <span class="string">//</span>查看当前运行的服务</span><br><span class="line">net user      <span class="string">//</span>查看本地组的用户</span><br><span class="line">net localhroup administrators   <span class="string">//</span>查看本机管理员组有哪些用户</span><br><span class="line">net localgroup   <span class="string">//</span>查看所有组名</span><br><span class="line">net localgroup <span class="string">"Administrators"</span> <span class="string">//</span>查看指定组中的成员</span><br><span class="line">net user 用户名  <span class="string">//</span>查看账户的属性</span><br><span class="line">hostname     <span class="string">//</span>查看机器名</span><br><span class="line">net use      <span class="string">//</span>查看会话</span><br><span class="line">net session     <span class="string">//</span>查看当前会话</span><br><span class="line">net share       <span class="string">//</span>查看SMB指向的路径[即共享]</span><br><span class="line">wmic share get name,path   <span class="string">//</span>查看SMB指向的路径</span><br><span class="line">wmic nteventlog get path,filename,writeable <span class="string">//</span>查询系统日志文件存储位置</span><br><span class="line">netstat  -ano      <span class="string">//</span>查看开放的端口</span><br><span class="line">netstat -ano | findstr 端口  <span class="string">//</span>对想看的端口做截取</span><br><span class="line">tasklist | findstr 端口  <span class="string">//</span>查看某PID的服务是什么进程</span><br><span class="line">net accounts      <span class="string">//</span>查看本地密码策略</span><br><span class="line">net view    <span class="string">//</span>查看局域网内其他计算机名称</span><br><span class="line"><span class="keyword">echo</span> %PROCESSOR_ARCHITECTURE%         <span class="string">//</span>查看系统是32还是64位</span><br><span class="line"><span class="keyword">set</span>                              <span class="string">//</span>查看系统环境设置变量</span><br><span class="line">path        <span class="string">//</span>获取系统环境变量信息</span><br><span class="line">wmic startup list brief       <span class="string">//</span>查看启动程序信息</span><br><span class="line">wmic product list brief            <span class="string">//</span>查看安装程序和版本信息（漏洞利用线索）</span><br><span class="line">wmic startup list full <span class="string">//</span>识别开机启动的程序</span><br><span class="line">for <span class="string">/f</span> <span class="string">"skip=9 tokens=1,2 delims=:"</span> %i in <span class="params">('netsh wlan show profiles')</span> do @<span class="keyword">echo</span> %j | findstr -i -v <span class="keyword">echo</span> | netsh wlan show profiles %j key=<span class="keyword">clear</span>    <span class="string">//</span>一键获取wifi密码</span><br><span class="line"><span class="keyword">if</span> defined PSModulePath <span class="keyword">echo</span> <span class="params">(echo 支持powershell)</span> else <span class="params">(echo 不支持powershell)</span> </span><br><span class="line"><span class="string">//</span>查看是否支持posershell</span><br><span class="line">REG query HKCU  <span class="string">/v</span> <span class="string">"pwd"</span> <span class="string">/s</span>  <span class="string">//</span>获取保存到注册表中的密码</span><br><span class="line">arp -a          <span class="string">//</span>列出本网段内所有活跃的IP地址</span><br><span class="line">route print    <span class="string">//</span>打印路由表</span><br><span class="line">netsh firewall show config     <span class="string">//</span>显示防火墙配置</span><br><span class="line">netsh firewall show state    <span class="string">//</span> 显示当前防火墙状态　</span><br><span class="line">for <span class="string">/l</span> %i in <span class="params">(1,1,255)</span> do @ping 10.0.0.%i -w 1 -n 1 | find <span class="string">/i</span> <span class="string">"ttl"</span>   <span class="string">//</span>批量扫描内网存活主机</span><br><span class="line">dir <span class="string">/b/s</span> config.*              <span class="string">//</span>查看所在目录所有config.为前缀的文件</span><br><span class="line">findstr <span class="string">/si</span> password *<span class="string">.xml</span> *<span class="string">.ini</span> *<span class="string">.txt</span>     <span class="string">//</span>查看后缀名文件中含有password关键字的文件</span><br><span class="line">findstr <span class="string">/si</span> login *<span class="string">.xml</span> *<span class="string">.ini</span> *<span class="string">.txt</span>     <span class="string">//</span>查看后缀名文件中含有login关键字的文件</span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.xml"</span>  <span class="string">//</span>在指定目录下搜集各种敏感文件</span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.mdb"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.sql"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.mdf"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.eml"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.pst"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*conf*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*bak*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*pwd*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*pass*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*login*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*user*"</span></span><br><span class="line">ping ip  / ping 域名      <span class="string">//</span>向对方主机发送数据，查看是否互通</span><br><span class="line">ver <span class="string">//</span>代码行显示 NT内核版本</span><br><span class="line">winver <span class="string">//</span>弹出界面 NT内核版本</span><br><span class="line">fsutil fsinfo drives  <span class="string">//</span>查看所有盘符</span><br><span class="line">driverquery  <span class="string">//</span>查看当前机器安装的驱动列表</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>对想看的端口做截取</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano <span class="string">| findstr 端口</span></span><br></pre></td></tr></table></figure>
-<p>查看某PID的服务是什么进程</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist <span class="string">| findstr 端口</span></span><br></pre></td></tr></table></figure>
-<p>杀死进程</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">taskkill/pid 端口PID <span class="literal">-t</span> <span class="operator">-f</span></span><br><span class="line"><span class="operator">-f</span> 用来强制执行</span><br></pre></td></tr></table></figure>
-<p>查看本机任务列表</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">tasklist</span></span><br></pre></td></tr></table></figure>
-<p>获取系统环境变量信息</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">path</span></span><br></pre></td></tr></table></figure>
-<p>设置系统环境变量</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span></span><br></pre></td></tr></table></figure>
-<p>远程桌面连接</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mstsc</span></span><br></pre></td></tr></table></figure>
-<p>查看ip</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig  /<span class="keyword">all</span></span><br></pre></td></tr></table></figure>
-<p>查看本地DNS缓存</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ipconfig</span> /displaydns</span><br></pre></td></tr></table></figure>
-<p>查看系统信息</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systeminfo</span></span><br></pre></td></tr></table></figure>
-<p>查看局域网 同一网段存在的ip</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">arp -a</span></span><br></pre></td></tr></table></figure>
-<p>查看局域网内其他计算机名称</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">net</span> <span class="keyword">view</span></span><br></pre></td></tr></table></figure>
-<p>查看目录</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure>
-<p>切换目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br></pre></td></tr></table></figure>
-<p>创建目录</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span></span><br></pre></td></tr></table></figure>
-<p>创建空文件</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> <span class="built_in">nul</span>&gt;<span class="number">1</span>.txt</span><br></pre></td></tr></table></figure>
-<p>创建非空文件</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 内容&gt;<span class="number">1.</span>txt</span><br></pre></td></tr></table></figure>
-<p>打开文件</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start <span class="number">1.</span>txt</span><br></pre></td></tr></table></figure>
-<p>打开文件（在命令行中显示文件内容）</p>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> 1.txt</span><br></pre></td></tr></table></figure>
-<p>复制文件</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy <span class="number">1.</span>txt D:\       <span class="comment">//把目录中的1.txt复制到d盘下的2.txt</span></span><br></pre></td></tr></table></figure>
-<p>移动文件</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">move <span class="number">1.</span>txt D:\       <span class="comment">//把目录中的1.txt移动到d盘下</span></span><br></pre></td></tr></table></figure>
-<p>树形文件结构</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tree</span></span><br></pre></td></tr></table></figure>
-<p>查看所有服务</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
-<p>开启服务</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> <span class="built_in">start</span> 服务名</span><br></pre></td></tr></table></figure>
-<p>暂停某服务</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net <span class="built_in">stop</span> 服务名</span><br></pre></td></tr></table></figure>
-<p>建立用户</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>用户名 密码 /add</span><br><span class="line">建立隐藏用户  ：   net<span class="built_in"> user </span>用户名$ 密码 /add</span><br></pre></td></tr></table></figure>
-<p>激活guest用户</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>guest / active:yes</span><br></pre></td></tr></table></figure>
-<p>查看有哪些用户</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net <span class="keyword">user</span></span><br></pre></td></tr></table></figure>
-<p>查看所有组名</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> localgroup</span><br></pre></td></tr></table></figure>
-<p>查看指定组中的成员</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">net</span> localgroup <span class="string">"Administrators"</span></span><br></pre></td></tr></table></figure>
-<p>查看账户的属性</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>用户名</span><br></pre></td></tr></table></figure>
-<p>把用户添加到管理员中使其具有管理员权限</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup administrators 用户名 /<span class="keyword">add</span></span><br></pre></td></tr></table></figure>
-<p>用guest用户登录后将密码改为123456</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net<span class="built_in"> user </span>guest 123456</span><br></pre></td></tr></table></figure>
-<p>更改系统登陆密码</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> password 密码</span><br></pre></td></tr></table></figure>
-<p>ping命令 </p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ping</span> ip  / <span class="built_in">ping</span> 域名      //向对方主机发送数据，查看是否互通</span><br></pre></td></tr></table></figure>
-<p>查看用户登陆时间</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query <span class="keyword">user</span></span><br></pre></td></tr></table></figure>
-<p>查看当前用户在系统中的权限</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami /<span class="keyword">all</span></span><br></pre></td></tr></table></figure>
-<p>查看机器名</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hostname</span></span><br></pre></td></tr></table></figure>
-<p>查看路由信息</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route <span class="built_in">print</span></span><br></pre></td></tr></table></figure>
-<p>NT内核版本</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ver <span class="comment">//代码行显示</span></span><br><span class="line">winver <span class="comment">//弹出界面</span></span><br></pre></td></tr></table></figure>
-<p>查看所有盘符</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">fsutil fsinfo drives</span></span><br></pre></td></tr></table></figure>
-<p>查看主机开启的共享</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">net</span> share</span><br></pre></td></tr></table></figure>
-<p>在指定目录下搜集各种敏感文件</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.xml"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.mdb"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.sql"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.mdf"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.eml"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*.pst"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*conf*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*bak*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*pwd*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*pass*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*login*"</span></span><br><span class="line">dir <span class="string">/a</span> <span class="string">/s</span> <span class="string">/b</span> d:\<span class="string">"*user*"</span></span><br></pre></td></tr></table></figure>
-<p>强制删除指定路径下的所有文件</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del d:\ad\*.* <span class="string">/a</span> <span class="string">/s</span> <span class="string">/q</span> <span class="string">/f</span></span><br></pre></td></tr></table></figure>
-<p>立即重启当前机器</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">restart <span class="string">/r</span> <span class="string">/t</span> 0</span><br></pre></td></tr></table></figure>
-<p>查看当前机器安装的驱动列表</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">driverquery</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改命令"><a href="#修改命令" class="headerlink" title="修改命令"></a>修改命令</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">taskkill/pid 端口PID -t -f  <span class="string">//</span>杀死进程 -f 用来强制执行</span><br><span class="line">mstsc    <span class="string">//</span>远程桌面连接</span><br><span class="line"><span class="keyword">cd</span>  <span class="string">//</span>切换目录</span><br><span class="line">mkdir  <span class="string">//</span>创建目录</span><br><span class="line">type nul&gt;1.txt <span class="string">//</span>创建空文件</span><br><span class="line"><span class="keyword">echo</span> 内容&gt;1.txt <span class="string">//</span>创建非空文件</span><br><span class="line">start 1.txt  <span class="string">//</span>打开文件</span><br><span class="line">type 1.txt  <span class="string">//</span>打开文件（在命令行中显示文件内容）</span><br><span class="line">copy 1.txt D:\       <span class="string">//</span>把目录中的1.txt复制到d盘下的2.txt</span><br><span class="line">move 1.txt D:\       <span class="string">//</span>把目录中的1.txt移动到d盘下</span><br><span class="line">net start 服务名    <span class="string">//</span>开启服务</span><br><span class="line">net stop 服务名    <span class="string">//</span>暂停某服务</span><br><span class="line">net user 用户名 密码 <span class="string">/add</span>  <span class="string">//</span>建立用户</span><br><span class="line">net user 用户名$ 密码 <span class="string">/add</span>  <span class="string">//</span>建立隐藏用户</span><br><span class="line">net user guest / active<span class="function">:yes</span>  <span class="string">//</span>激活guest用户</span><br><span class="line">net localgroup administrators 用户名 <span class="string">/add</span>  <span class="string">//</span>把用户添加到管理员中使其具有管理员权限</span><br><span class="line">net user guest 123456  <span class="string">//</span>用guest用户登录后将密码改为123456</span><br><span class="line">net password 密码    <span class="string">//</span>更改系统登陆密码</span><br><span class="line">del d:\ad\*.* <span class="string">/a</span> <span class="string">/s</span> <span class="string">/q</span> <span class="string">/f</span>  <span class="string">//</span>强制删除指定路径下的所有文件</span><br><span class="line">restart <span class="string">/r</span> <span class="string">/t</span> 0   <span class="string">//</span>立即重启当前机器</span><br><span class="line">attrib +s +h 文件  <span class="string">//</span>隐藏文件  +s 设置系统文件属性  +h 设置隐藏属性</span><br><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal<span class="string">" "</span>Server <span class="string">/v</span> fDenyTSConnections <span class="string">/t</span> REG_DWORD <span class="string">/d</span> 00000000 <span class="string">/f</span>    <span class="string">//</span>开启3389端口</span><br><span class="line">netsh firewall <span class="keyword">set</span> opmode disable  <span class="string">//</span>关闭防火墙</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
     
@@ -448,6 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内网渗透命令"><span class="nav-number">1.</span> <span class="nav-text">内网渗透命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询命令"><span class="nav-number">1.1.</span> <span class="nav-text">查询命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改命令"><span class="nav-number">1.2.</span> <span class="nav-text">修改命令</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -463,7 +391,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
